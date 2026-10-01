@@ -1,0 +1,273 @@
+{
+ "E01": {
+  "kind": "obj",
+  "style": "typed",
+  "title": "Foto TKP: Ruang Kerja Edmund Hartwell",
+  "body": [
+   "Edmund Hartwell terkulai di kursi kulit di belakang meja kerja. Kepala miring ke kiri, tangan kanan menggenggam tepi meja.",
+   "Di atas meja: satu gelas brandy setengah kosong, kotak pil perak, dan sebuah telegram.",
+   "Pintu terkunci dari dalam. Graves masuk memakai kunci cadangan pukul 23:40."
+  ],
+  "note": "Tidak ada tanda perlawanan atau luka. Gelas brandy dan kotak pil layak diperiksa lebih jauh.",
+  "meta": [
+   [
+    "Diambil",
+    "15 Nov 1947, 00:05"
+   ],
+   [
+    "Petugas",
+    "Sersan Mills"
+   ]
+  ]
+ },
+ "E02": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "SURAT KETERANGAN KEMATIAN",
+  "body": [
+   "Pasien memiliki riwayat penyakit jantung. Gejala konsisten dengan gagal jantung. Tidak ditemukan tanda kekerasan pada pemeriksaan luar."
+  ],
+  "note": "Ditandatangani hanya 10 menit setelah jasad ditemukan, oleh dokter yang juga meresepkan obat korban.",
+  "meta": [
+   [
+    "Nama",
+    "Edmund J. Hartwell (62)"
+   ],
+   [
+    "Ditemukan",
+    "14 Nov 1947, 23:40"
+   ],
+   [
+    "Diperiksa",
+    "23:50"
+   ],
+   [
+    "Penyebab",
+    "Gagal jantung akut"
+   ],
+   [
+    "Otopsi",
+    "Tidak diperlukan"
+   ]
+  ],
+  "sign": "Arthur Lowell, M.D.",
+  "stamp": "DISAHKAN"
+ },
+ "E03": {
+  "kind": "obj",
+  "style": "typed",
+  "title": "Kotak Pil Perak Milik Edmund",
+  "body": [
+   "Kotak berukir inisial E.J.H. Isinya tujuh kapsul: lima berwarna putih-abu, dua berwarna krem.",
+   "Kedua kapsul krem terasa jauh lebih berat di telapak tangan.",
+   "Di dalam tutup ada label kecil: \"Dr. A. Lowell, Nov 1947\"."
+  ],
+  "note": "Kapsul krem berbeda dari yang lain. Cocokkan dengan resep, lalu uji lewat otopsi."
+ },
+ "E04": {
+  "kind": "obj",
+  "style": "typed",
+  "title": "Gelas Brandy",
+  "body": [
+   "Gelas kristal dengan sedikit brandy tersisa. Di bibir gelas ada bekas lipstik merah tua.",
+   "Di dasar gelas terdapat endapan bubuk halus putih kekuningan dengan bau pahit yang menyengat."
+  ],
+  "note": "Dua pertanyaan: siapa pemilik lipstik itu, dan apa endapan tersebut?"
+ },
+ "E05": {
+  "kind": "obj",
+  "style": "typed",
+  "title": "Kunci Ruang Kerja",
+  "body": [
+   "Kunci kuningan tunggal, ditemukan di saku jas Edmund.",
+   "Pintu ruang kerja terkunci dari dalam. Satu-satunya kunci cadangan dipegang Graves."
+  ],
+  "note": "Bukan trik \"kamar terkunci\". Edmund mengunci dirinya sendiri setelah tamunya pergi."
+ },
+ "E06": {
+  "kind": "paper",
+  "style": "hand",
+  "title": "Catatan Jadwal Pesta (tulisan tangan Graves)",
+  "body": [
+   "19:00 Tamu mulai tiba.",
+   "20:30 Makan malam disajikan.",
+   "21:40 Tuan dan Tuan Charles berbicara keras di ruang kerja.",
+   "22:00 Tuan naik ke ruang kerja.",
+   "22:25 Nyonya membawa nampan (brandy dan obat) ke atas. Saya sibuk di ruang tamu.",
+   "22:40 Nyonya turun.",
+   "23:40 Saya menemukan Tuan. Dr. Lowell dipanggil."
+  ],
+  "note": "Vivian berada di ruang kerja pukul 22:25-22:40. Graves terlalu sibuk untuk mengantar minuman."
+ },
+ "E07": {
+  "kind": "paper",
+  "style": "hand",
+  "title": "Buku Harian Edmund: Halaman Terakhir",
+  "body": [
+   "13 November. Kepalaku berat, tidur tidak nyenyak.",
+   "Aku tahu soal Lowell dan dana yayasan klinik. Lebih dari delapan ribu dolar hilang, dan pembukuannya diubah.",
+   "Aku juga tahu soal Vivian. Dia pikir aku buta.",
+   "Pesta besok malam. Lusa pagi aku akan menemui Pruitt dan membereskan semuanya."
+  ],
+  "note": "Edmund tahu dua rahasia sekaligus dan sudah menjadwalkan tindakannya.",
+  "sign": "E."
+ },
+ "E08": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "TELEGRAM",
+  "body": [
+   "KEPADA: E. HARTWELL, MANSION HARTWELL, RAVENPORT",
+   "DARI: A. PRUITT, PENGACARA",
+   "PERTEMUAN DIKONFIRMASI. 15 NOVEMBER PUKUL 09:00 DI KANTOR SAYA. BAWA DRAF PERUBAHAN WASIAT. STOP. JANGAN BERITAHU SIAPA PUN. STOP."
+  ],
+  "note": "Edmund akan mengubah wasiatnya pada pagi hari setelah pesta."
+ },
+ "E09": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "DRAF WASIAT DAN TESTAMEN TERAKHIR",
+  "body": [
+   "Pasal 1. Seluruh saham Hartwell Steel diwariskan kepada adik saya, Eleanor Hartwell.",
+   "Pasal 2. Hak waris atas harta pribadi atas nama Vivian Hartwell dicabut.",
+   "Pasal 3. Kepada Mr. Graves, atas pengabdian tiga puluh tahun, rumah peristirahatan di Elm Street."
+  ],
+  "note": "Vivian dicoret dan Graves mendapat bagian. Namun draf ini belum sah, dan Graves sendiri baru mengetahui isinya.",
+  "sign": "(belum ditandatangani)",
+  "stamp": "DRAF"
+ },
+ "E10": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "SURAT PENGAKUAN UTANG",
+  "body": [
+   "Saya, Edmund J. Hartwell, menjamin pelunasan utang keponakan saya, Charles Hartwell, sebesar $12.000 kepada S. Moretti."
+  ],
+  "note": "Tanda tangan dipalsukan. Charles butuh Edmund tetap hidup, karena hanya Edmund yang mau membayar utangnya.",
+  "sign": "E. J. Hartwell (tinta berbeda, garis bergetar)"
+ },
+ "E11": {
+  "kind": "obj",
+  "style": "typed",
+  "title": "Buku Korek Api Blue Note Club",
+  "body": [
+   "Buku korek bertuliskan \"Blue Note Club, Jl. Harbor 14\". Tergeletak dekat pintu samping taman, sisi dalamnya masih kering meski hujan."
+  ],
+  "note": "Seseorang keluar lewat pintu samping malam itu. Cari tahu siapa."
+ },
+ "E12": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "KARCIS PARKIR DAN KETERANGAN PELAYAN",
+  "body": [
+   "KARCIS No. 4471. Masuk: 22:58. Blue Note Club.",
+   "Keterangan pelayan (Tommy): \"Anak muda itu duduk di bar dari jam sebelas kurang sampai setengah dua belas, menunggu Pak Moretti. Gelisah sekali.\""
+  ],
+  "note": "Alibi Charles kuat: pukul 23:00-23:30 ia berada di klub, saat Edmund sekarat."
+ },
+ "E13": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "RESEP DOKTER",
+  "body": [
+   "Dosis per kapsul: 0,50 mg (resep sebelumnya: 0,25 mg).",
+   "Kapsul diracik sendiri di klinik, tanpa apoteker luar."
+  ],
+  "note": "Dosis dilipatgandakan tanpa pemeriksaan lanjutan yang tercatat.",
+  "meta": [
+   [
+    "Pasien",
+    "E. J. Hartwell"
+   ],
+   [
+    "Tanggal",
+    "10 November 1947"
+   ],
+   [
+    "Obat",
+    "Digoxin, kapsul"
+   ],
+   [
+    "Aturan",
+    "1 kapsul setiap malam"
+   ]
+  ],
+  "sign": "A. Lowell"
+ },
+ "E14": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "BUKU BESAR YAYASAN KESEHATAN HARTWELL",
+  "body": [
+   "Kedua transfer tidak disertai kwitansi. Total selisih: $8.400."
+  ],
+  "note": "Dana yayasan mengalir ke rekening pribadi Lowell. Inilah yang akan dibongkar Edmund.",
+  "meta": [
+   [
+    "3 Sep",
+    "Donasi diterima",
+    "+$12.000"
+   ],
+   [
+    "19 Sep",
+    "Pembelian alat medis",
+    "-$3.600"
+   ],
+   [
+    "2 Okt",
+    "\"Biaya konsultasi\" ke A. Lowell",
+    "-$4.200"
+   ],
+   [
+    "28 Okt",
+    "\"Biaya konsultasi\" ke A. Lowell",
+    "-$4.200"
+   ]
+  ]
+ },
+ "E15": {
+  "kind": "paper",
+  "style": "hand",
+  "title": "Surat Tanpa Tanggal",
+  "body": [
+   "V.,",
+   "Jangan ragu. Semuanya sudah kupersiapkan. Kau hanya perlu bersabar sampai malam pesta. Setelah itu kita bebas."
+  ],
+  "note": "Tulisan tangannya cocok dengan resep Lowell. Hubungan gelap Vivian dan Lowell terbukti.",
+  "sign": "L."
+ },
+ "E16": {
+  "kind": "paper",
+  "style": "typed",
+  "title": "LAPORAN OTOPSI INDEPENDEN",
+  "body": [
+   "Temuan konsisten dengan tertelannya kapsul digoxin berdosis ganda, kemungkinan lebih dari satu kapsul dalam waktu berdekatan.",
+   "Kematian bukan alami. Surat kematian sebelumnya tidak melibatkan pemeriksaan toksikologi."
+  ],
+  "note": "Edmund diracun. Surat kematian Lowell menyesatkan.",
+  "meta": [
+   [
+    "Jenazah",
+    "Edmund J. Hartwell"
+   ],
+   [
+    "Diperiksa",
+    "15 November 1947"
+   ],
+   [
+    "Penyebab",
+    "Keracunan digoxin akut"
+   ],
+   [
+    "Kadar digoxin",
+    "Sangat tinggi (kira-kira 5x batas terapi)"
+   ],
+   [
+    "Gejala",
+    "Mual, aritmia, penglihatan menguning"
+   ]
+  ],
+  "sign": "Dr. H. Ashby, Koroner Kota",
+  "stamp": "RAHASIA"
+ }
+}

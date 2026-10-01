@@ -1,0 +1,784 @@
+{
+  "meta": {
+    "title": "The Hartwell Affair",
+    "version": "1.0",
+    "language": "id",
+    "setting": "Ravenport, 14 November 1947",
+    "briefing": "Edmund Hartwell ditemukan tewas di ruang kerjanya saat pesta. Dr. Lowell menyatakan gagal jantung dan polisi menutup kasus. Adiknya, Eleanor, menyewa Anda untuk menyelidiki ulang.",
+    "notes": "ID bukti (E##), deduksi (D##), dan node dialog (V/L/C/G##) harus konsisten dengan dialog.json. Bukti tersedia bila semua syarat terpenuhi: requires.evidence (dimiliki), requires.nodes (sudah ditanyakan), dan lokasinya terbuka."
+  },
+  "config": {
+    "difficulty": {
+      "easy": {
+        "timerMinutes": 120,
+        "hintCostMinutes": 3,
+        "deductionsRequired": 3,
+        "realtimeFactor": 0,
+        "scoreMultiplier": 1.0
+      },
+      "normal": {
+        "timerMinutes": 85,
+        "hintCostMinutes": 5,
+        "deductionsRequired": 4,
+        "realtimeFactor": 0.2,
+        "scoreMultiplier": 1.2
+      },
+      "hard": {
+        "timerMinutes": 60,
+        "hintCostMinutes": 8,
+        "deductionsRequired": 5,
+        "realtimeFactor": 0.4,
+        "scoreMultiplier": 1.5
+      }
+    },
+    "defaultDifficulty": "normal",
+    "timerPausedDuring": [
+      "intro",
+      "cutscene",
+      "pause"
+    ],
+    "explorationCostMinutes": 2,
+    "wrongLinkCostMinutes": 3,
+    "balanceNotes": "realtimeFactor = detik permainan yang berkurang per detik nyata (timer berhenti saat dokumen dibaca, cutscene, dan jeda). Hubungan bukti yang salah memakan wrongLinkCostMinutes."
+  },
+  "suspects": {
+    "vivian": {
+      "name": "Vivian Hartwell",
+      "role": "Istri korban",
+      "culprit": true
+    },
+    "lowell": {
+      "name": "Dr. Arthur Lowell",
+      "role": "Dokter keluarga",
+      "culprit": true
+    },
+    "charles": {
+      "name": "Charles Hartwell",
+      "role": "Keponakan korban",
+      "culprit": false
+    },
+    "graves": {
+      "name": "Mr. Graves",
+      "role": "Kepala pelayan",
+      "culprit": false
+    }
+  },
+  "locations": {
+    "ruang_kerja": {
+      "name": "Ruang Kerja Edmund",
+      "map": "assets/maps/denah_lantai2.svg",
+      "unlocked": true,
+      "room": {
+        "x": 5.0,
+        "y": 7.69,
+        "w": 42.5,
+        "h": 46.15
+      }
+    },
+    "ruang_tamu": {
+      "name": "Ruang Tamu",
+      "map": "assets/maps/denah_lantai1.svg",
+      "unlocked": true,
+      "room": {
+        "x": 5.0,
+        "y": 7.69,
+        "w": 37.5,
+        "h": 42.31
+      }
+    },
+    "pantry": {
+      "name": "Pantry",
+      "map": "assets/maps/denah_lantai1.svg",
+      "unlocked": true,
+      "room": {
+        "x": 45.0,
+        "y": 7.69,
+        "w": 20.0,
+        "h": 23.08
+      }
+    },
+    "taman_samping": {
+      "name": "Taman Samping",
+      "map": "assets/maps/denah_lantai1.svg",
+      "unlocked": false,
+      "unlock": {
+        "evidence": [],
+        "nodes": [
+          "C02"
+        ]
+      },
+      "room": {
+        "x": 5.0,
+        "y": 57.69,
+        "w": 90.0,
+        "h": 36.54
+      }
+    },
+    "kamar_vivian": {
+      "name": "Kamar Vivian",
+      "map": "assets/maps/denah_lantai2.svg",
+      "unlocked": false,
+      "unlock": {
+        "evidence": [
+          "E04"
+        ],
+        "nodes": []
+      },
+      "room": {
+        "x": 52.5,
+        "y": 7.69,
+        "w": 42.5,
+        "h": 46.15
+      }
+    },
+    "kamar_graves": {
+      "name": "Kamar Graves",
+      "map": "assets/maps/denah_lantai1.svg",
+      "unlocked": false,
+      "unlock": {
+        "evidence": [],
+        "nodes": [
+          "G05"
+        ]
+      },
+      "room": {
+        "x": 67.5,
+        "y": 7.69,
+        "w": 27.5,
+        "h": 23.08
+      }
+    },
+    "klinik_lowell": {
+      "name": "Klinik Dr. Lowell",
+      "map": "assets/maps/peta_kota.svg",
+      "unlocked": false,
+      "unlockedByDialog": [
+        "L05"
+      ],
+      "unlock": {
+        "evidence": [
+          "E03"
+        ],
+        "nodes": [
+          "L05"
+        ]
+      },
+      "room": {
+        "x": 7.5,
+        "y": 11.54,
+        "w": 27.5,
+        "h": 30.77
+      }
+    },
+    "blue_note_club": {
+      "name": "Blue Note Club",
+      "map": "assets/maps/peta_kota.svg",
+      "unlocked": false,
+      "unlockedByDialog": [
+        "C05"
+      ],
+      "unlock": {
+        "evidence": [
+          "E11"
+        ],
+        "nodes": [
+          "C05"
+        ]
+      },
+      "room": {
+        "x": 65.0,
+        "y": 57.69,
+        "w": 27.5,
+        "h": 30.77
+      }
+    },
+    "kamar_mayat": {
+      "name": "Kamar Mayat Kota",
+      "map": "assets/maps/peta_kota.svg",
+      "unlocked": false,
+      "unlock": {
+        "evidence": [
+          "E03",
+          "E13"
+        ],
+        "nodes": []
+      },
+      "room": {
+        "x": 65.0,
+        "y": 11.54,
+        "w": 27.5,
+        "h": 30.77
+      }
+    }
+  },
+  "evidence": [
+    {
+      "id": "E01",
+      "name": "Foto TKP Ruang Kerja",
+      "type": "foto",
+      "location": "ruang_kerja",
+      "spot": "meja_kerja",
+      "image": "assets/evidence/e01_foto_tkp.svg",
+      "hotspot": {
+        "x": 48,
+        "y": 55
+      },
+      "description": "Foto polisi: Edmund terkulai di kursi, gelas brandy di meja, pintu terkunci dari dalam.",
+      "requires": {
+        "evidence": [],
+        "nodes": []
+      },
+      "tags": [
+        "ruang_kerja",
+        "korban"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E02",
+      "name": "Surat Kematian (Lowell)",
+      "type": "dokumen",
+      "location": "ruang_tamu",
+      "spot": "meja_tulis",
+      "image": "assets/evidence/e02_surat_kematian.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 40
+      },
+      "description": "Menyatakan gagal jantung. Ditandatangani pukul 23:50, hanya 10 menit setelah jasad ditemukan.",
+      "requires": {
+        "evidence": [],
+        "nodes": []
+      },
+      "tags": [
+        "lowell",
+        "waktu"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E03",
+      "name": "Kotak Pil Perak Edmund",
+      "type": "benda",
+      "location": "ruang_kerja",
+      "spot": "meja_kerja",
+      "image": "assets/evidence/e03_kotak_pil.svg",
+      "hotspot": {
+        "x": 60,
+        "y": 45
+      },
+      "description": "Isinya dua kapsul berbeda bobot dan warna. Salah satunya terasa jauh lebih berat.",
+      "requires": {
+        "evidence": [],
+        "nodes": []
+      },
+      "tags": [
+        "racun",
+        "lowell"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E04",
+      "name": "Gelas Brandy Bernoda Lipstik",
+      "type": "benda",
+      "location": "ruang_kerja",
+      "spot": "meja_kerja",
+      "image": "assets/evidence/e04_gelas_brandy.svg",
+      "hotspot": {
+        "x": 52,
+        "y": 50
+      },
+      "description": "Noda lipstik merah tua dan endapan bubuk pahit di dasar gelas.",
+      "requires": {
+        "evidence": [
+          "E01"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "vivian",
+        "racun"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E05",
+      "name": "Kunci Ruang Kerja di Saku Korban",
+      "type": "benda",
+      "location": "ruang_kerja",
+      "spot": "jasad",
+      "image": "assets/evidence/e05_kunci.svg",
+      "hotspot": {
+        "x": 45,
+        "y": 62
+      },
+      "description": "Kunci ada di saku Edmund. Pintu terkunci dari dalam, dikunci oleh Edmund sendiri.",
+      "requires": {
+        "evidence": [
+          "E01"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "ruang_kerja",
+        "korban"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E06",
+      "name": "Catatan Graves soal Pesta",
+      "type": "dokumen",
+      "location": "pantry",
+      "spot": "papan_catatan",
+      "image": "assets/evidence/e06_catatan_graves.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 35
+      },
+      "description": "Catatan jadwal malam itu: Vivian naik 22:25 dan turun 22:40. Graves kewalahan melayani tamu.",
+      "requires": {
+        "evidence": [],
+        "nodes": []
+      },
+      "tags": [
+        "vivian",
+        "graves",
+        "waktu"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E07",
+      "name": "Buku Harian Edmund",
+      "type": "dokumen",
+      "location": "ruang_kerja",
+      "spot": "laci_meja",
+      "image": "assets/evidence/e07_buku_harian.svg",
+      "hotspot": {
+        "x": 38,
+        "y": 70
+      },
+      "description": "Halaman terakhir: 'Aku tahu soal Lowell dan dana klinik. Aku tahu soal Vivian juga.'",
+      "requires": {
+        "evidence": [
+          "E05"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "lowell",
+        "vivian",
+        "motif"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E08",
+      "name": "Telegram Pengacara Pruitt",
+      "type": "dokumen",
+      "location": "ruang_kerja",
+      "spot": "meja_kerja",
+      "image": "assets/evidence/e08_telegram.svg",
+      "hotspot": {
+        "x": 55,
+        "y": 38
+      },
+      "description": "Konfirmasi pertemuan dengan Edmund pada 15 November pukul 09:00. Edmund merencanakan sesuatu.",
+      "requires": {
+        "evidence": [
+          "E07"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "wasiat",
+        "motif"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E09",
+      "name": "Draf Wasiat Baru",
+      "type": "dokumen",
+      "location": "kamar_graves",
+      "spot": "lemari",
+      "image": "assets/evidence/e09_draf_wasiat.svg",
+      "hotspot": {
+        "x": 25,
+        "y": 60
+      },
+      "description": "Vivian dicoret dari warisan. Graves mendapat sedikit bagian. Belum ditandatangani.",
+      "requires": {
+        "evidence": [],
+        "nodes": [
+          "G05"
+        ]
+      },
+      "tags": [
+        "wasiat",
+        "graves",
+        "vivian"
+      ],
+      "redHerring": true
+    },
+    {
+      "id": "E10",
+      "name": "Surat Utang Palsu Charles",
+      "type": "dokumen",
+      "location": "ruang_kerja",
+      "spot": "brankas",
+      "image": "assets/evidence/e10_surat_utang.svg",
+      "hotspot": {
+        "x": 80,
+        "y": 30
+      },
+      "description": "Tanda tangan Edmund dipalsukan untuk utang $12.000. Memberi Charles motif, tetapi ia butuh Edmund tetap hidup.",
+      "requires": {
+        "evidence": [
+          "E07"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "charles",
+        "motif"
+      ],
+      "redHerring": true
+    },
+    {
+      "id": "E11",
+      "name": "Korek Api Blue Note Club",
+      "type": "benda",
+      "location": "taman_samping",
+      "spot": "pintu_samping",
+      "image": "assets/evidence/e11_korek_api.svg",
+      "hotspot": {
+        "x": 20,
+        "y": 75
+      },
+      "description": "Korek api dari klub malam, tergeletak dekat pintu samping.",
+      "requires": {
+        "evidence": [],
+        "nodes": [
+          "C02"
+        ]
+      },
+      "tags": [
+        "charles",
+        "alibi"
+      ],
+      "redHerring": true
+    },
+    {
+      "id": "E12",
+      "name": "Karcis Parkir dan Keterangan Pelayan Klub",
+      "type": "dokumen",
+      "location": "blue_note_club",
+      "spot": "meja_kasir",
+      "image": "assets/evidence/e12_karcis_klub.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "description": "Karcis parkir 22:58 dan kesaksian pelayan: Charles berada di klub pukul 23:00-23:30.",
+      "requires": {
+        "evidence": [
+          "E11"
+        ],
+        "nodes": [
+          "C05"
+        ]
+      },
+      "tags": [
+        "charles",
+        "alibi"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E13",
+      "name": "Resep Terbaru Bertanda Lowell",
+      "type": "dokumen",
+      "location": "klinik_lowell",
+      "spot": "arsip_resep",
+      "image": "assets/evidence/e13_resep.svg",
+      "hotspot": {
+        "x": 40,
+        "y": 45
+      },
+      "description": "Resep 10 November: dosis digoxin dua kali lipat dari dosis Edmund sebelumnya.",
+      "requires": {
+        "evidence": [
+          "E03"
+        ],
+        "nodes": [
+          "L05"
+        ]
+      },
+      "tags": [
+        "lowell",
+        "racun"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E14",
+      "name": "Buku Besar Yayasan Klinik",
+      "type": "dokumen",
+      "location": "klinik_lowell",
+      "spot": "laci_kantor",
+      "image": "assets/evidence/e14_buku_besar.svg",
+      "hotspot": {
+        "x": 65,
+        "y": 30
+      },
+      "description": "Selisih $8.400 mengalir ke rekening pribadi Lowell.",
+      "requires": {
+        "evidence": [
+          "E07"
+        ],
+        "nodes": [
+          "L05"
+        ]
+      },
+      "tags": [
+        "lowell",
+        "motif"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E15",
+      "name": "Surat Cinta Berinisial 'L'",
+      "type": "dokumen",
+      "location": "kamar_vivian",
+      "spot": "kotak_perhiasan",
+      "image": "assets/evidence/e15_surat_cinta.svg",
+      "hotspot": {
+        "x": 60,
+        "y": 55
+      },
+      "description": "Surat mesra Vivian dan seseorang berinisial L. Tulisan tangannya cocok dengan resep Lowell.",
+      "requires": {
+        "evidence": [
+          "E04"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "vivian",
+        "lowell",
+        "motif"
+      ],
+      "redHerring": false
+    },
+    {
+      "id": "E16",
+      "name": "Otopsi Independen (Dr. Ashby)",
+      "type": "laporan",
+      "location": "kamar_mayat",
+      "spot": "ruang_arsip",
+      "image": "assets/evidence/e16_otopsi.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 40
+      },
+      "description": "Kadar digoxin sangat tinggi, penglihatan menguning (xanthopsia). Kematian bukan alami.",
+      "requires": {
+        "evidence": [
+          "E03",
+          "E13"
+        ],
+        "nodes": []
+      },
+      "tags": [
+        "racun",
+        "korban"
+      ],
+      "redHerring": false
+    }
+  ],
+  "deductions": [
+    {
+      "id": "D1",
+      "link": [
+        "E02",
+        "E16"
+      ],
+      "title": "Kematian bukan alami",
+      "conclusion": "Otopsi independen membantah surat kematian Lowell. Edmund diracun.",
+      "confirmedByDialog": [
+        "L10"
+      ]
+    },
+    {
+      "id": "D2",
+      "link": [
+        "E03",
+        "E13"
+      ],
+      "title": "Sumber racun",
+      "conclusion": "Kapsul berdosis ganda berasal dari resep Lowell.",
+      "confirmedByDialog": [
+        "L10"
+      ]
+    },
+    {
+      "id": "D3",
+      "link": [
+        "E04",
+        "E06"
+      ],
+      "title": "Pengantar racun",
+      "conclusion": "Vivian menyerahkan minuman dan kapsul pada Edmund.",
+      "confirmedByDialog": [
+        "V09"
+      ]
+    },
+    {
+      "id": "D4",
+      "link": [
+        "E07",
+        "E14"
+      ],
+      "title": "Motif Lowell",
+      "conclusion": "Edmund akan membongkar penggelapan dana yayasan oleh Lowell.",
+      "confirmedByDialog": [
+        "L10"
+      ]
+    },
+    {
+      "id": "D5",
+      "link": [
+        "E08",
+        "E15"
+      ],
+      "title": "Motif Vivian",
+      "conclusion": "Vivian akan dicoret dari wasiat, dan ia berhubungan gelap dengan Lowell.",
+      "confirmedByDialog": []
+    },
+    {
+      "id": "D6",
+      "link": [
+        "E11",
+        "E12"
+      ],
+      "title": "Charles punya alibi",
+      "conclusion": "Charles berada di klub saat kejadian, sehingga bukan pelaku.",
+      "confirmedByDialog": [
+        "C09"
+      ]
+    }
+  ],
+  "solution": {
+    "culprits": [
+      "vivian",
+      "lowell"
+    ],
+    "requireExactMatch": true,
+    "motive": {
+      "evidence": [
+        "E14",
+        "E15"
+      ]
+    },
+    "method": {
+      "evidence": [
+        "E13",
+        "E16"
+      ]
+    },
+    "scoring": {
+      "correctCulprits": 100,
+      "motiveBonus": 25,
+      "methodBonus": 25,
+      "timeBonusMax": 50,
+      "hintPenalty": 10,
+      "wrongLinkPenalty": 5
+    }
+  },
+  "hints": [
+    {
+      "id": "H1",
+      "level": 1,
+      "text": "Mulailah dari ruang kerja. Perhatikan apa yang ada di meja Edmund.",
+      "when": {
+        "evidence": []
+      }
+    },
+    {
+      "id": "H2",
+      "level": 1,
+      "text": "Kotak pil Edmund punya dua kapsul berbeda. Siapa yang memberinya obat?",
+      "when": {
+        "evidence": [
+          "E03"
+        ]
+      }
+    },
+    {
+      "id": "H3",
+      "level": 2,
+      "text": "Coba tanyakan pada Lowell soal obat baru Edmund. Lalu cari dokumen di kliniknya.",
+      "when": {
+        "evidence": [
+          "E03"
+        ],
+        "nodes": []
+      }
+    },
+    {
+      "id": "H4",
+      "level": 2,
+      "text": "Vivian menyebut nama depan Lowell. Cari surat di kamarnya.",
+      "when": {
+        "evidence": [
+          "E04"
+        ]
+      }
+    },
+    {
+      "id": "H5",
+      "level": 2,
+      "text": "Korek api di taman menunjukkan Charles pergi malam itu. Selidiki klub tersebut.",
+      "when": {
+        "evidence": [
+          "E11"
+        ]
+      }
+    },
+    {
+      "id": "H6",
+      "level": 3,
+      "text": "Graves menyembunyikan sesuatu dari Edmund. Tunjukkan telegram Pruitt padanya.",
+      "when": {
+        "evidence": [
+          "E08"
+        ]
+      }
+    },
+    {
+      "id": "H7",
+      "level": 3,
+      "text": "Otopsi independen di kamar mayat kota butuh kotak pil dan resep Lowell.",
+      "when": {
+        "evidence": [
+          "E13"
+        ]
+      }
+    },
+    {
+      "id": "H8",
+      "level": 3,
+      "text": "Tekan Vivian dengan surat cinta dan wasiat, lalu gunakan pengakuannya untuk menekan Lowell.",
+      "when": {
+        "evidence": [
+          "E15",
+          "E08"
+        ]
+      }
+    }
+  ]
+}
