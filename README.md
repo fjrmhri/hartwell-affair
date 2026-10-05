@@ -42,6 +42,29 @@ Build memakai jalur relatif (`base: './'`), jadi `dist/` bisa diunggah ke root m
 Mengubah teks atau ID di `src/kasus/` memengaruhi alur dan skor; jalankan `npm run test:sim` setelahnya.
 Engine tidak boleh memuat ID bukti atau nama tokoh; `test:sim` memeriksanya.
 
+## Antarmuka
+
+Enam tab utama: Peta, Dialog, Bukti, Analisis, Catatan, Papan.
+
+- **Peta:** papan lokasi per area di atas, denah cetak biru dan Titik Pemeriksaan di bawah. Di desktop
+  (lebar 769px ke atas) tab ini mengisi tepat satu layar; tombol "Lihat Seluruh Denah" membuka denah penuh.
+- **Bukti:** bukti fisik dan keterangan saksi (K). Item yang belum pernah dibuka diberi penanda "Baru" sampai
+  detailnya dibuka dari Bukti, Papan, Catatan, atau tautan di dokumen. Tersedia saringan "Baru" dan tombol
+  "Tandai semua sudah dilihat". Status ini disimpan di field `dilihat` pada save; save lama menganggap semua
+  bukti yang sudah dimiliki sudah dilihat.
+- **Analisis:** teka-teki yang terbuka setelah bukti syaratnya terkumpul; memakai judul, pengantar, dan chip
+  yang sama dengan tab Bukti.
+
+Aturan konsistensi tata letak (`src/styles.css`), dijaga agar header, tab, dan awal isi tidak bergeser saat
+berpindah tab:
+
+- `html { scrollbar-gutter: stable; }` mencadangkan ruang scrollbar. Tanpa ini, tab yang tidak bergulir
+  (Peta, Analisis) lebih lebar sekitar 15px daripada tab yang bergulir di browser dengan scrollbar klasik.
+- `.tabview > * > :first-child { margin-top: 0; }` mencegah margin judul pertama (h3) mendorong isi tab
+  ke bawah.
+- Semua tab berbagi wadah `.app` yang sama (lebar maksimum 1180px). Tab baru sebaiknya memakai pola
+  akar `.ev`/`.an` (judul h3, paragraf `ev-lead`, chip `ev-chip`) dan masuk ke daftar gutter `--tab-gutter`.
+
 ## Generator aset
 
 - `tools/gen_v2_assets.py` : potret tokoh baru, varian ekspresi, ikon bukti E17 sampai E32, dan E03.
