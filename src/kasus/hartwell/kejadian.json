@@ -1,0 +1,14 @@
+[
+  { "id": "ev_surat_dibakar", "pemicu": { "sisaWaktuPersen": 60 }, "syarat": { "bukan": { "bukti": "E15" } },
+    "pesan": "Bau kertas terbakar dari lantai dua.",
+    "efek": { "hilangkanBukti": ["E15"], "catatan": ["Abu kertas di perapian kamar Vivian. Surat yang dulu ada di meja riasnya sudah tidak ada."] } },
+  { "id": "ev_eleanor_bersih", "pemicu": { "sisaWaktuPersen": 50 }, "syarat": { "bukan": { "bukti": "E17" } },
+    "pesan": "Seseorang terlihat di taman samping.",
+    "efek": { "biayaEkstra": { "E17": 4 }, "catatan": ["Pot-pot di taman samping digeser. Mencari sesuatu di sana kini butuh waktu lebih lama."] } },
+  { "id": "ev_pruitt_tiba", "pemicu": { "sisaWaktuPersen": 30 }, "syarat": {},
+    "pesan": "Pengacara Pruitt tiba lebih awal di lobi.",
+    "efek": { "setFlag": { "pruitt_hadir": true }, "catatan": ["Harold Pruitt tiba di lobi. Ia bisa ditanyai di tab Dialog."] } },
+  { "id": "ev_doyle_mendesak", "pemicu": { "sisaWaktuPersen": 15 }, "syarat": {},
+    "pesan": "Mobil jenazah berhenti di gerbang.",
+    "efek": { "cutscene": "C6" } }
+]

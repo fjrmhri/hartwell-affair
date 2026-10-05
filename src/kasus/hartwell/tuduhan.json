@@ -1,0 +1,293 @@
+{
+  "garam": "ravenport-1947",
+  "cutsceneSebelum": "C7",
+  "skor": {
+    "bonusWaktuMaks": 50,
+    "penaltiPetunjuk": 10,
+    "penaltiSalahHubung": 5,
+    "penaltiSalahBantah": 3,
+    "maksDasar": 200,
+    "ambangWaktuPenuh": 0.25
+  },
+  "slot": [
+    {
+      "id": "pembunuh",
+      "judul": "Pembunuh",
+      "pertanyaan": "Siapa yang memberi dosis mematikan kepada Edmund?",
+      "jenis": "tokoh",
+      "jumlah": [
+        1,
+        1
+      ],
+      "jawabanHash": [
+        "fc380216"
+      ],
+      "poin": 50
+    },
+    {
+      "id": "pelaku_lain",
+      "judul": "Pelaku lain",
+      "pertanyaan": "Siapa lagi yang bersalah atas kematian atau rencana kematian Edmund?",
+      "jenis": "tokoh",
+      "jumlah": [
+        0,
+        2
+      ],
+      "jawabanHash": [
+        "766627b9"
+      ],
+      "poin": 20,
+      "tambahan": [
+        {
+          "id": "tuduhan_1931",
+          "teks": "Juga atas pemalsuan 14 surat kematian tahun 1931"
+        }
+      ],
+      "bonus": {
+        "syarat": {
+          "semua": [
+            {
+              "dipilih": "tuduhan_1931"
+            },
+            {
+              "bukti": "E31"
+            }
+          ]
+        },
+        "poin": 5
+      }
+    },
+    {
+      "id": "motif",
+      "judul": "Motif",
+      "pertanyaan": "Bukti apa yang menunjukkan motif pembunuh?",
+      "jenis": "kartu",
+      "jumlah": [
+        1,
+        2
+      ],
+      "buktiSlot": true,
+      "benarBila": {
+        "dipilihMinimal": [
+          [
+            "E18",
+            "E08",
+            "E14",
+            "E19"
+          ],
+          2
+        ]
+      },
+      "poin": 20
+    },
+    {
+      "id": "metode",
+      "judul": "Metode",
+      "pertanyaan": "Bukti apa yang menunjukkan cara pembunuh meracuni Edmund?",
+      "jenis": "kartu",
+      "jumlah": [
+        1,
+        2
+      ],
+      "buktiSlot": true,
+      "benarBila": {
+        "semua": [
+          {
+            "dipilih": "E16"
+          },
+          {
+            "salahSatu": [
+              {
+                "dipilih": "E17"
+              },
+              {
+                "dipilih": "E32"
+              },
+              {
+                "dipilih": "E29"
+              }
+            ]
+          }
+        ]
+      },
+      "poin": 20
+    },
+    {
+      "id": "kesempatan",
+      "judul": "Kesempatan",
+      "pertanyaan": "Bukti atau deduksi apa yang menempatkan pembunuh di dekat gelas?",
+      "jenis": "kartuDeduksi",
+      "jumlah": [
+        1,
+        2
+      ],
+      "buktiSlot": true,
+      "benarBila": {
+        "salahSatu": [
+          {
+            "dipilih": "D15"
+          },
+          {
+            "dipilihMinimal": [
+              [
+                "K03",
+                "K02",
+                "E06",
+                "E19",
+                "E20"
+              ],
+              2
+            ]
+          }
+        ]
+      },
+      "poin": 20
+    },
+    {
+      "id": "kebenaran_tersembunyi",
+      "judul": "Kebenaran tersembunyi",
+      "pertanyaan": "Apa yang tidak diketahui pembunuh malam itu?",
+      "jenis": "pernyataan",
+      "jumlah": [
+        1,
+        1
+      ],
+      "opsi": [
+        {
+          "id": "edmund_tahu",
+          "teks": "Edmund tahu ia diracun dan membiarkannya."
+        },
+        {
+          "id": "wasiat_diteken",
+          "teks": "Wasiat baru sudah diteken pukul 22:00."
+        },
+        {
+          "id": "pruitt_awal",
+          "teks": "Pruitt sudah berada di kota sejak sore."
+        },
+        {
+          "id": "charles_pewaris",
+          "teks": "Charles adalah ahli waris sah menurut wasiat lama."
+        }
+      ],
+      "benarBila": {
+        "semua": [
+          {
+            "dipilih": "wasiat_diteken"
+          },
+          {
+            "salahSatu": [
+              {
+                "deduksi": "D9"
+              },
+              {
+                "bukti": "E25"
+              }
+            ]
+          }
+        ]
+      },
+      "poin": 15
+    }
+  ],
+  "moral": [
+    {
+      "id": "m3",
+      "syarat": {
+        "bukti": "E30"
+      },
+      "judul": "Surat pengakuan Edmund",
+      "pertanyaan": "Apa yang Anda lakukan dengan surat pengakuan Edmund untuk Ravenport Herald?",
+      "opsi": [
+        {
+          "id": "herald",
+          "teks": "Serahkan ke Ravenport Herald"
+        },
+        {
+          "id": "pruitt",
+          "teks": "Serahkan ke Pruitt untuk disimpan"
+        },
+        {
+          "id": "bakar",
+          "teks": "Bakar"
+        }
+      ]
+    }
+  ],
+  "ending": [
+    {
+      "id": "kebenaran_utuh",
+      "status": "menang",
+      "syarat": {
+        "semua": [
+          {
+            "slotBenar": "pembunuh"
+          },
+          {
+            "slotBenar": "pelaku_lain"
+          },
+          {
+            "slotBenarMinimal": 2
+          },
+          {
+            "slotBenar": "kebenaran_tersembunyi"
+          }
+        ]
+      }
+    },
+    {
+      "id": "keadilan_tanpa_kebenaran",
+      "status": "menang",
+      "batasPersen": 87,
+      "syarat": {
+        "semua": [
+          {
+            "slotBenar": "pembunuh"
+          },
+          {
+            "slotBenar": "pelaku_lain"
+          },
+          {
+            "slotBenarMinimal": 2
+          }
+        ]
+      }
+    },
+    {
+      "id": "pengadilan_rapuh",
+      "status": "menang",
+      "batasPersen": 71,
+      "syarat": {
+        "slotBenar": "pembunuh"
+      }
+    },
+    {
+      "id": "kebenaran_dipesan",
+      "status": "kalah",
+      "khusus": true,
+      "syarat": {
+        "dipilih": "vivian"
+      }
+    },
+    {
+      "id": "kambing_hitam_kedua",
+      "status": "kalah",
+      "khusus": true,
+      "syarat": {
+        "dipilih": "graves"
+      }
+    },
+    {
+      "id": "separuh_kebenaran",
+      "status": "kalah",
+      "syarat": {
+        "dipilih": "lowell"
+      }
+    },
+    {
+      "id": "tuduhan_salah",
+      "status": "kalah",
+      "syarat": {}
+    }
+  ]
+}

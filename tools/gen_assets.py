@@ -6,6 +6,11 @@ Untuk membuat ulang 3 SVG peta saja, pakai tools/gen_maps.py.
 Membuat aset SVG noir placeholder. Jalankan: python3 tools/gen_assets.py --force
 Menulis ke public/assets/{maps,evidence,portraits} dan memperbarui path map + room di src/data/case.json."""
 import os, json, sys
+# v2: skrip ini hanya untuk aset placeholder v1 dan menulis src/data/case.json yang sudah tidak dipakai.
+# Untuk v2 gunakan tools/gen_v2_assets.py (potret dan bukti) dan tools/gen_maps.py (denah).
+print('tools/gen_assets.py adalah generator v1 yang sudah usang. Gunakan tools/gen_v2_assets.py dan tools/gen_maps.py.')
+sys.exit(1)
+
 if '--force' not in sys.argv[1:]:
     print('PERINGATAN: tools/gen_assets.py menimpa SEMUA aset dan src/data/case.json.\n'
           'Tidak ada yang diubah. Jalankan dengan --force bila memang yakin.\n'

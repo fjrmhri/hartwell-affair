@@ -1,10 +1,10 @@
-"""Membuat ulang 3 SVG denah/peta (Bagian 4B). Jalankan: python3 tools/gen_maps.py
-Hanya menulis public/assets/maps/*.svg. TIDAK menyentuh ikon bukti/potret dan TIDAK menulis case.json
-(case.json hanya DIBACA untuk memastikan koordinat ruangan masih identik dengan persentase room di sana).
+"""Membuat ulang 3 SVG denah/peta v2. Jalankan: python3 tools/gen_maps.py
+Hanya menulis public/assets/maps/*.svg. TIDAK menyentuh ikon bukti/potret dan TIDAK menulis kasus.json
+(kasus.json hanya DIBACA untuk memastikan koordinat ruangan identik dengan persentase `ruang` di sana).
 Font memakai variabel CSS (--ff-heading Playfair Display / --ff-label Oswald) dengan fallback;
 MapView meng-inline SVG sehingga font web berlaku."""
 import os, json, math, html, sys
-OUT, CASE = 'public/assets/maps', 'src/data/case.json'
+OUT, CASE = 'public/assets/maps', 'src/kasus/hartwell/kasus.json'
 os.makedirs(OUT, exist_ok=True)
 
 W, H = 800, 520
@@ -13,18 +13,23 @@ DIM, LBL = '#a9a596', '#d6d2c4'
 FH = "font-family:var(--ff-heading,'Playfair Display',Georgia,serif);font-weight:700;"
 FL = "font-family:var(--ff-label,'Oswald','Arial Narrow',sans-serif);font-weight:500;"
 
-# ---------- STRUKTUR MAPS (koordinat ruangan IDENTIK dengan gen_assets.py) ----------
+# ---------- STRUKTUR MAPS v2 (koordinat ruangan IDENTIK dengan persentase `ruang` di src/kasus/hartwell/kasus.json) ----------
 MAPS = {
  'denah_lantai1': ('Mansion Hartwell: Lantai 1', {
-    'ruang_tamu': (40, 40, 300, 220, 'Ruang Tamu'), 'pantry': (360, 40, 160, 120, 'Pantry'),
-    'kamar_graves': (540, 40, 220, 120, 'Kamar Graves'), 'taman_samping': (40, 300, 720, 190, 'Taman Samping'),
-    None: [(360, 180, 400, 100, 'Aula Pesta')]}),
+    'kamar_graves': (40, 40, 160, 200, 'Kamar Graves'), 'pantry': (250, 40, 170, 200, 'Pantry'),
+    'lobi': (480, 40, 280, 200, 'Lobi'), 'ruang_tamu': (40, 260, 560, 220, 'Ruang Tamu dan Aula'),
+    'taman_samping': (620, 260, 140, 220, 'Taman'),
+    None: [(200, 40, 50, 200, ''), (420, 40, 60, 200, '')]}),
  'denah_lantai2': ('Mansion Hartwell: Lantai 2', {
-    'ruang_kerja': (40, 40, 340, 240, 'Ruang Kerja Edmund'), 'kamar_vivian': (420, 40, 340, 240, 'Kamar Vivian'),
-    None: [(40, 300, 720, 60, 'Koridor Timur'), (40, 380, 340, 110, 'Kamar Tamu'), (420, 380, 340, 110, 'Tangga dan Aula')]}),
+    'kamar_tamu_barat': (40, 40, 170, 200, 'Tamu Barat'), 'kamar_vivian': (210, 40, 210, 200, 'Kamar Vivian'),
+    'kamar_tamu_timur': (480, 40, 280, 200, 'Tamu Timur'), 'ruang_kerja': (40, 290, 400, 190, 'Ruang Kerja Edmund'),
+    None: [(420, 40, 60, 200, ''), (40, 240, 720, 50, 'Galeri Potret'), (440, 290, 320, 190, 'Kamar Edmund')]}),
  'peta_kota': ('Peta Ravenport', {
-    'klinik_lowell': (60, 60, 220, 160, 'Klinik Dr. Lowell'), 'kamar_mayat': (520, 60, 220, 160, 'Kamar Mayat Kota'),
-    'blue_note_club': (520, 300, 220, 160, 'Blue Note Club'), None: [(60, 300, 220, 160, 'Mansion Hartwell')]}),
+    'kantor_polisi': (40, 60, 220, 110, 'Kantor Polisi'), 'kamar_mayat': (40, 190, 220, 110, 'Kamar Mayat'),
+    'klinik_lowell': (290, 60, 220, 80, 'Klinik Lowell'), 'arsip_herald': (290, 150, 220, 80, 'Arsip Herald'),
+    'apotek_st_brigid': (290, 240, 220, 80, 'Apotek St. Brigid'), 'blue_note_club': (540, 60, 220, 160, 'Blue Note Club'),
+    'reruntuhan_pengecoran': (290, 360, 220, 120, 'Pengecoran No. 2'),
+    None: [(540, 360, 220, 120, 'Mansion Hartwell')]}),
 }
 
 def check_rooms():
@@ -34,8 +39,8 @@ def check_rooms():
         for k, r in rooms.items():
             if not k: continue
             want = {'x': round(r[0]/8, 2), 'y': round(r[1]/5.2, 2), 'w': round(r[2]/8, 2), 'h': round(r[3]/5.2, 2)}
-            got = case['locations'][k]['room']
-            if any(abs(want[a] - got[a]) > 0.005 for a in want) or case['locations'][k]['map'] != f'assets/maps/{fn}.svg':
+            got = case['lokasi'][k]['ruang']
+            if any(abs(want[a] - got[a]) > 0.005 for a in want) or case['lokasi'][k]['peta'] != f'assets/maps/{fn}.svg':
                 sys.exit(f'Koordinat/peta {k} tidak cocok dengan case.json: {want} vs {got}')
 
 # ---------- Primitif ----------
@@ -161,84 +166,65 @@ def rooms_svg(fn, p):
     out = ''
     for k, r in rooms.items():
         if k: out += room(*r[:4], r[4], p, hatch=(k == 'taman_samping'))
-    for r in rooms.get(None, []): out += room(*r[:4], r[4], p, label_fill=LBL)
+    for r in rooms.get(None, []): out += room(*r[:4], r[4], p, hatch=(not r[4]), label_fill=LBL)
     return out
+
+def tangga(x, y, w, h):
+    return ''.join(f'<path d="M{x+6} {yy}H{x+w-6}" stroke="{DIM}" stroke-width="1.3"/>' for yy in range(y + 30, y + h - 10, 10)) + T(x + w / 2, y + 22, 'tangga', 14, FL, LBL, 'middle', 0.3, True)
 
 def lantai1():
     p = 'hw1'; b = rooms_svg('denah_lantai1', p)
-    b += ''.join(window(*w) for w in [(80, 40, 150, 40), (230, 40, 300, 40), (40, 120, 40, 170), (760, 64, 760, 116), (640, 40, 720, 40)])
-    b += door(340, 228, 340, 254, -1, 0) + door(360, 228, 360, 254, 1, 0)      # ruang tamu <-> aula
-    b += door(300, 260, 270, 260, 0, -1) + door(300, 300, 270, 300, 0, 1)      # ruang tamu <-> taman
-    b += door(516, 160, 488, 160, 0, -1) + door(516, 180, 488, 180, 0, 1)      # pantry <-> aula
-    b += door(598, 160, 570, 160, 0, -1) + door(598, 180, 570, 180, 0, 1)      # kamar graves <-> aula
-    # Ruang Tamu
-    b += furn(75, 105, 110, 44, 'meja tulis', 'desk') + furn(150, 175, 100, 55, 'sofa', 'sofa')
-    b += f'<rect x="60" y="205" width="70" height="40" rx="2" fill="none" stroke="{DIM}" stroke-opacity=".45" stroke-dasharray="4 3"/>'
-    # Pantry
-    b += furn(418, 76, 98, 32, 'papan catatan', 'board') + furn(372, 118, 100, 30, 'konter')
-    # Kamar Graves
-    b += furn(558, 72, 76, 52, 'lemari', 'wardrobe') + furn(650, 86, 84, 60, 'ranjang', 'bed', ly=None)
-    # Aula pesta
-    b += ''.join(rtable(x, 244) for x in (450, 520, 590, 660)) + compass(728, 240)
-    # Taman samping
-    b += f'<path d="M285 335C270 370 235 395 205 424" fill="none" stroke="{BONE}" stroke-opacity=".28" stroke-width="9" stroke-dasharray="7 9"/>'
-    b += ''.join(tree(x, y, r) for x, y, r in ((340, 385, 17), (455, 350, 14), (560, 425, 18), (690, 345, 15), (650, 450, 13), (410, 455, 12)))
-    b += furn(129, 426, 110, 32, 'pintu samping', 'box')
-    b += legend() + title('Mansion Hartwell: Lantai 1')
+    b += ''.join(window(*w) for w in [(70, 40, 140, 40), (290, 40, 370, 40), (560, 40, 680, 40), (40, 320, 40, 420), (180, 480, 300, 480)])
+    b += door(200, 140, 200, 170, 1, 0)                                         # kamar graves -> lorong servis
+    b += door(250, 120, 250, 150, -1, 0)                                        # pantry -> lorong
+    b += door(420, 120, 420, 150, 1, 0)                                         # pantry -> tangga servis
+    b += door(480, 180, 480, 210, -1, 0)                                        # lobi -> tangga servis
+    b += door(560, 240, 600, 240, 0, 1)                                         # lobi -> aula
+    b += door(600, 360, 600, 395, 1, 0)                                         # aula -> taman (pintu samping)
+    b += f'<path d="M225 60V230" stroke="{BONE}" stroke-opacity=".35" stroke-dasharray="3 5"/>' + T(225, 236, 'lorong servis', 14, FL, LBL, 'middle', 0.3, True)
+    b += tangga(420, 40, 60, 200)
+    b += furn(58, 70, 70, 50, 'lemari', 'wardrobe') + furn(110, 150, 76, 70, 'ranjang', 'bed', ly=205)
+    b += furn(270, 64, 110, 30, 'papan catatan', 'board') + furn(268, 150, 130, 40, 'konter nampan')
+    b += furn(640, 90, 100, 60, 'papan sentral', 'cabinet') + furn(500, 150, 100, 36, 'meja tamu')
+    b += ''.join(rtable(x, 400) for x in (330, 400, 470, 540)) + furn(70, 300, 130, 44, 'meja Lowell', 'desk') + furn(220, 420, 90, 40, 'panggung', 'stage')
+    b += ''.join(tree(x, y, r) for x, y, r in ((660, 300, 14), (720, 340, 13), (650, 450, 15))) + furn(668, 380, 52, 40, 'pot')
+    b += compass(735, 470, 14) + legend() + title('Mansion Hartwell: Lantai 1')
     return svg(b, p).replace('PID', p)
 
 def lantai2():
     p = 'hw2'; b = rooms_svg('denah_lantai2', p)
-    b += ''.join(window(*w) for w in [(290, 40, 360, 40), (40, 120, 40, 170), (470, 40, 540, 40), (620, 40, 690, 40), (760, 110, 760, 180),
-                                       (40, 420, 40, 470), (760, 420, 760, 470), (100, 490, 170, 490), (500, 490, 570, 490)])
-    b += door(336, 280, 300, 280, 0, -1) + door(336, 300, 300, 300, 0, 1)      # ruang kerja <-> koridor
-    b += door(656, 280, 620, 280, 0, -1) + door(656, 300, 620, 300, 0, 1)      # kamar vivian <-> koridor
-    b += door(280, 360, 250, 360, 0, -1) + door(280, 380, 250, 380, 0, 1)      # koridor <-> kamar tamu
-    b += door(736, 360, 700, 360, 0, -1) + door(736, 380, 700, 380, 0, 1)      # koridor <-> tangga
-    # Ruang Kerja Edmund: meja, kursi, jasad (garis kapur), laci, brankas
-    b += furn(140, 118, 150, 58, 'meja kerja', 'desk')
-    b += f'<rect x="181" y="178" width="26" height="24" rx="5" fill="{BONE}" fill-opacity=".07" stroke="{DIM}" stroke-width="1.4"/>'
-    b += (f'<g fill="none" stroke="{WHITE}" stroke-opacity=".8" stroke-width="1.4" stroke-dasharray="4 3"><circle cx="194" cy="182" r="6"/>'
-          f'<ellipse cx="194" cy="194" rx="15" ry="7"/><path d="M180 192L172 178M208 192L216 178"/></g>')
-    b += T(224, 199, 'jasad', 14, FL, LBL, ls=0.3, halo=True)
-    b += furn(132, 203, 74, 30, 'laci meja', 'cabinet') + furn(300, 92, 56, 42, 'brankas', 'safe')
-    # Kamar Vivian
-    b += furn(440, 190, 130, 80, 'ranjang', 'bed', ly=252)
-    b += furn(585, 148, 120, 50, '', 'box') + f'<rect x="610" y="158" width="28" height="20" rx="2" fill="none" stroke="{DIM}" stroke-width="1.2"/>' + T(670, 178, 'meja rias', 14, FL, LBL, 'middle', 0.3, True)
-    # Koridor, kamar tamu, tangga
-    b += compass(520, 337, 15)
-    b += furn(292, 404, 78, 76, 'ranjang', 'bed', ly=464)
-    b += ''.join(f'<path d="M630 {y}H710" stroke="{DIM}" stroke-width="1.3"/>' for y in range(430, 482, 8)) + f'<rect x="630" y="424" width="80" height="58" fill="none" stroke="{DIM}" stroke-width="1.6"/>'
-    b += legend() + title('Mansion Hartwell: Lantai 2')
+    b += ''.join(window(*w) for w in [(80, 40, 150, 40), (260, 40, 360, 40), (540, 40, 700, 40), (40, 340, 40, 430), (120, 480, 260, 480), (760, 330, 760, 430)])
+    b += door(100, 240, 136, 240, 0, -1) + door(300, 240, 336, 240, 0, -1) + door(600, 240, 636, 240, 0, -1)
+    b += door(480, 120, 480, 150, -1, 0)                                        # kamar timur -> tangga servis
+    b += door(200, 290, 236, 290, 0, 1)                                         # galeri -> ruang kerja (dikunci dari dalam)
+    b += f'<rect x="196" y="286" width="44" height="8" fill="{RED}" fill-opacity=".85"/>' + T(180, 345, 'pintu terkunci', 14, FL, LBL, ls=0.3, halo=True)
+    b += tangga(420, 40, 60, 200)
+    b += furn(60, 70, 76, 70, 'ranjang', 'bed', ly=125) + furn(140, 170, 56, 50, 'lemari', 'wardrobe')
+    b += furn(240, 80, 90, 80, 'ranjang', 'bed', ly=145) + furn(340, 170, 70, 46, 'meja rias')
+    b += furn(520, 80, 90, 80, 'ranjang', 'bed', ly=145) + furn(640, 80, 80, 40, 'koper') + furn(650, 170, 90, 44, 'keranjang')
+    b += furn(150, 360, 160, 58, 'meja kerja', 'desk') + furn(360, 320, 56, 42, 'brankas', 'safe') + furn(70, 420, 74, 34, 'laci', 'cabinet')
+    b += (f'<g fill="none" stroke="{WHITE}" stroke-opacity=".8" stroke-width="1.4" stroke-dasharray="4 3"><circle cx="230" cy="432" r="6"/>'
+          f'<ellipse cx="230" cy="444" rx="15" ry="7"/></g>') + T(254, 448, 'jasad', 14, FL, LBL, ls=0.3, halo=True)
+    b += furn(520, 330, 120, 90, 'ranjang', 'bed', ly=400) + compass(735, 470, 14) + legend() + title('Mansion Hartwell: Lantai 2')
     return svg(b, p).replace('PID', p)
-
-# ---------- Peta kota ----------
-def zebra_h(x): return ''.join(f'<rect x="{x}" y="{y}" width="12" height="3.5" fill="{BONE}" fill-opacity=".45"/>' for y in range(248, 274, 6))
-def zebra_v(y): return ''.join(f'<rect x="{x}" y="{y}" width="3.5" height="12" fill="{BONE}" fill-opacity=".45"/>' for x in range(391, 411, 6))
 
 def kota():
     p = 'hw3'; _, rooms = MAPS['peta_kota']
     b = ''
-    for x, y, w, h in ((14, 14, 364, 221), (422, 14, 328, 221), (14, 285, 364, 205), (422, 285, 328, 205)):
-        b += (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#101317" stroke="{BONE}" stroke-opacity=".4" stroke-width="1.5"/>'
-              f'<rect x="{x+6}" y="{y+6}" width="{w-12}" height="{h-12}" fill="none" stroke="{BONE}" stroke-opacity=".15" stroke-dasharray="2 4"/>')
-    b += f'<path d="M0 260H388M412 260H800M400 0V245M400 275V520" stroke="{BONE}" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="14 12"/>'
-    b += zebra_h(362) + zebra_h(426) + zebra_v(222) + zebra_v(290)
-    b += T(200, 265, 'JL. UTAMA', 14, FL, LBL, 'middle', 3, True, 'fill-opacity=".8"') + T(600, 265, 'JL. UTAMA', 14, FL, LBL, 'middle', 3, True, 'fill-opacity=".8"')
-    b += T(0, 0, 'JL. DERMAGA', 14, FL, LBL, 'middle', 3, True, 'transform="translate(405 140) rotate(-90)" fill-opacity=".8"')
-    b += T(0, 0, 'JL. DERMAGA', 14, FL, LBL, 'middle', 3, True, 'transform="translate(405 400) rotate(-90)" fill-opacity=".8"')
-    for x, y, w, h in ((300, 60, 68, 70), (300, 150, 68, 70), (432, 60, 68, 70), (432, 150, 68, 70), (300, 300, 68, 70), (300, 390, 68, 70), (432, 300, 68, 70), (432, 390, 68, 70)):
-        b += (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="{FLOOR}" stroke="{BONE}" stroke-opacity=".5" stroke-width="3"/>'
-              f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="url(#{p}-h)"/>')
+    for x, y, w, h, nama, merah in ((26, 34, 248, 280, 'BALAI KOTA', False), (276, 34, 248, 300, 'PUSAT KOTA', False),
+                                    (526, 34, 248, 200, 'DERMAGA', False), (276, 340, 248, 150, 'DISTRIK SELATAN', True), (526, 340, 248, 150, 'BUKIT UTARA', False)):
+        st = RED if merah else BONE
+        b += (f'<rect x="{x}" y="{y}" width="{w}" height="{h}" fill="#101317" stroke="{st}" stroke-opacity="{.9 if merah else .4}" stroke-width="{2.5 if merah else 1.5}"/>'
+              + T(x + 10, y + 18, nama, 12, FL, RED if merah else LBL, 'start', 2, True, 'fill-opacity=".85"'))
+    b += f'<path d="M650 360V250H400V340M650 250H150V320M650 250V234" stroke="{BONE}" stroke-opacity=".45" stroke-width="2" stroke-dasharray="12 9" fill="none"/>'
     for k, r in rooms.items():
-        if k: b += room(*r[:4], r[4], p)
+        if k: b += room(*r[:4], r[4], p, hatch=(k == 'reruntuhan_pengecoran'))
     for r in rooms[None]: b += room(*r[:4], r[4], p, hatch=True, label_fill=LBL)
-    b += ''.join(window(*w) for w in [(200, 60, 260, 60), (60, 110, 60, 170), (740, 90, 740, 150), (740, 340, 740, 400), (520, 340, 520, 400), (60, 340, 60, 420), (280, 340, 280, 420)])
-    b += door(246, 220, 210, 220, 0, -1) + door(636, 220, 600, 220, 0, -1) + door(716, 460, 688, 460, 0, -1) + door(246, 460, 210, 460, 0, -1)
-    b += furn(100, 112, 86, 40, 'arsip resep', 'cabinet') + furn(192, 92, 84, 34, 'laci kantor', 'desk')
-    b += furn(585, 104, 90, 40, 'ruang arsip', 'cabinet') + f'<rect x="648" y="170" width="74" height="30" rx="3" fill="{BONE}" fill-opacity=".07" stroke="{DIM}" stroke-width="1.6"/>'
-    b += furn(590, 362, 80, 36, 'meja kasir', 'desk') + furn(536, 420, 120, 32, 'panggung', 'stage') + rtable(700, 340, 12) + rtable(700, 404, 12)
-    b += compass(774, 40, 14) + legend() + title('Peta Ravenport')
+    b += furn(150, 110, 90, 40, 'meja Doyle', 'desk') + furn(150, 236, 90, 44, 'meja otopsi')
+    b += furn(400, 92, 96, 34, 'lemari resep', 'cabinet') + furn(400, 182, 96, 34, 'mikrofilm', 'cabinet') + furn(400, 272, 96, 34, 'register', 'desk')
+    b += furn(560, 110, 80, 36, 'meja parkir', 'desk') + furn(650, 150, 96, 50, 'ruang ganti') + rtable(590, 190, 12)
+    b += furn(310, 400, 70, 34, 'plakat') + furn(400, 430, 96, 34, 'loker regu', 'cabinet')
+    b += compass(505, 496, 12) + legend() + title('Peta Ravenport')
     return svg(b, p).replace('PID', p)
 
 if __name__ == '__main__':

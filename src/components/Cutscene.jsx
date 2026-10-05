@@ -1,11 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import Scene from './Scene';
 import audio from '../audio';
-import C from '../data/case.json';
-import STORY from '../data/story.json';
+import { asset } from '../asset';
 import { IconArrowRight } from './Icons';
 
-const CAMS = ['zin', 'panl', 'zout', 'panr'];          // variasi gerak kamera per slide
+const CAMS = ['zin', 'panl', 'zout', 'panr'];          // variasi gerak kamera bila slide tidak menentukan `kamera`
 const XFADE = 800;                                     // slide lama bertahan selama crossfade (ms)
 const isQuote = (l) => /^["“„]/.test(l);
 const TYPE_MS = 26, KEY_EVERY = 3;                     // suara ketik tiap 3 karakter
@@ -93,12 +92,20 @@ export default function Cutscene({ slides, onDone, slate }) {
     return () => removeEventListener('keydown', k);
   });
 
-  const showSlate = slate === undefined ? (slides === STORY.intro ? C.meta.setting : null) : slate;
-  const layer = (idx, cls) => (
-    <div key={`bg${idx}`} className={`cut-bg ${cls}`}>
-      <div className={`cam cam--${CAMS[idx % CAMS.length]}`}><Scene kind={slides[idx].scene} /></div>
-    </div>
-  );
+  const showSlate = slate || null;
+  // Lapisan slide: latar Scene + potret opsional; kilas balik dan transisi "bakar" memakai kelas CSS sendiri
+  const layer = (idx, cls) => {
+    const sl = slides[idx];
+    const kelas = ['cut-bg', cls, sl.kilasBalik ? 'cut-bg--kilas' : '', sl.transisi === 'bakar' ? 'cut-bg--bakar' : ''].filter(Boolean).join(' ');
+    return (
+      <div key={`bg${idx}`} className={kelas}>
+        <div className={`cam cam--${sl.kamera || CAMS[idx % CAMS.length]}`}>
+          <Scene kind={sl.scene} />
+          {sl.potret && <img className={`cut-potret cut-potret--${sl.posisi || 'kanan'}`} src={asset(sl.potret)} alt="" />}
+        </div>
+      </div>
+    );
+  };
   return (<>
     <div className="cut" onClick={() => !doneRef.current && advRef.current()}>
       {prev !== null && layer(prev, 'is-out')}

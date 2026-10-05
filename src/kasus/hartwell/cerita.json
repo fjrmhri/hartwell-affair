@@ -1,0 +1,603 @@
+{
+ "peringkat": [
+  [
+   88,
+   "S",
+   "Detektif Legendaris"
+  ],
+  [
+   72,
+   "A",
+   "Detektif Andal"
+  ],
+  [
+   55,
+   "B",
+   "Detektif Cakap"
+  ],
+  [
+   0,
+   "C",
+   "Detektif Pemula"
+  ]
+ ],
+ "intro": [
+  {
+   "scene": "city",
+   "kamera": "panr",
+   "lines": [
+    "Ravenport, malam 14 November 1947.",
+    "Hujan turun sejak senja. Kota ini tidak pernah bertanya siapa yang bersembunyi di dalamnya."
+   ]
+  },
+  {
+   "scene": "phone",
+   "kamera": "zin",
+   "lines": [
+    "Pukul satu dini hari, telepon berdering.",
+    "Operator: \"Sambungan dari kediaman Hartwell, saluran empat.\""
+   ]
+  },
+  {
+   "scene": "blinds",
+   "potret": "assets/portraits/eleanor.svg",
+   "posisi": "kanan",
+   "kamera": "zin",
+   "lines": [
+    "\"Kakakku tidak mati wajar. Polisi sudah menutup berkas.\"",
+    "\"Vivian mengantar brandy kepadanya pukul 22:40. Tak sampai sejam kemudian ia mati. Kau mengerti maksudku, Nak?\""
+   ]
+  },
+  {
+   "scene": "study",
+   "kamera": "panl",
+   "lines": [
+    "Edmund Hartwell, raja baja Ravenport, ditemukan di balik pintu yang terkunci dari dalam.",
+    "Dokternya menulis: gagal jantung. Inspektur Doyle menandatangani."
+   ]
+  },
+  {
+   "scene": "blinds",
+   "kamera": "zout",
+   "lines": [
+    "Jenazah akan dimakamkan pukul enam pagi. Lima jam.",
+    "Aku tidak percaya pada kebetulan. Dan aku tidak percaya pada klien yang terlalu yakin."
+   ]
+  },
+  {
+   "scene": "black",
+   "title": "THE HARTWELL AFFAIR",
+   "lines": [
+    "Tak seorang pun di rumah itu sepenuhnya jujur.",
+    "Termasuk yang membayarmu."
+   ]
+  }
+ ],
+ "cutscene": {
+  "C1": [
+   {
+    "scene": "morgue",
+    "kamera": "zin",
+    "lines": [
+     "Kamar Mayat Kota. Lampu gantung berayun pelan di atas meja baja.",
+     "Dr. Ashby melepas sarung tangannya. \"Digitalis. Dua kali, dengan cara yang berbeda.\""
+    ]
+   },
+   {
+    "scene": "morgue",
+    "kamera": "panl",
+    "lines": [
+     "\"Sedikit demi sedikit selama berhari-hari. Lalu sekaligus, malam ini.\"",
+     "Seseorang ingin Edmund mati pelan. Seseorang lain tidak sabar."
+    ]
+   }
+  ],
+  "C2": [
+   {
+    "scene": "room",
+    "potret": "assets/portraits/vivian_retak.svg",
+    "posisi": "kanan",
+    "kamera": "zin",
+    "lines": [
+     "Kamar Vivian. Hujan merayap di kaca jendela.",
+     "Liontin perak terbuka di telapak tangannya: seorang buruh berkumis, tersenyum ke kamera."
+    ]
+   },
+   {
+    "scene": "room",
+    "potret": "assets/portraits/vivian_retak.svg",
+    "posisi": "kanan",
+    "kamera": "zout",
+    "lines": [
+     "\"Aku menikahinya untuk menghancurkannya.\"",
+     "\"Lalu ia minta maaf, dan aku tidak tahu lagi siapa aku.\""
+    ]
+   }
+  ],
+  "C3": [
+   {
+    "scene": "room",
+    "potret": "assets/portraits/graves_retak.svg",
+    "posisi": "kiri",
+    "kamera": "zin",
+    "lines": [
+     "Kamar Graves. Foto tahun 1930 di tangannya, tepinya lusuh karena terlalu sering dipegang.",
+     "Untuk pertama kalinya malam ini, kerah seragamnya terbuka."
+    ]
+   },
+   {
+    "scene": "room",
+    "potret": "assets/portraits/graves_retak.svg",
+    "posisi": "kiri",
+    "kamera": "panr",
+    "lines": [
+     "\"Lima belas tahun saya menunggu ia mati.\"",
+     "\"Ketika ia mati, saya tidak merasa apa-apa selain malu.\""
+    ]
+   }
+  ],
+  "C4": [
+   {
+    "scene": "foundry",
+    "kilasBalik": true,
+    "transisi": "bakar",
+    "kamera": "zin",
+    "lines": [
+     "Distrik Selatan, 3 Maret 1931.",
+     "Mogok hari ketiga. Di Pengecoran No. 2, pintu samping dirantai atas perintah pemiliknya."
+    ]
+   },
+   {
+    "scene": "foundry",
+    "kilasBalik": true,
+    "kamera": "panl",
+    "lines": [
+     "Malam itu tungku 3 menyala lebih panas dari seharusnya.",
+     "Empat belas orang berlari ke pintu yang tidak bisa dibuka."
+    ]
+   },
+   {
+    "scene": "foundry",
+    "kilasBalik": true,
+    "transisi": "bakar",
+    "kamera": "zout",
+    "lines": [
+     "Antoni Barek. Wiktor Halas. Samuel Okoro. Josef Kessler. Dan sepuluh nama lagi.",
+     "Empat belas nama. Satu tanda tangan di setiap surat kematian."
+    ]
+   }
+  ],
+  "C5": [
+   {
+    "scene": "study",
+    "kamera": "zin",
+    "lines": [
+     "Ruang kerja, pukul 22:00. Rekonstruksi.",
+     "Edmund menulis cek untuk keponakannya, lalu menulis satu halaman lagi dengan tangannya sendiri."
+    ]
+   },
+   {
+    "scene": "study",
+    "kamera": "panr",
+    "lines": [
+     "Graves dan Charles membubuhkan tanda tangan sebagai saksi. Jam dinding berdentang sepuluh kali.",
+     "Wasiat itu sudah diteken. Pembunuhnya tidak tahu."
+    ]
+   }
+  ],
+  "C6": [
+   {
+    "scene": "dawn",
+    "kamera": "zout",
+    "lines": [
+     "Langit di atas Bukit Utara mulai kelabu.",
+     "Mobil jenazah berhenti di gerbang. Satu jam lagi, Edmund Hartwell dikubur bersama kebenarannya."
+    ]
+   }
+  ],
+  "C7": [
+   {
+    "scene": "mansion",
+    "kamera": "zin",
+    "lines": [
+     "Sebelum menunjuk seseorang, aku menyusun ulang malam itu sekali lagi."
+    ]
+   },
+   {
+    "scene": "study",
+    "syarat": {
+     "deduksi": "D3"
+    },
+    "lines": [
+     "Dua racun. Kapsul Lowell bekerja pelan sejak 5 November. Racun kedua masuk malam ini."
+    ]
+   },
+   {
+    "scene": "study",
+    "syarat": {
+     "bukan": {
+      "deduksi": "D3"
+     }
+    },
+    "lines": [
+     "Racun di tubuh Edmund. Dari mana datangnya, aku belum sepenuhnya yakin."
+    ]
+   },
+   {
+    "scene": "evidence",
+    "syarat": {
+     "deduksi": "D5"
+    },
+    "lines": [
+     "Racun kedua ada di gelas, disiapkan di pantry, diantar Vivian pukul 22:45."
+    ]
+   },
+   {
+    "scene": "evidence",
+    "syarat": {
+     "deduksi": "D9"
+    },
+    "lines": [
+     "Pukul 22:00 wasiat baru sudah diteken. Siapa pun yang membunuh setelah itu, membunuh untuk sesuatu yang sudah hilang."
+    ]
+   },
+   {
+    "scene": "phone",
+    "syarat": {
+     "deduksi": "D10"
+    },
+    "lines": [
+     "Pukul 21:50 seseorang di saluran empat menanyakan jadwal teken. Pukul 01:00 saluran yang sama meneleponku."
+    ]
+   },
+   {
+    "scene": "blinds",
+    "syarat": {
+     "deduksi": "D15"
+    },
+    "lines": [
+     "Pukul 22:35 seseorang naik turun tangga servis dan berdiri sendirian di atas nampan brandy."
+    ]
+   },
+   {
+    "scene": "black",
+    "lines": [
+     "Saatnya menulis surat tuduhan."
+    ]
+   }
+  ]
+ },
+ "ending": {
+  "kebenaran_utuh": {
+   "judul": "KEBENARAN UTUH",
+   "slides": [
+    {
+     "scene": "mansion",
+     "kamera": "zin",
+     "lines": [
+      "Ruang tamu Hartwell, menjelang fajar. Semua orang duduk di kursi yang sama seperti saat pesta.",
+      "Aku membuka bukti satu per satu: kotak pil, gelas, log telepon, buku register apotek."
+     ]
+    },
+    {
+     "scene": "confront",
+     "potret": "assets/portraits/eleanor_bohong.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Eleanor tetap tenang. \"Kau seharusnya menemukan Vivian, Nak.\"",
+      "\"Aku membayarmu untuk itu.\""
+     ]
+    },
+    {
+     "scene": "evidence",
+     "syarat": {
+      "flagSama": [
+       "m2",
+       "b"
+      ]
+     },
+     "lines": [
+      "Graves berdiri dan meletakkan selembar kertas di meja. Tulisan tangan Edmund, pukul 22:00, dua tanda tangan saksi.",
+      "\"Wasiat ini diteken sebelum Nona Eleanor turun ke pantry.\""
+     ]
+    },
+    {
+     "scene": "evidence",
+     "syarat": {
+      "bukan": {
+       "flagSama": [
+        "m2",
+        "b"
+       ]
+      }
+     },
+     "lines": [
+      "Doyle mengeluarkan selembar kertas dari berkas sitaan. Tulisan tangan Edmund, pukul 22:00, dua tanda tangan saksi.",
+      "\"Wasiat ini diteken sebelum Anda turun ke pantry, Nyonya Marsh.\""
+     ]
+    },
+    {
+     "scene": "confront",
+     "potret": "assets/portraits/eleanor_retak.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Untuk pertama kalinya malam itu, Eleanor kehilangan kendali. Ia tertawa.",
+      "Satu-satunya hasil pembunuhannya adalah kematian kakaknya."
+     ]
+    },
+    {
+     "scene": "cuffs",
+     "lines": [
+      "Doyle memborgol Eleanor Marsh, lalu Dr. Arthur Lowell.",
+      "Lowell tidak melawan. Ia hanya membersihkan kacamatanya."
+     ]
+    },
+    {
+     "scene": "foundry",
+     "syarat": {
+      "flagSama": [
+       "m3",
+       "herald"
+      ]
+     },
+     "title": "EMPAT BELAS NAMA",
+     "lines": [
+      "Seminggu kemudian, Ravenport Herald memuat pengakuan Edmund di halaman depan.",
+      "Di reruntuhan pengecoran, Vera Kessler membacakan empat belas nama. Doyle mengundurkan diri pada hari yang sama."
+     ]
+    },
+    {
+     "scene": "dawn",
+     "syarat": {
+      "flagSama": [
+       "m3",
+       "pruitt"
+      ]
+     },
+     "title": "KASUS DITUTUP",
+     "lines": [
+      "Yayasan Empat Belas berdiri tanpa penjelasan di koran. Keluarga korban menerima cek tanpa surat.",
+      "Vivian meninggalkan Ravenport tanpa pamit. Kebenaran tetap tersimpan rapi di lemari besi Pruitt."
+     ]
+    },
+    {
+     "scene": "blinds",
+     "syarat": {
+      "flagSama": [
+       "m3",
+       "bakar"
+      ]
+     },
+     "title": "KASUS DITUTUP",
+     "lines": [
+      "Di kantorku, abu sepucuk surat menghitam di asbak.",
+      "Satu rahasia lagi di kota yang sudah terlalu penuh rahasia."
+     ]
+    },
+    {
+     "scene": "dawn",
+     "syarat": {
+      "bukan": {
+       "flag": "m3"
+      }
+     },
+     "title": "KASUS DITUTUP",
+     "lines": [
+      "Pembunuhnya ditahan. Surat-surat Edmund tetap tersegel di map Graves.",
+      "Di luar, hujan mereda."
+     ]
+    },
+    {
+     "scene": "city",
+     "syarat": {
+      "flagSama": [
+       "m1",
+       "b"
+      ]
+     },
+     "lines": [
+      "Di barisan depan peresmian yayasan, Charles berdiri di samping seorang pianis.",
+      "Tidak ada laporan polisi yang menyebut nama Sammy Lee."
+     ]
+    },
+    {
+     "scene": "city",
+     "syarat": {
+      "flagSama": [
+       "m1",
+       "a"
+      ]
+     },
+     "lines": [
+      "Sebulan kemudian datang surat dari Chicago. Charles menulis bahwa Sammy kehilangan pekerjaannya, dan bahwa ia tidak akan kembali ke Ravenport."
+     ]
+    }
+   ]
+  },
+  "keadilan_tanpa_kebenaran": {
+   "judul": "KEADILAN TANPA KEBENARAN",
+   "slides": [
+    {
+     "scene": "confront",
+     "potret": "assets/portraits/eleanor_tertekan.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Pengadilan Ravenport memvonis Eleanor Marsh dan Arthur Lowell.",
+      "Eleanor mendengarkan putusan dengan dagu terangkat."
+     ]
+    },
+    {
+     "scene": "dawn",
+     "title": "KASUS DITUTUP",
+     "lines": [
+      "Ia tidak pernah tahu bahwa pembunuhannya sia-sia.",
+      "Di bawah papan lantai kamar Graves, sebuah map tebal tetap menunggu."
+     ]
+    }
+   ]
+  },
+  "pengadilan_rapuh": {
+   "judul": "PENGADILAN YANG RAPUH",
+   "slides": [
+    {
+     "scene": "confront",
+     "potret": "assets/portraits/eleanor.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Pengacara Eleanor membongkar bukti satu per satu. Juri saling berpandangan.",
+      "\"Seorang adik yang berduka, dituduh oleh detektif yang ia bayar sendiri.\""
+     ]
+    },
+    {
+     "scene": "dawn",
+     "title": "VONIS MENGGANTUNG",
+     "lines": [
+      "Eleanor ditahan, tetapi semua orang di ruang sidang tahu perkara ini bisa runtuh dengan satu banding.",
+      "Kebenaran yang setengah jadi adalah kebenaran yang mudah dibeli."
+     ]
+    }
+   ]
+  },
+  "kebenaran_dipesan": {
+   "judul": "KEBENARAN YANG DIPESAN",
+   "slides": [
+    {
+     "scene": "cuffs",
+     "potret": "assets/portraits/vivian_retak.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Doyle memborgol Vivian Hartwell di ruang tamu.",
+      "Ia tidak menangis. Ia menatap Eleanor sampai pintu tertutup."
+     ]
+    },
+    {
+     "scene": "dawn",
+     "lines": [
+      "Pemakaman Edmund Hartwell. Payung-payung hitam di bawah langit kelabu."
+     ]
+    },
+    {
+     "scene": "blinds",
+     "potret": "assets/portraits/eleanor.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Eleanor memelukku di gerbang makam dan menyelipkan amplop tebal ke saku mantelku.",
+      "Honor dua kali lipat."
+     ]
+    },
+    {
+     "scene": "black",
+     "syarat": {
+      "flag": "__main_ulang"
+     },
+     "title": "KEBENARAN YANG DIPESAN",
+     "lines": [
+      "\"Kau seharusnya melihat saluran empat, Nak.\""
+     ]
+    },
+    {
+     "scene": "black",
+     "syarat": {
+      "bukan": {
+       "flag": "__main_ulang"
+      }
+     },
+     "title": "KEBENARAN YANG DIPESAN",
+     "lines": [
+      "\"Terima kasih, Nak. Kau melakukan persis yang kuminta.\""
+     ]
+    }
+   ]
+  },
+  "kambing_hitam_kedua": {
+   "judul": "KAMBING HITAM KEDUA",
+   "slides": [
+    {
+     "scene": "cuffs",
+     "potret": "assets/portraits/graves_retak.svg",
+     "posisi": "kiri",
+     "lines": [
+      "Graves mengulurkan kedua tangannya sebelum Doyle memintanya.",
+      "\"Sudah kuduga, Tuan.\""
+     ]
+    },
+    {
+     "scene": "room",
+     "lines": [
+      "Di lantai kamarnya tergeletak foto dua bersaudara di depan tungku 3.",
+      "Enam belas tahun lalu, kota ini menghukum Walter Gravesend untuk dosa orang lain. Malam ini kota ini melakukannya lagi."
+     ]
+    },
+    {
+     "scene": "blinds",
+     "potret": "assets/portraits/eleanor.svg",
+     "posisi": "kanan",
+     "title": "KAMBING HITAM KEDUA",
+     "lines": [
+      "Di jendela lantai dua, Eleanor Marsh menutup tirai."
+     ]
+    }
+   ]
+  },
+  "separuh_kebenaran": {
+   "judul": "SEPARUH KEBENARAN",
+   "slides": [
+    {
+     "scene": "confront",
+     "potret": "assets/portraits/lowell_retak.svg",
+     "posisi": "kanan",
+     "lines": [
+      "Lowell divonis atas kapsul-kapsulnya. Di bangku saksi, Eleanor menangis untuk kakaknya."
+     ]
+    },
+    {
+     "scene": "black",
+     "title": "SEPARUH KEBENARAN",
+     "lines": [
+      "Vivian menatap Eleanor lama sekali. Separuh kebenaran tidak menghukum siapa pun yang penting."
+     ]
+    }
+   ]
+  },
+  "tuduhan_salah": {
+   "judul": "TUDUHAN SALAH",
+   "slides": [
+    {
+     "scene": "blinds",
+     "lines": [
+      "Doyle membaca surat tuduhanku, lalu merobeknya. \"Pulanglah, Detektif.\""
+     ]
+    },
+    {
+     "scene": "black",
+     "title": "TUDUHAN SALAH",
+     "lines": [
+      "Di ruang tamu Hartwell, seseorang menuang segelas brandy dan tersenyum tipis."
+     ]
+    }
+   ]
+  },
+  "kasus_dingin": {
+   "judul": "KASUS DINGIN",
+   "slides": [
+    {
+     "scene": "dawn",
+     "lines": [
+      "Fajar menyingsing di Ravenport. Mobil jenazah meninggalkan gerbang Hartwell."
+     ]
+    },
+    {
+     "scene": "black",
+     "title": "KASUS DINGIN",
+     "lines": [
+      "Beberapa kebenaran memang tidak menunggu siapa pun."
+     ]
+    }
+   ]
+  }
+ },
+ "firasatMainUlang": {
+  "kebenaran_dipesan": "Firasat dari penyelidikan sebelumnya: klien yang terlalu yakin patut diselidiki. Perhatikan dari saluran mana ia menelepon.",
+  "kambing_hitam_kedua": "Firasat dari penyelidikan sebelumnya: kepala pelayan menyimpan sesuatu yang lebih baru dari 1931. Periksa buku cek Edmund."
+ }
+}
