@@ -1,0 +1,107 @@
+[
+  { "id": "KS-ELE-1", "tokoh": "eleanor", "judul": "Malam pesta", "syarat": { "deduksi": "D10" },
+    "balasanSalah": "Nak, kau menghabiskan uangku untuk menebak-nebak.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Aku di aula sepanjang malam, bersama para tamu.", "tekan": "Tanya siapa saja. Aku berbincang dengan istri Wali Kota soal bunga lili sampai Graves berteriak.",
+        "bantah": [{ "dengan": ["K03"], "balasan": "Graves? Pelayan itu... Baiklah. Aku turun ke pantry sebentar mengambil es untuk tamu. Apa itu kejahatan sekarang?" }] },
+      { "id": "p2", "teks": "Graves yang mengatur siapa mengantar brandy.", "tekan": "Itu urusan kepala pelayan. Aku tidak mengurus nampan.",
+        "bantah": [{ "dengan": ["K02"], "balasan": "Vivian berkata begitu? Ia akan mengatakan apa saja untuk menyelamatkan lehernya." }] },
+      { "id": "p3", "teks": "Aku sudah lama tidak merawat orang sakit.", "tekan": "Tanganku sudah terlalu tua untuk jarum suntik, Nak.",
+        "bantah": [{ "dengan": ["E28", "K05"], "balasan": "Sertifikat lama. Aku membawanya ke mana-mana karena kenangan. Dan tas itu berisi obat sakit kepalaku." }] },
+      { "id": "p4", "teks": "Edmund kakakku. Aku menyayanginya.", "tekan": "Ia membesarkanku. Tidak ada yang bisa mengubah itu." }
+    ],
+    "selesai": { "teks": "Kau menatapku seperti menatap tersangka, Nak. Hati-hati. Aku yang membayar honormu.", "efek": { "meter": { "eleanor": { "tekanan": 1 } } } } },
+
+  { "id": "KS-ELE-2", "tokoh": "eleanor", "judul": "Wasiat dan telepon", "syarat": { "kesaksian": "KS-ELE-1" },
+    "balasanSalah": "Itu tidak ada hubungannya denganku.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Aku tak pernah peduli soal wasiat Edmund.", "tekan": "Uang tidak pernah menjadi urusanku. Harold meninggalkanku cukup.",
+        "bantah": [{ "dengan": ["E19"], "balasan": "Seorang janda boleh bertanya kapan urusan keluarga diselesaikan.", "efek": { "meter": { "eleanor": { "tekanan": 2 } }, "setFlag": { "eleanor_motif_terbuka": true } } }] },
+      { "id": "p2", "teks": "Kalau Vivian bersalah, hartanya jatuh ke yayasan.", "tekan": "Begitulah yang kudengar dari Pruitt dulu.",
+        "bantah": [{ "dengan": ["E18"], "balasan": "Klausul sisa harta... Aku lupa ada klausul itu." }] },
+      { "id": "p3", "teks": "Aku meneleponmu dari kamarku karena telepon lobi dipakai polisi.", "tekan": "Polisi memakai telepon lobi sampai lewat tengah malam.",
+        "bantah": [{ "dengan": ["E20"], "balasan": "Ya, saluran empat itu kamarku. Lalu kenapa?" }] },
+      { "id": "p4", "teks": "Aku tidak tahu apa pun soal obat Edmund.", "tekan": "Arthur yang mengurus obatnya. Aku tidak pernah menyentuh kotak pil itu.",
+        "bantah": [{ "dengan": ["K07", "E32", "E17"], "balasan": "..." }] }
+    ],
+    "selesai": { "retak": true, "teks": "Kau seharusnya menemukan Vivian, Nak. Aku membayarmu untuk itu. Edmund akan menghancurkan kita semua demi empat belas orang yang sudah mati enam belas tahun. Aku hanya mempercepat apa yang Arthur mulai.",
+      "efek": { "catatan": ["Eleanor nyaris mengaku: ia \"mempercepat apa yang Arthur mulai\"."] } } },
+
+  { "id": "KS-VIV-1", "tokoh": "vivian", "judul": "Brandy", "syarat": { "bukti": "E04" },
+    "balasanSalah": "Itu buktimu? Kau lebih buruk dari polisi.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Aku mengantar brandy karena Graves sibuk.", "tekan": "Pelayan sibuk dengan tamu. Aku hanya membantu.",
+        "bantah": [{ "dengan": ["E06", "K02"], "balasan": "...Seseorang memintaku. Aku tidak mau menyebut namanya di depanmu." }] },
+      { "id": "p2", "teks": "Arthur hanya teman lama keluarga.", "tekan": "Ia dokter suamiku. Kami bertemu di pesta-pesta.",
+        "bantah": [{ "dengan": ["E15", "E31"], "balasan": "Baik. Kami lebih dari teman. Puas?" }] },
+      { "id": "p3", "teks": "Edmund minum separuh gelas, lalu menyuruhku pergi.", "tekan": "Ia bilang lampunya terlalu kuning. Aku tidak mengerti maksudnya." }
+    ],
+    "selesai": { "teks": "Aku tidak meracuni suamiku, Detektif. Aku punya alasan untuk membencinya, tapi aku tidak meracuninya." } },
+
+  { "id": "KS-VIV-2", "tokoh": "vivian", "judul": "Siapa aku", "syarat": { "deduksi": "D6" },
+    "balasanSalah": "Kau tidak tahu apa-apa tentangku.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Liontin ini hadiah dari ibuku.", "tekan": "Ibuku meninggal tahun 1935. Hanya itu yang perlu kau tahu.",
+        "bantah": [{ "dengan": ["E22"], "balasan": "Nomor sembilan. Josef Kessler. Kau sudah membacanya." }] },
+      { "id": "p2", "teks": "Aku tidak tahu apa pun soal wasiat baru.", "tekan": "Edmund tidak pernah membicarakan uang denganku.",
+        "bantah": [{ "dengan": ["E31", "E09"], "balasan": "Aku mengumpulkan surat-surat itu dari Arthur satu per satu. Lalu aku menunjukkannya pada Edmund. Aku yang memintanya menulis wasiat itu." }] }
+    ],
+    "selesai": { "retak": true, "teks": "Namaku Vera Kessler. Ayahku nomor sembilan di daftar itu. Aku menikahi Edmund untuk menghancurkannya. Lalu ia meminta maaf, dan aku tidak tahu lagi siapa aku.",
+      "efek": { "bersihkan": ["vivian"], "catatan": ["Vivian adalah Vera Kessler; ia justru mendorong wasiat untuk keluarga korban 1931."] } } },
+
+  { "id": "KS-LOW-1", "tokoh": "lowell", "judul": "Resep", "syarat": { "bukti": "E13" },
+    "balasanSalah": "Tuan, Anda membuang waktu kita berdua.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Resep itu hanya penyesuaian dosis biasa.", "tekan": "Jantung Edmund memburuk. Saya menyesuaikan obatnya seperti dokter mana pun.",
+        "bantah": [{ "dengan": ["E03"], "balasan": "Dua jenis kapsul... Apotek pasti salah mengisi." }] },
+      { "id": "p2", "teks": "Saya tidak punya hubungan pribadi dengan Nyonya Hartwell.", "tekan": "Ia istri pasien saya. Tidak lebih.",
+        "bantah": [{ "dengan": ["E15", "E31"], "balasan": "Itu... urusan pribadi yang tidak ada hubungannya dengan medis." }] },
+      { "id": "p3", "teks": "Saya di aula sepanjang malam bersama para tamu.", "tekan": "Saya bermain kartu dengan Wali Kota dari pukul sembilan sampai Graves berteriak. Tanya beliau." }
+    ],
+    "selesai": { "teks": "Anda mengira saya pembunuh, Tuan. Anda keliru, setidaknya soal malam ini." } },
+
+  { "id": "KS-LOW-2", "tokoh": "lowell", "judul": "Yayasan klinik", "syarat": { "bukti": "E14" },
+    "balasanSalah": "Angka tidak berbohong, Tuan, dan angka itu tidak menunjuk saya.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Uang yayasan dipakai untuk renovasi sayap anak.", "tekan": "Renovasi itu mahal. Tanya kontraktornya.",
+        "bantah": [{ "dengan": ["E14"], "balasan": "Penarikan itu... untuk keperluan lain. Pribadi." }] },
+      { "id": "p2", "teks": "Saya tidak bekerja di pabrik Hartwell tahun 1931.", "tekan": "Saya membuka praktik di Pusat Kota sejak lulus.",
+        "bantah": [{ "dengan": ["E31", "E22"], "balasan": "Empat belas tanda tangan saya. Ya. Saya dokter pabrik waktu itu. Edmund membayar klinik ini dengan tanda tangan-tanda tangan itu." }] }
+    ],
+    "selesai": { "teks": "Klinik ini dibangun di atas empat belas surat kematian. Saya tahu itu setiap pagi.", "efek": { "catatan": ["Lowell adalah dokter pabrik 1931 yang menandatangani empat belas surat kematian palsu."] } } },
+
+  { "id": "KS-CHA-1", "tokoh": "charles", "judul": "Alibi", "syarat": { "bukti": "E12" },
+    "balasanSalah": "Kau harus berusaha lebih keras dari itu, Detektif.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Aku tidak bertemu Paman sejak makan malam.", "tekan": "Ia sibuk dengan tamu-tamu pentingnya. Aku bukan tamu penting.",
+        "bantah": [{ "dengan": ["E26", "K04"], "balasan": "Cek itu... Baik. Ia memanggilku pukul 21:55. Aku berjanji tidak membicarakannya.", "efek": { "beriKartu": ["K04"] } }] },
+      { "id": "p2", "teks": "Aku di bar dari datang sampai pulang.", "tekan": "Tanya bartendernya. Aku memesan empat gin.",
+        "bantah": [{ "dengan": ["E12"], "balasan": "Setengah jam. Pelayan itu terlalu memperhatikan." }] },
+      { "id": "p3", "teks": "Aku tidak kenal pianisnya.", "tekan": "Pianis datang dan pergi. Aku tidak memperhatikan.",
+        "bantah": [{ "dengan": ["E27"], "balasan": "..." }] }
+    ],
+    "selesai": { "retak": true, "teks": "Kalau kau sebut namanya di laporan, dia yang dihukum, bukan aku. Di kota ini, orang seperti kami tidak dihukum karena membunuh. Kami dihukum karena ada.",
+      "efek": { "setFlag": { "pilihan_m1": true }, "catatan": ["Charles bersama seseorang selama celah alibinya. Anda harus memutuskan bagaimana mencatatnya."] } } },
+
+  { "id": "KS-GRA-1", "tokoh": "graves", "judul": "Malam pesta", "syarat": { "node": "G03" },
+    "balasanSalah": "Dengan hormat, Tuan, itu tidak membuktikan apa-apa.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Saya yang mengatur Nyonya Vivian mengantar brandy.", "tekan": "Saya sibuk dengan tamu dan meminta beliau membantu.",
+        "bantah": [{ "dengan": ["E06"], "balasan": "\"Atas permintaan keluarga.\" Tulisan saya sendiri. Ya, permintaan itu bukan dari saya." }] },
+      { "id": "p2", "teks": "Pantry kosong ketika saya lewat pukul setengah sebelas.", "tekan": "Saya lewat sekilas dari lorong.",
+        "bantah": [{ "dengan": ["K02"], "balasan": "Pukul 22:40 Nyonya Vivian di sana, ya. Dan sebelumnya... saya tidak akan berbicara lagi soal pantry malam ini." }] },
+      { "id": "p3", "teks": "Saya membuka pintu ruang kerja pukul 23:40 dengan kunci cadangan.", "tekan": "Tuan Edmund tidak menjawab ketukan tiga kali. Itu tidak pernah terjadi selama lima belas tahun." }
+    ],
+    "selesai": { "teks": "Tuan jeli. Mungkin terlalu jeli untuk rumah ini." } },
+
+  { "id": "KS-GRA-2", "tokoh": "graves", "judul": "Siapa saya", "syarat": { "deduksi": "D7" },
+    "balasanSalah": "Saya hanya pelayan, Tuan.",
+    "pernyataan": [
+      { "id": "p1", "teks": "Sebelum 1932 saya bekerja di rumah tangga keluarga Ashford.", "tekan": "Keluarga Ashford pindah ke Boston. Saya tidak punya surat rekomendasi lagi.",
+        "bantah": [{ "dengan": ["E23"], "balasan": "Tungku 3. Saya ingat panasnya di wajah saya hari foto itu diambil." }] },
+      { "id": "p2", "teks": "Saya tidak punya urusan dengan kebakaran itu.", "tekan": "Itu urusan orang-orang pabrik.",
+        "bantah": [{ "dengan": ["E24", "E22"], "balasan": "Lima belas tahun saya mengumpulkan kertas-kertas itu. Untuk Walter." }] }
+    ],
+    "selesai": { "retak": true, "teks": "Nama saya Thomas Gravesend. Kakak saya digantung oleh tanda tangan yang sama yang membayar gaji saya lima belas tahun. Lima belas tahun saya menunggu ia mati. Ketika ia mati, saya hanya merasa malu.",
+      "efek": { "catatan": ["Graves adalah Thomas Gravesend, adik mandor yang dikambinghitamkan pada 1931."] } } }
+]

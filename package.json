@@ -7,7 +7,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "test:sim": "esbuild src/store.js --bundle --platform=node --format=esm --loader:.json=json --outfile=.simcache/store.mjs --log-level=error && node tests/sim.mjs"
+    "test:sim": "esbuild tests/entri-sim.js --bundle --platform=node --format=esm --loader:.json=json --outfile=.simcache/sim.mjs --log-level=error && node tests/sim.mjs"
   },
   "dependencies": {
     "@fontsource/crimson-pro": "^5.3.0",

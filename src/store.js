@@ -1,116 +1,103 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
 import sfx from './audio';
-import C from './data/case.json';
-import D from './data/dialog.json';
+import P from './kasus/hartwell';
+import * as A from './engine/aksi.js';
 
-export const has = (arr, list = []) => list.every((x) => arr.includes(x));
-export const locOpen = (l, s) => l.unlocked || (l.unlock && has(s.evidence, l.unlock.evidence) && has(s.asked, l.unlock.nodes));
-export const evAvailable = (e, s) =>
-  !s.evidence.includes(e.id) && locOpen(C.locations[e.location], s) &&
-  has(s.evidence, e.requires.evidence) && has(s.asked, e.requires.nodes);
+export { P };
+export const KUNCI_SAVE = 'hartwell-save-v2';
+const KUNCI_PERMANEN = 'hartwell-permanen-v2'; // petunjuk main ulang dan pencapaian (per peramban)
 
-const init = { status: 'menu', diff: 'normal', timeLeft: 0, evidence: [], asked: [], pressure: {},
-  notebook: [], confirmed: [], cleared: [], hintsUsed: [], lines: [], msg: '', boardPos: {}, reason: '', score: null, accused: [], partial: false, wrongLinks: 0, doc: null };
+// localStorage bisa tidak tersedia (mode privat); semua akses dibungkus try/catch
+export function bacaPermanen() {
+  try { return JSON.parse(localStorage.getItem(KUNCI_PERMANEN)) || { endingDilihat: [], pencapaian: [] }; }
+  catch { return { endingDilihat: [], pencapaian: [] }; }
+}
+function tulisPermanen(v) { try { localStorage.setItem(KUNCI_PERMANEN, JSON.stringify(v)); } catch { /* abaikan */ } }
 
-// Kurangi waktu (menit); bila habis -> kalah
-const drain = (s, m) => {
-  const t = s.timeLeft - m * 60;
-  if (t <= 0) sfx.lose();
-  return t <= 0 ? { timeLeft: 0, status: 'lost', reason: 'timeout', msg: 'Waktu habis. Kasus ini menjadi dingin...' } : { timeLeft: t };
+function catatAkhir(s) {
+  const p = bacaPermanen();
+  const end = s.hasil?.ending;
+  if (end && !p.endingDilihat.includes(end)) p.endingDilihat.push(end);
+  const baru = [];
+  if (s.hasil?.menang) {
+    if (!s.petunjuk.length) baru.push('tanpa_petunjuk');
+    if (!s.salahBantah && !s.salahHubung && !s.salahTekaTeki) baru.push('tanpa_salah');
+    if (!s.flags.__pernahTertutup) baru.push('tanpa_tertutup');
+  }
+  if (end === 'kebenaran_dipesan') baru.push('kebenaran_dipesan');
+  baru.forEach((b) => { if (!p.pencapaian.includes(b)) p.pencapaian.push(b); });
+  tulisPermanen(p);
+}
+
+const SUARA = { collect: 'collect', ask: 'ask', sting: 'sting', link: 'link', wrong: 'wrong', hint: 'hint', win: 'win', lose: 'lose' };
+const putar = (daftar) => daftar.forEach((n) => { const f = sfx[SUARA[n]]; if (f) f(); });
+
+// Membungkus aksi murni: jalankan, putar suara, simpan state.
+const jalankan = (set, get) => (fn) => (...args) => {
+  const sebelum = get();
+  const { state, suara } = fn(sebelum, P, ...args);
+  if (state === sebelum) return;
+  putar(suara);
+  if (Object.keys(state.flags).some((k) => k.endsWith('_tertutup') && state.flags[k])) state.flags.__pernahTertutup = true;
+  set(state);
+  if (state.status === 'ending' && sebelum.status !== 'ending') catatAkhir(state);
+  if (state.status === 'lost' && sebelum.status === 'playing') catatAkhir(state);
 };
-const note = (s, t) => (s.notebook.includes(t) ? s.notebook : [...s.notebook, t]);
 
-export const useGame = create(persist((set, get) => ({
-  ...init,
-  start: (diff) => set({ ...init, status: 'playing', diff, timeLeft: C.config.difficulty[diff].timerMinutes * 60 }),
-  moveCard: (id, x, y) => set((s) => ({ boardPos: { ...s.boardPos, [id]: { x, y } } })),
-  begin: (diff) => set({ ...init, status: 'intro', diff }),
-  finishIntro: () => get().start(get().diff),
-  finishEnding: () => set({ status: 'won' }),
-  openDoc: (id) => set({ doc: id }),
-  resume: () => set({ status: 'playing' }),
-  // Waktu nyata mengurangi timer hanya sebesar realtimeFactor; berhenti saat dokumen dibaca.
-  tick: () => set((s) => {
-    if (s.status !== 'playing' || s.doc) return s;
-    const f = C.config.difficulty[s.diff].realtimeFactor || 0;
-    if (!f) return s;
-    if (s.timeLeft - f <= 0) { sfx.lose(); return { timeLeft: 0, status: 'lost', reason: 'timeout', msg: 'Waktu habis. Kasus ini menjadi dingin...' }; }
-    return { timeLeft: s.timeLeft - f };
-  }),
-
-  collect: (id) => set((s) => {
-    const e = C.evidence.find((x) => x.id === id);
-    if (s.evidence.includes(id)) return s;
-    sfx.collect();
-    return { doc: id, evidence: [...s.evidence, id], notebook: note(s, `Bukti ${id}: ${e.name}. ${e.description}`),
-      msg: `Bukti ditemukan: ${e.name}`, ...drain(s, C.config.explorationCostMinutes) };
-  }),
-
-  ask: (n) => set((s) => {
-    if (s.asked.includes(n.id)) return s;
-    let text = n.text;
-    (n.variants || []).forEach((v) => { if (has(s.evidence, v.if.evidence)) text = v.text; });
-    const fx = [n.effects || {}];
-    (n.conditionalEffects || []).forEach((c) => { if (has(s.evidence, c.if.evidence)) fx.push(c.effects); });
-    const p = Math.min(D.config.pressureMax, (s.pressure[n.speaker] || 0) + n.pressure);
-    const lines = [{ who: n.speaker, text, q: n.label }];
-    sfx.ask();
-    if (n.breakCheck && n.onBreak && p >= D.config.breakThreshold) {
-      lines.push({ who: n.speaker, text: n.onBreak.text, broke: true });
-      fx.push(n.onBreak.effects);
-      sfx.sting();
-    }
-    let notebook = s.notebook, confirmed = s.confirmed, cleared = s.cleared;
-    fx.forEach((f) => {
-      (f.notebook || []).forEach((t) => { notebook = notebook.includes(t) ? notebook : [...notebook, t]; });
-      confirmed = [...new Set([...confirmed, ...(f.confirmDeductions || [])])];
-      if (f.clearSuspect) cleared = [...new Set([...cleared, f.clearSuspect])];
-    });
-    return { asked: [...s.asked, n.id], pressure: { ...s.pressure, [n.speaker]: p }, notebook, confirmed, cleared,
-      lines: [...s.lines, ...lines], ...drain(s, n.timeCost) };
-  }),
-
-  link: (a, b) => set((s) => {
-    const d = C.deductions.find((x) => a !== b && x.link.includes(a) && x.link.includes(b));
-    if (!d) { sfx.wrong(); return { msg: `Tidak ada hubungan yang jelas antara kedua bukti ini. (-${C.config.wrongLinkCostMinutes} menit)`, wrongLinks: s.wrongLinks + 1, ...drain(s, C.config.wrongLinkCostMinutes) }; }
-    if (s.confirmed.includes(d.id)) return { msg: `Deduksi ${d.id} sudah terkonfirmasi.` };
-    sfx.link();
-    return { confirmed: [...s.confirmed, d.id], notebook: note(s, `Deduksi ${d.id}: ${d.title}. ${d.conclusion}`),
-      msg: `Deduksi terbuka: ${d.title}` };
-  }),
-
-  hint: () => set((s) => {
-    const h = [...C.hints].reverse().find((x) => !s.hintsUsed.includes(x.id) && has(s.evidence, x.when.evidence));
-    if (!h) return { msg: 'Tidak ada petunjuk baru saat ini.' };
-    sfx.hint();
-    return { hintsUsed: [...s.hintsUsed, h.id], notebook: note(s, `Petunjuk: ${h.text}`), msg: `Petunjuk: ${h.text}`,
-      ...drain(s, C.config.difficulty[s.diff].hintCostMinutes) };
-  }),
-
-  accuse: (names) => set((s) => {
-    const need = C.config.difficulty[s.diff].deductionsRequired;
-    if (s.confirmed.length < need) return { msg: `Belum cukup deduksi (${s.confirmed.length}/${need}).` };
-    const ok = names.length === C.solution.culprits.length && C.solution.culprits.every((c) => names.includes(c));
-    (ok ? sfx.win : sfx.lose)();
-    if (!ok) return { status: 'lost', reason: 'wrong', accused: names, partial: names.some((n) => C.solution.culprits.includes(n)), msg: 'Tuduhan salah.' };
-    const sc = C.solution.scoring, dif = C.config.difficulty[s.diff], held = (l) => l.every((x) => s.evidence.includes(x));
-    const score = { base: sc.correctCulprits, motive: held(C.solution.motive.evidence) ? sc.motiveBonus : 0,
-      method: held(C.solution.method.evidence) ? sc.methodBonus : 0,
-      time: Math.round(sc.timeBonusMax * (s.timeLeft / (dif.timerMinutes * 60))),       // bonus proporsional terhadap total timer
-      hints: -sc.hintPenalty * s.hintsUsed.length, links: -sc.wrongLinkPenalty * s.wrongLinks };
-    const sub = Object.values(score).reduce((a, b) => a + b, 0);
-    score.mult = dif.scoreMultiplier;
-    score.total = Math.max(0, Math.round(sub * dif.scoreMultiplier));
-    score.max = Math.round((sc.correctCulprits + sc.motiveBonus + sc.methodBonus + sc.timeBonusMax) * dif.scoreMultiplier);
-    score.pct = Math.round((score.total / score.max) * 100);
-    return { status: 'ending', score, msg: 'Kasus terpecah!' };
-  }),
-}), {
-  name: 'hartwell-save-v1', version: 1,
+export const useGame = create(persist((set, get) => {
+  const j = jalankan(set, get);
+  return {
+    ...A.stateAwal(),
+    begin: (diff) => set({ ...A.stateAwal(), status: 'intro', diff }, false),
+    finishIntro: () => {
+      j(A.mulai)(get().diff);
+      // Ending kalah khusus yang pernah dilihat memberi firasat (catatan awal) untuk permainan berikutnya
+      const dilihat = bacaPermanen().endingDilihat;
+      const firasat = Object.entries(P.cerita.firasatMainUlang || {}).filter(([e]) => dilihat.includes(e)).map(([, t]) => t);
+      set((s) => ({ catatan: [...firasat, ...s.catatan], flags: { ...s.flags, __main_ulang: dilihat.includes('kebenaran_dipesan') } }));
+    },
+    start: (diff) => j(A.mulai)(diff),
+    resume: () => set({ status: 'playing' }),
+    openDoc: (id) => set({ doc: id }),
+    moveCard: (id, x, y) => set((s) => ({ boardPos: { ...s.boardPos, [id]: { x, y } } })),
+    tick: j(A.detak),
+    kunjungi: j(A.kunjungi),
+    collect: j(A.periksa),
+    periksaInfo: j(A.periksaInfo),
+    ask: j(A.tanya),
+    bantah: j(A.bantah),
+    tekan: j(A.tekan),
+    link: j(A.hubungkan),
+    hint: j(A.petunjuk),
+    jawabTekaTeki: j(A.jawabTekaTeki),
+    bukaTuduhan: j(A.bukaTuduhan),
+    tutupTuduhan: () => set((s) => ({ flags: { ...s.flags, tuduhanTerbuka: false } })),
+    accuse: j(A.tuduh),
+    selesaiCutscene: j(A.selesaiCutscene),
+    finishEnding: j(A.selesaiEnding),
+  };
+}, {
+  name: KUNCI_SAVE, version: 2,
   // Simpan progres hanya saat kasus berjalan; setelah reload game 'dijeda' agar timer tidak jalan sendiri.
-  partialize: (s) => (s.status === 'playing' || s.status === 'paused'
-    ? { status: 'paused', diff: s.diff, timeLeft: s.timeLeft, evidence: s.evidence, asked: s.asked, pressure: s.pressure,
-        notebook: s.notebook, confirmed: s.confirmed, cleared: s.cleared, hintsUsed: s.hintsUsed, lines: s.lines, boardPos: s.boardPos, wrongLinks: s.wrongLinks }
-    : { status: 'menu' }),
+  partialize: (s) => {
+    if (s.status !== 'playing' && s.status !== 'paused') return { status: 'menu' };
+    const { doc, msg, msgJenis, ...rest } = s;
+    const data = Object.fromEntries(Object.entries(rest).filter(([, v]) => typeof v !== 'function'));
+    return { ...data, status: 'paused', versiPaket: P.kasus.meta.versiPaket };
+  },
+  // Save dari paket lain (atau versi lain) ditolak dan pemain kembali ke menu
+  merge: (simpan, sekarang) => {
+    if (!simpan || simpan.status !== 'paused' || simpan.versiPaket !== P.kasus.meta.versiPaket) return { ...sekarang, status: 'menu' };
+    return { ...sekarang, ...simpan };
+  },
 }));
+
+// Save v1 ("hartwell-save-v1") memakai cerita lama dan tidak bisa dilanjutkan. Hapus dan beri tahu sekali.
+export function migrasiSaveLama() {
+  try {
+    if (localStorage.getItem('hartwell-save-v1') === null) return false;
+    localStorage.removeItem('hartwell-save-v1');
+    return true;
+  } catch { return false; }
+}

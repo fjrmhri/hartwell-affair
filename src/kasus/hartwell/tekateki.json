@@ -1,0 +1,70 @@
+[
+  { "id": "P2", "nama": "Hitungan Dosis", "jenis": "pilihan", "menitSalah": 2,
+    "syarat": { "semua": [{ "bukti": "E03" }, { "bukti": "E13" }, { "bukti": "E16" }] },
+    "pengantar": "Laporan Dr. Ashby memakai satuan laboratoriumnya sendiri, unit Ashby. Bandingkan tiga angka dari bukti Anda.",
+    "data": [
+      ["Kapsul krem yang sudah diminum sejak 5 November (E03)", "9 kapsul"],
+      ["Isi tiap kapsul krem menurut resep Lowell (E13)", "1 unit"],
+      ["Kadar kronis di jaringan (E16)", "9 unit"],
+      ["Lonjakan akut dalam dua jam terakhir (E16)", "30 unit"]
+    ],
+    "pertanyaan": "Apa kesimpulan yang paling sesuai dengan angka-angka ini?",
+    "opsi": [
+      { "id": "a", "teks": "Kapsul krem menjelaskan seluruh kadar racun di tubuh Edmund." },
+      { "id": "b", "teks": "Kapsul menjelaskan kadar kronis saja; lonjakan akut butuh sumber kedua malam itu." },
+      { "id": "c", "teks": "Edmund meminum seluruh isi kotak pil sekaligus malam itu." },
+      { "id": "d", "teks": "Lonjakan akut berasal dari kapsul putih yang asli." }
+    ],
+    "benar": "b",
+    "teksSalah": "Angkanya tidak cocok: hitung lagi berapa unit yang bisa dijelaskan oleh kapsul.",
+    "teksBenar": "Sembilan kapsul menjelaskan 9 unit kronis. Tiga puluh unit akut masuk malam itu dari sumber lain.",
+    "efek": { "konfirmasiDeduksi": ["D3"] } },
+
+  { "id": "P3", "nama": "Sandi Buku Harian", "jenis": "sandi", "menitSalah": 0, "kunci": "EMPATBELAS",
+    "syarat": { "bukti": "E07" },
+    "pengantar": "Dua halaman buku harian Edmund ditulis dengan sandi geser berkunci kata (Vigenère). Di pinggir halaman, Edmund menulis: \"Kuncinya kata yang kubaca setiap tanggal 3.\"",
+    "halaman": [
+      { "judul": "Halaman sandi 1", "teks": "EMPAT BELAS NAMA, TIGA MARET 1931. SATU ANTONI BAREK. DUA WIKTOR HALAS. TIGA SAMUEL OKORO. EMPAT JAN PIETROWSKI. LIMA RUBEN CASTILLO. ENAM HENRYK DOBOSZ. TUJUH THOMAS FEENEY. DELAPAN MAREK ZIELINSKI. SEMBILAN JOSEF KESSLER. SEPULUH LUIS MORENO. SEBELAS PATRICK DUNNE. DUA BELAS KAROL WISNIAK. TIGA BELAS ELIAS BRANDT. EMPAT BELAS OWEN MADDOX. AKU YANG MENYURUH PINTU ITU DIRANTAI. HERALD MENULIS KECELAKAAN." },
+      { "judul": "Halaman sandi 2", "teks": "MALAM INI KUTEKEN. G DAN C JADI SAKSI. E TIDAK BOLEH TAHU SEBELUM PRUITT DATANG. SURAT UNTUK HERALD KUTITIPKAN PADA G." }
+    ],
+    "teksSalah": "Teksnya masih kacau. Kunci itu bukan kata yang tepat.",
+    "teksBenar": "Halaman 1 memuat empat belas nama korban 1931 dan pengakuan Edmund. Halaman 2: \"Malam ini kuteken. G dan C jadi saksi. E tidak boleh tahu sebelum Pruitt datang.\"",
+    "efek": { "cutscene": "C4", "setFlag": { "sandi_terpecahkan": true } } },
+
+  { "id": "P4", "nama": "Saluran Telepon", "jenis": "grid", "menitSalah": 2,
+    "syarat": { "semua": [{ "bukti": "E19" }, { "bukti": "E20" }] },
+    "pengantar": "Petakan enam saluran telepon rumah ke ruangannya. Sumber: log papan sentral (E19), daftar kamar tamu (E20), dan penanda telepon di denah.",
+    "petunjukData": [
+      "E20: \"Urutan pemasangan saluran: lobi, ruang kerja, kamar Nyonya, dua kamar tamu, pantry.\"",
+      "E19: \"21:55 saluran 2 memanggil saluran 5 (panggilan dalam): Tuan Edmund untuk Tn. Charles.\"",
+      "E19: \"22:41 saluran 6 ke saluran 2: dapur mengabarkan brandy segera diantar.\"",
+      "E20: \"Timur: Ny. Marsh. Barat: Tn. Charles.\""
+    ],
+    "baris": ["1", "2", "3", "4", "5", "6"],
+    "opsi": [
+      { "id": "lobi", "teks": "Lobi" }, { "id": "ruang_kerja", "teks": "Ruang kerja" }, { "id": "kamar_vivian", "teks": "Kamar Vivian" },
+      { "id": "kamar_tamu_timur", "teks": "Kamar tamu timur" }, { "id": "kamar_tamu_barat", "teks": "Kamar tamu barat" }, { "id": "pantry", "teks": "Pantry" }
+    ],
+    "solusi": { "1": "lobi", "2": "ruang_kerja", "3": "kamar_vivian", "4": "kamar_tamu_timur", "5": "kamar_tamu_barat", "6": "pantry" },
+    "teksSalah": "Ada saluran yang belum cocok. Periksa urutan pemasangan dan panggilan 21:55.",
+    "teksBenar": "Saluran 4 adalah kamar tamu timur, kamar Eleanor. Panggilan 21:50 ke kantor Pruitt dan 01:00 ke kantor detektif sama-sama dari sana.",
+    "efek": { "konfirmasiDeduksi": ["D10"] } },
+
+  { "id": "P8", "nama": "Papan Garis Waktu", "jenis": "garisWaktu", "menitSalah": 2,
+    "syarat": { "semua": [{ "deduksi": "D10" }, { "bukti": "E06" }, { "bukti": "E12" }, { "kartu": "K02" }, { "kartu": "K03" }, { "kartu": "K04" }] },
+    "pengantar": "Tempatkan setiap orang pada empat titik waktu. Hanya sel yang didukung bukti yang diperiksa; sel lain boleh dibiarkan \"tidak diketahui\".",
+    "tokoh": ["eleanor", "vivian", "lowell", "charles", "graves", "edmund"],
+    "namaTokoh": { "edmund": "Edmund" },
+    "slot": ["22:00", "22:30", "22:45", "23:00"],
+    "opsi": [
+      { "id": "tidak_diketahui", "teks": "Tidak diketahui" }, { "id": "aula", "teks": "Aula" }, { "id": "pantry", "teks": "Pantry" },
+      { "id": "ruang_kerja", "teks": "Ruang kerja" }, { "id": "lorong_servis", "teks": "Lorong servis" }, { "id": "klub", "teks": "Blue Note Club" }
+    ],
+    "kunci": {
+      "charles|22:00": "ruang_kerja", "graves|22:00": "ruang_kerja", "eleanor|22:30": "pantry", "graves|22:30": "lorong_servis",
+      "charles|22:30": "klub", "lowell|22:30": "aula", "vivian|22:45": "ruang_kerja", "edmund|23:00": "ruang_kerja"
+    },
+    "teksSalah": "Sel yang ditandai merah bertentangan dengan bukti yang Anda pegang.",
+    "teksBenar": "Pukul 22:30–22:45 semua orang punya saksi kecuali Eleanor, yang terlihat Graves sendirian di pantry.",
+    "efek": { "konfirmasiDeduksi": ["D15"] } }
+]

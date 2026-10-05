@@ -1,0 +1,1412 @@
+{
+  "meta": {
+    "judul": "The Hartwell Affair",
+    "versiPaket": "2.0.0",
+    "latar": "Ravenport, 14 November 1947",
+    "briefing": "Edmund Hartwell, raja baja Ravenport, ditemukan tewas di ruang kerjanya yang terkunci saat pesta ulang tahunnya yang ke-60. Dokter keluarga menulis gagal jantung dan polisi menutup kasus. Adiknya, Eleanor Marsh, menyewa Anda untuk membukanya kembali sebelum jenazah dimakamkan pukul enam pagi."
+  },
+  "config": {
+    "kesulitan": {
+      "easy": {
+        "timerMenit": 280,
+        "biayaPetunjukMenit": 3,
+        "deduksiWajib": 6,
+        "faktorRealtime": 0,
+        "pengaliSkor": 1.0
+      },
+      "normal": {
+        "timerMenit": 190,
+        "biayaPetunjukMenit": 5,
+        "deduksiWajib": 8,
+        "faktorRealtime": 0.15,
+        "pengaliSkor": 1.2
+      },
+      "hard": {
+        "timerMenit": 160,
+        "biayaPetunjukMenit": 8,
+        "deduksiWajib": 10,
+        "faktorRealtime": 0.2,
+        "pengaliSkor": 1.5
+      }
+    },
+    "kesulitanDefault": "normal",
+    "meterMaks": 3,
+    "biayaJelajahMenit": 2,
+    "biayaPerjalananMenit": 4,
+    "biayaSalahHubungMenit": 3,
+    "biayaSalahBantahMenit": 2,
+    "pengaliTingkatPetunjuk": [
+      1,
+      1.5,
+      2
+    ],
+    "penandaTelepon": [
+      {
+        "saluran": "1",
+        "lokasi": "lobi",
+        "label": "1"
+      },
+      {
+        "saluran": "2",
+        "lokasi": "ruang_kerja",
+        "label": "2"
+      },
+      {
+        "saluran": "3",
+        "lokasi": "kamar_vivian",
+        "label": "3"
+      },
+      {
+        "saluran": "4",
+        "lokasi": "kamar_tamu_timur",
+        "label": "?"
+      },
+      {
+        "saluran": "5",
+        "lokasi": "kamar_tamu_barat",
+        "label": "?"
+      },
+      {
+        "saluran": "6",
+        "lokasi": "pantry",
+        "label": "6"
+      }
+    ],
+    "syaratPenandaTelepon": {
+      "bukti": "E19"
+    }
+  },
+  "tokoh": {
+    "eleanor": {
+      "nama": "Eleanor Marsh",
+      "peran": "Adik korban, klien Anda",
+      "tersangka": true,
+      "potret": {
+        "tenang": "assets/portraits/eleanor.svg",
+        "tertekan": "assets/portraits/eleanor_tertekan.svg",
+        "bohong": "assets/portraits/eleanor_bohong.svg",
+        "retak": "assets/portraits/eleanor_retak.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {
+          "kepercayaan": 1
+        },
+        "desak": {
+          "tekanan": 1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 1
+      },
+      "bisaMenutupDiri": false
+    },
+    "vivian": {
+      "nama": "Vivian Hartwell",
+      "peran": "Istri korban",
+      "tersangka": true,
+      "potret": {
+        "tenang": "assets/portraits/vivian.svg",
+        "tertekan": "assets/portraits/vivian_tertekan.svg",
+        "bohong": "assets/portraits/vivian_bohong.svg",
+        "retak": "assets/portraits/vivian_retak.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {
+          "kepercayaan": 1
+        },
+        "desak": {
+          "tekanan": 1,
+          "kepercayaan": -1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 0
+      },
+      "bisaMenutupDiri": true,
+      "teksMenutupDiri": "Cukup. Keluar dari kamarku, Detektif. Aku tidak akan bicara lagi."
+    },
+    "lowell": {
+      "nama": "Dr. Arthur Lowell",
+      "peran": "Dokter keluarga",
+      "tersangka": true,
+      "potret": {
+        "tenang": "assets/portraits/lowell.svg",
+        "tertekan": "assets/portraits/lowell_tertekan.svg",
+        "bohong": "assets/portraits/lowell_bohong.svg",
+        "retak": "assets/portraits/lowell_retak.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {},
+        "desak": {
+          "tekanan": 1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 0
+      },
+      "bisaMenutupDiri": false
+    },
+    "charles": {
+      "nama": "Charles Hartwell",
+      "peran": "Keponakan korban",
+      "tersangka": true,
+      "potret": {
+        "tenang": "assets/portraits/charles.svg",
+        "tertekan": "assets/portraits/charles_tertekan.svg",
+        "bohong": "assets/portraits/charles_bohong.svg",
+        "retak": "assets/portraits/charles_retak.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {
+          "kepercayaan": 1
+        },
+        "desak": {
+          "tekanan": 1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 0
+      },
+      "bisaMenutupDiri": false
+    },
+    "graves": {
+      "nama": "Mr. Graves",
+      "peran": "Kepala pelayan",
+      "tersangka": true,
+      "potret": {
+        "tenang": "assets/portraits/graves.svg",
+        "tertekan": "assets/portraits/graves_tertekan.svg",
+        "bohong": "assets/portraits/graves_bohong.svg",
+        "retak": "assets/portraits/graves_retak.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {
+          "kepercayaan": 1
+        },
+        "desak": {
+          "kepercayaan": -1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 1
+      },
+      "bisaMenutupDiri": true,
+      "teksMenutupDiri": "Saya hanya pelayan, Tuan. Saya tidak melihat apa-apa."
+    },
+    "doyle": {
+      "nama": "Insp. Michael Doyle",
+      "peran": "Kepolisian Ravenport",
+      "tersangka": false,
+      "potret": {
+        "tenang": "assets/portraits/doyle.svg",
+        "tertekan": "assets/portraits/doyle_tertekan.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {},
+        "desak": {
+          "kepercayaan": -1
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 1
+      },
+      "bisaMenutupDiri": true,
+      "teksMenutupDiri": "Keluar dari kantorku sebelum kutahan kau karena menghalangi petugas."
+    },
+    "pruitt": {
+      "nama": "Harold Pruitt",
+      "peran": "Pengacara keluarga",
+      "tersangka": false,
+      "potret": {
+        "tenang": "assets/portraits/pruitt.svg",
+        "tertekan": "assets/portraits/pruitt_tertekan.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {},
+        "desak": {}
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 1
+      },
+      "bisaMenutupDiri": false,
+      "syaratMuncul": {
+        "flag": "pruitt_hadir"
+      }
+    },
+    "sammy": {
+      "nama": "Sammy Lee",
+      "peran": "Pianis Blue Note Club",
+      "tersangka": false,
+      "potret": {
+        "tenang": "assets/portraits/sammy.svg",
+        "tertekan": "assets/portraits/sammy_tertekan.svg"
+      },
+      "watak": {
+        "netral": {},
+        "simpati": {
+          "kepercayaan": 1
+        },
+        "desak": {
+          "kepercayaan": -2
+        }
+      },
+      "meterAwal": {
+        "tekanan": 0,
+        "kepercayaan": 1
+      },
+      "bisaMenutupDiri": true,
+      "teksMenutupDiri": "Aku sedang bekerja. Pesan minuman atau pergi.",
+      "syaratMuncul": {
+        "semua": [
+          {
+            "bukti": "E11"
+          },
+          {
+            "node": "C05"
+          }
+        ]
+      }
+    }
+  },
+  "lokasi": {
+    "lobi": {
+      "nama": "Lobi",
+      "area": "lantai1",
+      "peta": "assets/maps/denah_lantai1.svg",
+      "ruang": {
+        "x": 60,
+        "y": 7.69,
+        "w": 35,
+        "h": 38.46
+      },
+      "syarat": {}
+    },
+    "ruang_tamu": {
+      "nama": "Ruang Tamu dan Aula",
+      "area": "lantai1",
+      "peta": "assets/maps/denah_lantai1.svg",
+      "ruang": {
+        "x": 5,
+        "y": 50,
+        "w": 70,
+        "h": 42.31
+      },
+      "syarat": {}
+    },
+    "pantry": {
+      "nama": "Pantry",
+      "area": "lantai1",
+      "peta": "assets/maps/denah_lantai1.svg",
+      "ruang": {
+        "x": 31.25,
+        "y": 7.69,
+        "w": 21.25,
+        "h": 38.46
+      },
+      "syarat": {}
+    },
+    "kamar_graves": {
+      "nama": "Kamar Graves",
+      "area": "lantai1",
+      "peta": "assets/maps/denah_lantai1.svg",
+      "ruang": {
+        "x": 5,
+        "y": 7.69,
+        "w": 20,
+        "h": 38.46
+      },
+      "syarat": {
+        "node": "G05"
+      }
+    },
+    "taman_samping": {
+      "nama": "Taman Samping",
+      "area": "lantai1",
+      "peta": "assets/maps/denah_lantai1.svg",
+      "ruang": {
+        "x": 77.5,
+        "y": 50,
+        "w": 17.5,
+        "h": 42.31
+      },
+      "syarat": {
+        "salahSatu": [
+          {
+            "node": "C02"
+          },
+          {
+            "deduksi": "D5"
+          }
+        ]
+      }
+    },
+    "ruang_kerja": {
+      "nama": "Ruang Kerja Edmund",
+      "area": "lantai2",
+      "peta": "assets/maps/denah_lantai2.svg",
+      "ruang": {
+        "x": 5,
+        "y": 55.77,
+        "w": 50,
+        "h": 36.54
+      },
+      "syarat": {},
+      "info": [
+        {
+          "id": "I-brankas",
+          "judul": "Brankas di balik lukisan",
+          "spot": "lukisan",
+          "hotspot": {
+            "x": 82,
+            "y": 30
+          },
+          "menit": 2,
+          "syarat": {
+            "bukti": "E07"
+          },
+          "teks": "Brankas di balik lukisan Edmund terbuka dan kosong. Debu di raknya masih tebal di tepi, bersih di tengah: sesuatu dipindahkan malam ini."
+        }
+      ]
+    },
+    "kamar_vivian": {
+      "nama": "Kamar Vivian",
+      "area": "lantai2",
+      "peta": "assets/maps/denah_lantai2.svg",
+      "ruang": {
+        "x": 26.25,
+        "y": 7.69,
+        "w": 26.25,
+        "h": 38.46
+      },
+      "syarat": {
+        "bukti": "E04"
+      }
+    },
+    "kamar_tamu_barat": {
+      "nama": "Kamar Tamu Barat (Charles)",
+      "area": "lantai2",
+      "peta": "assets/maps/denah_lantai2.svg",
+      "ruang": {
+        "x": 5,
+        "y": 7.69,
+        "w": 21.25,
+        "h": 38.46
+      },
+      "syarat": {
+        "node": "C03"
+      },
+      "info": [
+        {
+          "id": "I-surat-s",
+          "judul": "Surat dari \"S.\"",
+          "spot": "jas",
+          "hotspot": {
+            "x": 40,
+            "y": 55
+          },
+          "menit": 1,
+          "syarat": {},
+          "teks": "Surat pendek di saku jas Charles, ditandatangani \"S.\": \"Jangan datang malam ini kalau pamanmu memanggil. Aku akan menunggu di jeda set.\" Membaca surat pribadi ini tanpa izin terasa seperti melanggar sesuatu.",
+          "efek": {
+            "meter": {
+              "charles": {
+                "kepercayaan": -1
+              }
+            }
+          }
+        }
+      ]
+    },
+    "kamar_tamu_timur": {
+      "nama": "Kamar Tamu Timur (Eleanor)",
+      "area": "lantai2",
+      "peta": "assets/maps/denah_lantai2.svg",
+      "ruang": {
+        "x": 60,
+        "y": 7.69,
+        "w": 35,
+        "h": 38.46
+      },
+      "syarat": {
+        "deduksi": "D10"
+      },
+      "info": [
+        {
+          "id": "I-surat-bank",
+          "judul": "Surat bank di meja",
+          "spot": "meja",
+          "hotspot": {
+            "x": 70,
+            "y": 70
+          },
+          "menit": 2,
+          "syarat": {},
+          "teks": "Surat Bank Ravenport untuk Ny. H. Marsh: rumahnya digadaikan sejak 1945 dan tunggakannya akan dieksekusi bulan depan.",
+          "efek": {
+            "setFlag": {
+              "eleanor_bangkrut": true
+            }
+          }
+        }
+      ]
+    },
+    "kantor_polisi": {
+      "nama": "Kantor Polisi",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 5,
+        "y": 11.54,
+        "w": 27.5,
+        "h": 21.15
+      },
+      "syarat": {},
+      "info": [
+        {
+          "id": "I-berkas-doyle",
+          "judul": "Berkas penutupan kasus",
+          "spot": "meja_doyle",
+          "hotspot": {
+            "x": 60,
+            "y": 55
+          },
+          "menit": 1,
+          "syarat": {},
+          "teks": "Berkas Doyle: kasus Hartwell ditutup pukul 00:30 \"atas keterangan dokter keluarga\". Tidak ada foto ruangan selain milik keluarga, tidak ada otopsi."
+        }
+      ]
+    },
+    "kamar_mayat": {
+      "nama": "Kamar Mayat Kota",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 5,
+        "y": 36.54,
+        "w": 27.5,
+        "h": 21.15
+      },
+      "syarat": {
+        "flag": "izin_otopsi"
+      }
+    },
+    "klinik_lowell": {
+      "nama": "Klinik Dr. Lowell",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 36.25,
+        "y": 11.54,
+        "w": 27.5,
+        "h": 15.38
+      },
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E03"
+          },
+          {
+            "node": "L05"
+          }
+        ]
+      }
+    },
+    "arsip_herald": {
+      "nama": "Arsip Ravenport Herald",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 36.25,
+        "y": 28.85,
+        "w": 27.5,
+        "h": 15.38
+      },
+      "syarat": {
+        "tekaTeki": "P3"
+      }
+    },
+    "apotek_st_brigid": {
+      "nama": "Apotek St. Brigid",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 36.25,
+        "y": 46.15,
+        "w": 27.5,
+        "h": 15.38
+      },
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E17"
+          },
+          {
+            "deduksi": "D10"
+          }
+        ]
+      }
+    },
+    "blue_note_club": {
+      "nama": "Blue Note Club",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 67.5,
+        "y": 11.54,
+        "w": 27.5,
+        "h": 30.77
+      },
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E11"
+          },
+          {
+            "node": "C05"
+          }
+        ]
+      }
+    },
+    "reruntuhan_pengecoran": {
+      "nama": "Reruntuhan Pengecoran No. 2",
+      "area": "kota",
+      "peta": "assets/maps/peta_kota.svg",
+      "ruang": {
+        "x": 36.25,
+        "y": 69.23,
+        "w": 27.5,
+        "h": 23.08
+      },
+      "syarat": {
+        "bukti": "E07"
+      },
+      "info": [
+        {
+          "id": "I-plakat",
+          "judul": "Plakat peringatan",
+          "spot": "plakat",
+          "hotspot": {
+            "x": 30,
+            "y": 45
+          },
+          "menit": 2,
+          "syarat": {},
+          "teks": "Plakat perunggu di gerbang yang hangus. Hurufnya sudah aus, kecuali dua kata yang tampak sering diusap tangan: \"UNTUK EMPAT BELAS\". Di bawahnya, karangan bunga segar bertanggal 3 November.",
+          "efek": {
+            "setFlag": {
+              "kunci_plakat": true
+            }
+          }
+        }
+      ]
+    }
+  },
+  "bukti": [
+    {
+      "id": "E01",
+      "nama": "Foto TKP Ruang Kerja",
+      "jenis": "foto",
+      "lokasi": "ruang_kerja",
+      "spot": "meja_kerja",
+      "gambar": "assets/evidence/e01_foto_tkp.svg",
+      "hotspot": {
+        "x": 45,
+        "y": 40
+      },
+      "syarat": {},
+      "deskripsi": "Edmund tersungkur di meja. Gelas di sisi kiri (ia kidal); karaf brandy di rak masih penuh."
+    },
+    {
+      "id": "E02",
+      "nama": "Surat Kematian (Lowell)",
+      "jenis": "dokumen",
+      "lokasi": "ruang_tamu",
+      "spot": "meja_lowell",
+      "gambar": "assets/evidence/e02_surat_kematian.svg",
+      "hotspot": {
+        "x": 25,
+        "y": 45
+      },
+      "syarat": {},
+      "deskripsi": "Gagal jantung. Ditulis pukul 23:55, lima belas menit setelah jenazah ditemukan, tanpa pemeriksaan."
+    },
+    {
+      "id": "E03",
+      "nama": "Kotak Pil Perak Edmund",
+      "jenis": "benda",
+      "lokasi": "ruang_kerja",
+      "spot": "kotak_obat",
+      "gambar": "assets/evidence/e03_kotak_pil.svg",
+      "hotspot": {
+        "x": 62,
+        "y": 48
+      },
+      "syarat": {},
+      "deskripsi": "Kotak 28 slot berisi kapsul putih lonjong dan kapsul krem bulat. Sembilan slot kapsul krem sudah kosong."
+    },
+    {
+      "id": "E04",
+      "nama": "Gelas Brandy Bernoda Lipstik",
+      "jenis": "benda",
+      "lokasi": "ruang_kerja",
+      "spot": "gelas",
+      "gambar": "assets/evidence/e04_gelas_brandy.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 50
+      },
+      "syarat": {
+        "bukti": "E01"
+      },
+      "deskripsi": "Noda lipstik merah tua di bibir gelas dan endapan pahit di dasarnya."
+    },
+    {
+      "id": "E05",
+      "nama": "Kunci di Saku Korban",
+      "jenis": "benda",
+      "lokasi": "ruang_kerja",
+      "spot": "jenazah",
+      "gambar": "assets/evidence/e05_kunci.svg",
+      "hotspot": {
+        "x": 45,
+        "y": 72
+      },
+      "syarat": {
+        "bukti": "E01"
+      },
+      "deskripsi": "Pintu terkunci dari dalam; kuncinya di saku rompi Edmund."
+    },
+    {
+      "id": "E06",
+      "nama": "Catatan Graves soal Pesta",
+      "jenis": "dokumen",
+      "lokasi": "pantry",
+      "spot": "papan_catatan",
+      "gambar": "assets/evidence/e06_catatan_graves.svg",
+      "hotspot": {
+        "x": 45,
+        "y": 30
+      },
+      "syarat": {},
+      "deskripsi": "Jadwal pesta tulisan Graves. Coretan baru: \"22:40 Ny. V mengantar brandy (atas permintaan keluarga).\""
+    },
+    {
+      "id": "E07",
+      "nama": "Buku Harian Edmund",
+      "jenis": "dokumen",
+      "lokasi": "ruang_kerja",
+      "spot": "laci_meja",
+      "gambar": "assets/evidence/e07_buku_harian.svg",
+      "hotspot": {
+        "x": 55,
+        "y": 60
+      },
+      "syarat": {
+        "bukti": "E05"
+      },
+      "deskripsi": "Sebagian halaman bersandi. Teks biasa: \"Setiap tanggal 3 aku ke Distrik Selatan, membaca nama-nama itu.\""
+    },
+    {
+      "id": "E08",
+      "nama": "Telegram Pengacara Pruitt",
+      "jenis": "dokumen",
+      "lokasi": "ruang_kerja",
+      "spot": "laci_meja",
+      "gambar": "assets/evidence/e08_telegram.svg",
+      "hotspot": {
+        "x": 60,
+        "y": 66
+      },
+      "syarat": {
+        "bukti": "E07"
+      },
+      "deskripsi": "\"Tiba Sabtu 08:00 untuk penandatanganan wasiat baru. Pruitt.\""
+    },
+    {
+      "id": "E09",
+      "nama": "Draf Wasiat Baru",
+      "jenis": "dokumen",
+      "lokasi": "kamar_graves",
+      "spot": "lemari",
+      "gambar": "assets/evidence/e09_draf_wasiat.svg",
+      "hotspot": {
+        "x": 35,
+        "y": 40
+      },
+      "syarat": {
+        "node": "G05"
+      },
+      "deskripsi": "Draf tanpa tanda tangan: seluruh harta untuk Yayasan Empat Belas; Graves ditunjuk sebagai pengelola."
+    },
+    {
+      "id": "E10",
+      "nama": "Surat Utang Palsu Charles",
+      "jenis": "dokumen",
+      "lokasi": "ruang_kerja",
+      "spot": "laci_meja",
+      "gambar": "assets/evidence/e10_surat_utang.svg",
+      "hotspot": {
+        "x": 66,
+        "y": 62
+      },
+      "syarat": {
+        "bukti": "E07"
+      },
+      "deskripsi": "Surat utang $12.000 kepada bandar Fontaine dengan tanda tangan Edmund yang dipalsukan."
+    },
+    {
+      "id": "E11",
+      "nama": "Korek Api Blue Note Club",
+      "jenis": "benda",
+      "lokasi": "taman_samping",
+      "spot": "jalan_setapak",
+      "gambar": "assets/evidence/e11_korek_api.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 30
+      },
+      "syarat": {},
+      "deskripsi": "Korek api klub yang masih baru, jatuh di jalan setapak menuju gerbang samping."
+    },
+    {
+      "id": "E12",
+      "nama": "Karcis Parkir dan Keterangan Pelayan",
+      "jenis": "dokumen",
+      "lokasi": "blue_note_club",
+      "spot": "meja_parkir",
+      "gambar": "assets/evidence/e12_karcis_klub.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 60
+      },
+      "syarat": {
+        "node": "C05"
+      },
+      "deskripsi": "Masuk 22:25, keluar 23:20. Pelayan: \"Tuan Charles menghilang kira-kira setengah jam.\""
+    },
+    {
+      "id": "E13",
+      "nama": "Resep Terbaru Bertanda Lowell",
+      "jenis": "dokumen",
+      "lokasi": "klinik_lowell",
+      "spot": "lemari_resep",
+      "gambar": "assets/evidence/e13_resep.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Kapsul digitalis untuk E.J. Hartwell, 4 November 1947. Tercatat: 1 unit Ashby per kapsul."
+    },
+    {
+      "id": "E14",
+      "nama": "Buku Besar Yayasan Klinik",
+      "jenis": "dokumen",
+      "lokasi": "klinik_lowell",
+      "spot": "ruang_arsip",
+      "gambar": "assets/evidence/e14_buku_besar.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 50
+      },
+      "syarat": {
+        "bukti": "E07"
+      },
+      "deskripsi": "Penarikan tunai $400 setiap bulan sejak Maret 1945 dengan keterangan \"E.M.\"."
+    },
+    {
+      "id": "E15",
+      "nama": "Surat Cinta Berinisial \"L\"",
+      "jenis": "dokumen",
+      "lokasi": "kamar_vivian",
+      "spot": "meja_rias",
+      "gambar": "assets/evidence/e15_surat_cinta.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 55
+      },
+      "syarat": {},
+      "deskripsi": "\"Setelah semua ini selesai, kita bebas. Bawa surat-surat itu bila kau siap. L.\""
+    },
+    {
+      "id": "E16",
+      "nama": "Otopsi Independen Dr. Ashby",
+      "jenis": "laporan",
+      "lokasi": "kamar_mayat",
+      "spot": "meja_otopsi",
+      "gambar": "assets/evidence/e16_otopsi.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Keracunan digitalis: kadar kronis 9 unit Ashby ditambah lonjakan akut 30 unit; perkiraan waktu minum 22:30–23:00.",
+      "efek": {
+        "cutscene": "C1"
+      }
+    },
+    {
+      "id": "E17",
+      "nama": "Botol Tetes di Pot Tanaman",
+      "jenis": "benda",
+      "lokasi": "taman_samping",
+      "spot": "pot_tanaman",
+      "gambar": "assets/evidence/e17_botol_tetes.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 70
+      },
+      "syarat": {
+        "deduksi": "D5"
+      },
+      "deskripsi": "Botol tetes cokelat yang kosong, terkubur dangkal di pot. Labelnya dikerik; tersisa \"St. Br…\"."
+    },
+    {
+      "id": "E18",
+      "nama": "Salinan Wasiat Lama 1940",
+      "jenis": "dokumen",
+      "lokasi": null,
+      "spot": "",
+      "gambar": "assets/evidence/e18_wasiat_lama.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Semua harta untuk Vivian. Bila Vivian tidak berhak mewarisi, sisa harta jatuh kepada \"saudari saya, Eleanor Marsh\"."
+    },
+    {
+      "id": "E19",
+      "nama": "Lembar Log Papan Sentral",
+      "jenis": "dokumen",
+      "lokasi": "lobi",
+      "spot": "papan_sentral",
+      "gambar": "assets/evidence/e19_log_telepon.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 40
+      },
+      "syarat": {
+        "node": "G11"
+      },
+      "deskripsi": "Log sambungan telepon rumah malam itu: jam, nomor saluran, dan tujuan."
+    },
+    {
+      "id": "E20",
+      "nama": "Daftar Kamar Tamu",
+      "jenis": "dokumen",
+      "lokasi": "lobi",
+      "spot": "meja_tamu",
+      "gambar": "assets/evidence/e20_daftar_kamar.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 60
+      },
+      "syarat": {
+        "bukti": "E19"
+      },
+      "deskripsi": "Kartu tulisan Graves: \"Timur: Ny. Marsh. Barat: Tn. Charles.\" dan urutan pemasangan saluran."
+    },
+    {
+      "id": "E21",
+      "nama": "Liontin Vivian",
+      "jenis": "benda",
+      "lokasi": null,
+      "spot": "",
+      "gambar": "assets/evidence/e21_liontin.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Liontin perak berisi foto pria berkumis, terukir \"J. Kessler 1930\"."
+    },
+    {
+      "id": "E22",
+      "nama": "Kliping Ravenport Herald 1931",
+      "jenis": "dokumen",
+      "lokasi": "arsip_herald",
+      "spot": "mikrofilm",
+      "gambar": "assets/evidence/e22_kliping.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 45
+      },
+      "syarat": {},
+      "deskripsi": "Berita Kebakaran Pengecoran No. 2: empat belas korban bernomor, dan vonis lalai untuk mandor Walter Gravesend."
+    },
+    {
+      "id": "E23",
+      "nama": "Foto Regu Pengecoran 1930",
+      "jenis": "foto",
+      "lokasi": "reruntuhan_pengecoran",
+      "spot": "loker_regu",
+      "gambar": "assets/evidence/e23_foto_regu.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 55
+      },
+      "syarat": {
+        "bukti": "E22"
+      },
+      "deskripsi": "Foto buruh di depan tungku 3. Keterangan: \"W. & T. Gravesend\". Wajah Thomas muda sangat mirip Graves."
+    },
+    {
+      "id": "E24",
+      "nama": "Berkas Gravesend",
+      "jenis": "dokumen",
+      "lokasi": "kamar_graves",
+      "spot": "papan_lantai",
+      "gambar": "assets/evidence/e24_berkas.svg",
+      "hotspot": {
+        "x": 70,
+        "y": 75
+      },
+      "syarat": {
+        "deduksi": "D7"
+      },
+      "deskripsi": "Map tebal berlabel \"W.G. 1931–1947\": daftar gaji, surat Walter dari penjara, dan dua amplop yang tersegel."
+    },
+    {
+      "id": "E25",
+      "nama": "Wasiat Baru Bertanda Tangan",
+      "jenis": "dokumen",
+      "lokasi": null,
+      "spot": "",
+      "gambar": "assets/evidence/e25_wasiat_baru.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Wasiat tulisan tangan Edmund, 14 November 1947 pukul 22:00, disaksikan T. Graves dan C. Hartwell."
+    },
+    {
+      "id": "E26",
+      "nama": "Bonggol Buku Cek Edmund",
+      "jenis": "dokumen",
+      "lokasi": "ruang_kerja",
+      "spot": "buku_cek",
+      "gambar": "assets/evidence/e26_bonggol_cek.svg",
+      "hotspot": {
+        "x": 75,
+        "y": 55
+      },
+      "syarat": {
+        "bukti": "E10"
+      },
+      "deskripsi": "Bonggol terakhir: \"14 Nov, $12.000, C.H.\", nomor urut setelah cek sore itu."
+    },
+    {
+      "id": "E27",
+      "nama": "Daftar Lagu Sammy Lee",
+      "jenis": "dokumen",
+      "lokasi": "blue_note_club",
+      "spot": "ruang_ganti",
+      "gambar": "assets/evidence/e27_daftar_lagu.svg",
+      "hotspot": {
+        "x": 75,
+        "y": 40
+      },
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E12"
+          },
+          {
+            "meter": [
+              "charles",
+              "kepercayaan",
+              ">=",
+              1
+            ]
+          }
+        ]
+      },
+      "deskripsi": "Daftar lagu malam itu. \"Jeda 22:30–23:15\" dilingkari tinta."
+    },
+    {
+      "id": "E28",
+      "nama": "Sertifikat Perawat Eleanor",
+      "jenis": "dokumen",
+      "lokasi": "kamar_tamu_timur",
+      "spot": "koper",
+      "gambar": "assets/evidence/e28_sertifikat.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "\"Perawat terdaftar No. RN-3317, Klinik Pengecoran Hartwell, 1931\", disertai pin Palang Merah."
+    },
+    {
+      "id": "E29",
+      "nama": "Sarung Tangan Bernoda",
+      "jenis": "benda",
+      "lokasi": "kamar_tamu_timur",
+      "spot": "keranjang_cucian",
+      "gambar": "assets/evidence/e29_sarung_tangan.svg",
+      "hotspot": {
+        "x": 55,
+        "y": 75
+      },
+      "syarat": {},
+      "deskripsi": "Sarung tangan katun putih dengan noda tanah pot dan bercak kekuningan di ujung jari."
+    },
+    {
+      "id": "E30",
+      "nama": "Surat Pengakuan Edmund",
+      "jenis": "dokumen",
+      "lokasi": null,
+      "spot": "",
+      "gambar": "assets/evidence/e30_surat_pengakuan.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "Amplop bersegel \"Kepada Redaksi Ravenport Herald\" dalam tulisan Edmund."
+    },
+    {
+      "id": "E31",
+      "nama": "Salinan 14 Surat Kematian 1931",
+      "jenis": "dokumen",
+      "lokasi": "kamar_vivian",
+      "spot": "kotak_topi",
+      "gambar": "assets/evidence/e31_surat_kematian_1931.svg",
+      "hotspot": {
+        "x": 30,
+        "y": 70
+      },
+      "syarat": {
+        "deduksi": "D6"
+      },
+      "deskripsi": "Empat belas surat kematian bertanda tangan Dr. A. Lowell, semuanya: \"tewas seketika di dekat tungku\"."
+    },
+    {
+      "id": "E32",
+      "nama": "Buku Register Racun Apotek St. Brigid",
+      "jenis": "dokumen",
+      "lokasi": "apotek_st_brigid",
+      "spot": "buku_register",
+      "gambar": "assets/evidence/e32_register_racun.svg",
+      "hotspot": {
+        "x": 50,
+        "y": 50
+      },
+      "syarat": {},
+      "deskripsi": "\"2 Nov 1947. Tinktur digitalis. E. Marsh, perawat terdaftar RN-3317.\""
+    }
+  ],
+  "kartu": {
+    "K01": {
+      "nama": "Lowell: kapsul tidak mematikan",
+      "tokoh": "lowell",
+      "teks": "Lowell mengaku menukar kapsul sejak 5 November, tetapi bersikeras kapsulnya tidak bisa membunuh dalam semalam."
+    },
+    "K02": {
+      "nama": "Vivian: Eleanor yang meminta",
+      "tokoh": "vivian",
+      "teks": "Vivian mengantar brandy pukul 22:40 karena Eleanor memintanya di pantry: \"tanda damai dari istri\"."
+    },
+    "K03": {
+      "nama": "Graves: Eleanor di pantry",
+      "tokoh": "graves",
+      "teks": "Dari pintu kamarnya pukul 22:35, Graves melihat Eleanor sendirian di pantry, membungkuk di atas nampan brandy."
+    },
+    "K04": {
+      "nama": "Charles: saksi pukul 22:00",
+      "tokoh": "charles",
+      "teks": "Pukul 22:00 Charles dipanggil ke ruang kerja, dimaafkan, menerima cek, dan menandatangani sebuah dokumen sebagai saksi bersama Graves."
+    },
+    "K05": {
+      "nama": "Charles: tas perawat 22:08",
+      "tokoh": "charles",
+      "teks": "Pukul 22:08 Charles melihat Eleanor turun dari tangga servis membawa tas perawat kecil."
+    },
+    "K06": {
+      "nama": "Sammy: Charles bersamanya",
+      "tokoh": "sammy",
+      "teks": "Charles berada di ruang ganti Sammy Lee dari 22:30 sampai 23:15."
+    },
+    "K07": {
+      "nama": "Lowell: ide Eleanor",
+      "tokoh": "lowell",
+      "teks": "Eleanor memeras Lowell sejak 1945 dan mengusulkan skema kapsul pada 3 November."
+    },
+    "K08": {
+      "nama": "Pruitt: wasiat sah",
+      "tokoh": "pruitt",
+      "teks": "Wasiat tulisan tangan bertanggal dengan dua saksi sah; wasiat lama gugur sejak pukul 22:00."
+    }
+  },
+  "petunjuk": [
+    {
+      "id": "H01",
+      "tingkat": 1,
+      "syarat": {},
+      "teks": "Mulailah dari ruang kerja. Perhatikan meja Edmund dan kotak obatnya."
+    },
+    {
+      "id": "H02",
+      "tingkat": 1,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E03"
+          },
+          {
+            "bukan": {
+              "bukti": "E13"
+            }
+          }
+        ]
+      },
+      "teks": "Kapsul krem itu bukan obat biasa. Tanyakan Lowell soal penyesuaian obat, lalu periksa kliniknya."
+    },
+    {
+      "id": "H03",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E13"
+          },
+          {
+            "bukan": {
+              "flag": "izin_otopsi"
+            }
+          }
+        ]
+      },
+      "teks": "Inspektur Doyle bisa memberi izin otopsi bila Anda menunjukkan kapsul dan resepnya, atau surat kematian yang tergesa-gesa."
+    },
+    {
+      "id": "H04",
+      "tingkat": 1,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E16"
+          },
+          {
+            "bukan": {
+              "tekaTeki": "P2"
+            }
+          }
+        ]
+      },
+      "teks": "Bandingkan jumlah kapsul yang diminum dengan kadar di laporan otopsi. Buka tab Analisis."
+    },
+    {
+      "id": "H05",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "deduksi": "D3"
+          },
+          {
+            "bukan": {
+              "deduksi": "D5"
+            }
+          }
+        ]
+      },
+      "teks": "Racun kedua ada di gelas. Siapa yang mengatur pengantaran brandy? Hubungkan gelas dengan catatan di pantry."
+    },
+    {
+      "id": "H06",
+      "tingkat": 1,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E07"
+          },
+          {
+            "bukan": {
+              "flag": "kunci_plakat"
+            }
+          }
+        ]
+      },
+      "teks": "Edmund menyebut Distrik Selatan. Apa yang ia baca di sana setiap tanggal 3?"
+    },
+    {
+      "id": "H07",
+      "tingkat": 3,
+      "syarat": {
+        "semua": [
+          {
+            "flag": "kunci_plakat"
+          },
+          {
+            "bukan": {
+              "tekaTeki": "P3"
+            }
+          }
+        ]
+      },
+      "teks": "Kunci sandi buku harian adalah dua kata di plakat, ditulis tanpa spasi: EMPATBELAS."
+    },
+    {
+      "id": "H08",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E22"
+          },
+          {
+            "bukan": {
+              "deduksi": "D6"
+            }
+          }
+        ]
+      },
+      "teks": "Daftar korban memuat nama yang pernah Anda lihat. Minta Vivian menunjukkan liontinnya."
+    },
+    {
+      "id": "H09",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E22"
+          },
+          {
+            "bukan": {
+              "deduksi": "D7"
+            }
+          }
+        ]
+      },
+      "teks": "Kembali ke reruntuhan pengecoran. Foto regu di loker menyimpan wajah yang lebih muda."
+    },
+    {
+      "id": "H10",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "tekaTeki": "P3"
+          },
+          {
+            "bukti": "E10"
+          },
+          {
+            "bukan": {
+              "deduksi": "D9"
+            }
+          }
+        ]
+      },
+      "teks": "Buku cek Edmund dan halaman kedua buku hariannya menunjuk ke pukul 22:00. Charles tahu sesuatu; dekati dia dengan simpati."
+    },
+    {
+      "id": "H11",
+      "tingkat": 1,
+      "syarat": {
+        "semua": [
+          {
+            "deduksi": "D9"
+          },
+          {
+            "bukan": {
+              "bukti": "E19"
+            }
+          }
+        ]
+      },
+      "teks": "Pembunuh mengira wasiat belum diteken. Siapa yang menanyakannya malam itu? Graves menyimpan log telepon rumah."
+    },
+    {
+      "id": "H12",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "bukti": "E20"
+          },
+          {
+            "bukan": {
+              "tekaTeki": "P4"
+            }
+          }
+        ]
+      },
+      "teks": "Panggilan 21:55 dari ruang kerja ke saluran 5 adalah Edmund memanggil Charles. Sisa satu kamar tamu untuk saluran 4."
+    },
+    {
+      "id": "H13",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "deduksi": "D10"
+          },
+          {
+            "bukan": {
+              "deduksi": "D11"
+            }
+          }
+        ]
+      },
+      "teks": "Siapa \"E.M.\" di buku besar klinik? Bandingkan dengan nama lengkap di wasiat lama."
+    },
+    {
+      "id": "H14",
+      "tingkat": 2,
+      "syarat": {
+        "semua": [
+          {
+            "deduksi": "D10"
+          },
+          {
+            "bukti": "E17"
+          },
+          {
+            "bukan": {
+              "bukti": "E32"
+            }
+          }
+        ]
+      },
+      "teks": "Label botol tetes menyebut sebuah apotek. Daftar pembeli racun wajib dicatat di sana."
+    },
+    {
+      "id": "H15",
+      "tingkat": 3,
+      "syarat": {
+        "semua": [
+          {
+            "deduksi": "D10"
+          },
+          {
+            "bukan": {
+              "deduksi": "D15"
+            }
+          },
+          {
+            "kartu": "K03"
+          }
+        ]
+      },
+      "teks": "Susun Papan Garis Waktu di tab Analisis: pukul 22:30, siapa yang tidak berada di aula?"
+    }
+  ]
+}

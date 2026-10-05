@@ -1,0 +1,1185 @@
+{
+ "nodes": [
+  {
+   "id": "EL01",
+   "tokoh": "eleanor",
+   "sapaan": true,
+   "teks": "Eleanor Marsh menunggu di kamar tamu timur, mantel wolnya belum dilepas. \"Kau datang. Bagus. Waktu kita sedikit, Nak.\""
+  },
+  {
+   "id": "EL02",
+   "tokoh": "eleanor",
+   "nada": "netral",
+   "label": "Ceritakan apa yang Anda lihat malam itu.",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {},
+   "teks": "Aku di aula sepanjang malam bersama para tamu. Pukul 22:40, kalau tidak salah, Vivian membawa brandy ke atas. Tak sampai sejam kemudian Edmund mati. Kau bisa menghitung sendiri."
+  },
+  {
+   "id": "EL03",
+   "tokoh": "eleanor",
+   "nada": "simpati",
+   "label": "Anda pasti sangat kehilangan.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Dia kakakku, Nak. Ketika ayah kami bangkrut, Edmund yang memberi makan kami semua. Aku tak akan membiarkan pembunuhnya tersenyum di pemakaman."
+  },
+  {
+   "id": "EL04",
+   "tokoh": "eleanor",
+   "nada": "netral",
+   "label": "Siapa yang Anda curigai?",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {
+    "node": "EL03"
+   },
+   "teks": "Vivian. Dia menikahi Edmund demi uang, dan Edmund hendak mencoretnya. Ini salinan wasiat lama dari laci Edmund; baca sendiri siapa yang paling diuntungkan.",
+   "efek": {
+    "beriBukti": [
+     "E18"
+    ]
+   }
+  },
+  {
+   "id": "EL05",
+   "tokoh": "eleanor",
+   "nada": "netral",
+   "label": "Anda tahu soal Vivian dan Dr. Lowell?",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E15"
+   },
+   "teks": "Semua orang tahu kecuali Edmund. Arthur pria lemah; Vivian yang memegang talinya. Kalau kau mencari siapa yang menyiapkan racun dan siapa yang menuangnya, kau sudah menemukan keduanya."
+  },
+  {
+   "id": "EL06",
+   "tokoh": "eleanor",
+   "nada": "netral",
+   "label": "Apa pekerjaan Anda sebelum menikah?",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {
+    "node": "EL03"
+   },
+   "teks": "Aku istri seorang pengusaha kapal, Nak, dan sekarang janda. Tidak ada yang menarik dari masa laluku.",
+   "varian": [
+    {
+     "syarat": {
+      "bukti": "E28"
+     },
+     "teks": "Kau sudah membongkar koperku, rupanya. Ya, aku pernah menjadi perawat. Itu sudah lama sekali."
+    }
+   ]
+  },
+  {
+   "id": "EL07",
+   "tokoh": "eleanor",
+   "nada": "simpati",
+   "label": "Vivian ternyata putri salah satu korban 1931.",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {
+    "deduksi": "D6"
+   },
+   "teks": "Kessler? Aku... tidak ingat nama itu. Itu sudah enam belas tahun. Tapi bukankah itu justru motif yang lebih kuat? Dendam, Nak. Dendam lebih tua dari uang."
+  },
+  {
+   "id": "EL08",
+   "tokoh": "eleanor",
+   "nada": "desak",
+   "label": "Pukul 21:50 ada telepon dari kamar Anda ke kantor Pruitt.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E19"
+   },
+   "teks": "Kau menyelidiki klienmu sendiri? Baik. Aku menelepon teman lama yang bekerja lembur. Itu bukan kejahatan."
+  },
+  {
+   "id": "EL09",
+   "tokoh": "eleanor",
+   "nada": "desak",
+   "label": "Apotek St. Brigid mencatat nama Anda di buku racun.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "deduksi": "D12"
+   },
+   "teks": "Aku perawat terdaftar. Aku membeli obat untuk banyak orang yang kurawat di rumah. Kau mau aku menyebutkan nama-nama mereka?"
+  },
+  {
+   "id": "EL10",
+   "tokoh": "eleanor",
+   "nada": "desak",
+   "label": "Dr. Lowell membayar Anda $400 setiap bulan.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "deduksi": "D11"
+   },
+   "teks": "Arthur berutang budi pada keluarga kami. Setelah Harold meninggal, ia membantu. Itu namanya kesetiaan, bukan pemerasan."
+  },
+  {
+   "id": "V01",
+   "tokoh": "vivian",
+   "sapaan": true,
+   "teks": "Vivian Hartwell duduk di depan meja rias, gaun hitamnya belum diganti. Jari-jarinya memutar liontin perak di lehernya."
+  },
+  {
+   "id": "V02",
+   "tokoh": "vivian",
+   "nada": "netral",
+   "label": "Ceritakan malam itu.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Pesta yang membosankan untuk lelaki yang membosankan. Aku mengantar brandy ke ruang kerja, Edmund menyuruhku pergi. Itu saja."
+  },
+  {
+   "id": "V03",
+   "tokoh": "vivian",
+   "nada": "simpati",
+   "label": "Pasti berat kehilangan suami dengan cara seperti ini.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Jangan pura-pura peduli, Detektif. Tapi... terima kasih. Tidak ada orang lain di rumah ini yang menanyakannya."
+  },
+  {
+   "id": "V04",
+   "tokoh": "vivian",
+   "nada": "netral",
+   "label": "Siapa yang Anda curigai?",
+   "menit": 2,
+   "syarat": {
+    "node": "V03"
+   },
+   "teks": "Semua orang di rumah ini punya alasan. Termasuk orang yang membayarmu. Tanyakan pada dirimu sendiri kenapa ia begitu yakin itu aku."
+  },
+  {
+   "id": "V05",
+   "tokoh": "vivian",
+   "nada": "desak",
+   "label": "Surat ini dari Dr. Lowell.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E15"
+   },
+   "teks": "Kau membaca surat orang? Arthur pria yang kesepian dan bodoh. Ia menulis banyak hal yang tidak berarti apa-apa."
+  },
+  {
+   "id": "V06",
+   "tokoh": "vivian",
+   "nada": "simpati",
+   "label": "Anda memakai liontin itu sepanjang malam.",
+   "menit": 2,
+   "syarat": {
+    "node": "V03"
+   },
+   "teks": "Satu-satunya barang yang kubawa dari masa kecilku. Selebihnya milik Hartwell, termasuk namaku."
+  },
+  {
+   "id": "V07",
+   "tokoh": "vivian",
+   "nada": "netral",
+   "label": "Boleh saya melihat liontin itu?",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "meter": [
+       "vivian",
+       "kepercayaan",
+       ">=",
+       1
+      ]
+     },
+     {
+      "bukan": {
+       "bukti": "E21"
+      }
+     }
+    ]
+   },
+   "teks": "Hati-hati dengannya. Itu lebih berharga dari semua perhiasan di kamar ini.",
+   "efek": {
+    "beriBukti": [
+     "E21"
+    ]
+   }
+  },
+  {
+   "id": "V08",
+   "tokoh": "vivian",
+   "nada": "desak",
+   "label": "Serahkan liontin itu.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "meter": [
+       "vivian",
+       "tekanan",
+       ">=",
+       2
+      ]
+     },
+     {
+      "bukan": {
+       "bukti": "E21"
+      }
+     }
+    ]
+   },
+   "teks": "Ambil. Kau tidak akan mengerti artinya.",
+   "efek": {
+    "beriBukti": [
+     "E21"
+    ]
+   }
+  },
+  {
+   "id": "V09",
+   "tokoh": "vivian",
+   "nada": "simpati",
+   "label": "Siapa yang meminta Anda mengantar brandy?",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "node": "V02"
+     },
+     {
+      "meter": [
+       "vivian",
+       "kepercayaan",
+       ">=",
+       2
+      ]
+     }
+    ]
+   },
+   "teks": "Eleanor. Ia menemuiku di pantry pukul 22:40. Katanya Edmund akan luluh kalau aku yang membawanya. Tanda damai dari istri. Aku bodoh mempercayainya.",
+   "efek": {
+    "beriKartu": [
+     "K02"
+    ]
+   }
+  },
+  {
+   "id": "V10",
+   "tokoh": "vivian",
+   "nada": "simpati",
+   "pemulihan": true,
+   "label": "Racun yang membunuhnya tidak datang dari tangan Anda. Saya bisa membuktikannya.",
+   "menit": 3,
+   "syarat": {
+    "deduksi": "D3"
+   },
+   "teks": "...Kau percaya padaku? Baik. Duduklah, Detektif.",
+   "efek": {
+    "meter": {
+     "vivian": {
+      "kepercayaan": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "V11",
+   "tokoh": "vivian",
+   "nada": "netral",
+   "label": "Ceritakan tentang Josef Kessler.",
+   "menit": 2,
+   "syarat": {
+    "deduksi": "D6"
+   },
+   "teks": "Ia pulang setiap malam dengan tangan hitam dan selalu membawakanku permen jahe. Malam 3 Maret ia tidak pulang. Perusahaan mengirim lima puluh dolar dan surat yang bilang ia tewas seketika. Aku dua belas tahun dan aku sudah tahu itu bohong.",
+   "efek": {
+    "catatan": [
+     "Vivian (Vera Kessler) menikahi Edmund untuk membongkar kebenaran 1931."
+    ]
+   }
+  },
+  {
+   "id": "V12",
+   "tokoh": "vivian",
+   "nada": "simpati",
+   "label": "Saya tahu racun itu bukan dari tangan Anda.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "deduksi": "D5"
+     },
+     {
+      "bukan": {
+       "kartu": "K02"
+      }
+     }
+    ]
+   },
+   "teks": "Akhirnya ada yang melihatnya. Tanyakan apa yang ingin kau tanyakan, Detektif. Aku akan menjawab dengan jujur, kali ini."
+  },
+  {
+   "id": "L01",
+   "tokoh": "lowell",
+   "sapaan": true,
+   "teks": "Dr. Arthur Lowell membersihkan kacamatanya di ruang tamu. \"Saya sibuk, Tuan. Masih ada keluarga yang harus ditenangkan.\""
+  },
+  {
+   "id": "L02",
+   "tokoh": "lowell",
+   "nada": "netral",
+   "label": "Anda yang menyatakan kematiannya?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Gagal jantung kongestif. Edmund sudah lama sakit; jantungnya lemah sejak tahun lalu. Saya tidak heran sedikit pun."
+  },
+  {
+   "id": "L03",
+   "tokoh": "lowell",
+   "nada": "netral",
+   "label": "Kenapa tidak ada otopsi?",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {},
+   "teks": "Keluarga tidak memintanya, dan Inspektur Doyle sependapat dengan diagnosis saya. Membelah tubuh orang terhormat tanpa alasan adalah kebiadaban."
+  },
+  {
+   "id": "L04",
+   "tokoh": "lowell",
+   "nada": "simpati",
+   "label": "Anda sudah lama merawat Edmund.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Enam belas tahun. Saya mengenal jantungnya lebih baik dari dirinya sendiri. Simpati Anda tidak perlu, Tuan; saya dokter, bukan janda."
+  },
+  {
+   "id": "L05",
+   "tokoh": "lowell",
+   "nada": "netral",
+   "label": "Obat apa yang disesuaikan bulan ini?",
+   "menit": 2,
+   "syarat": {
+    "node": "L04"
+   },
+   "teks": "Takaran obat jantungnya. Rinciannya di klinik saya, kalau Anda gemar membaca resep. Saya ragu Anda memahaminya."
+  },
+  {
+   "id": "L06",
+   "tokoh": "lowell",
+   "nada": "desak",
+   "label": "Resep ini untuk kapsul digitalis.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E13"
+   },
+   "teks": "Digitalis adalah obat jantung, Tuan. Setiap dokter di kota ini meresepkannya. Itu bukan rahasia dan bukan racun."
+  },
+  {
+   "id": "L07",
+   "tokoh": "lowell",
+   "nada": "desak",
+   "label": "Anda menulis surat ini untuk Nyonya Hartwell.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E15"
+   },
+   "teks": "Surat pribadi tidak membuktikan apa pun selain bahwa saya manusia. Kembalikan itu."
+  },
+  {
+   "id": "L08",
+   "tokoh": "lowell",
+   "nada": "desak",
+   "label": "Otopsi menemukan digitalis di tubuh Edmund.",
+   "menit": 3,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E16"
+   },
+   "teks": "Kadar bisa keliru. Laboratorium kota bekerja dengan alat sebelum perang. Ashby itu dokter hewan yang naik pangkat."
+  },
+  {
+   "id": "L09",
+   "tokoh": "lowell",
+   "nada": "desak",
+   "label": "Akui saja, Dokter. Kapsul krem itu buatan Anda.",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "bukti": "E16"
+     },
+     {
+      "kesaksian": "KS-LOW-1"
+     },
+     {
+      "salahSatu": [
+       {
+        "meter": [
+         "lowell",
+         "tekanan",
+         ">=",
+         3
+        ]
+       },
+       {
+        "node": "L08"
+       }
+      ]
+     }
+    ]
+   },
+   "teks": "Anda tidak mengerti apa yang dipertaruhkan...",
+   "retak": {
+    "syarat": {},
+    "teks": "Baik! Saya menukar sebagian kapsulnya sejak 5 November. Takaran kecil, Tuan, agar jantungnya menyerah perlahan seperti penyakit biasa. Tapi bukan itu yang membunuhnya malam ini. Kapsul saya tidak bisa bekerja secepat itu! Seseorang mendahului saya.",
+    "efek": {
+     "beriKartu": [
+      "K01"
+     ],
+     "catatan": [
+      "Lowell mengaku menukar kapsul, tetapi bersikeras kapsulnya tidak membunuh Edmund malam itu."
+     ]
+    }
+   }
+  },
+  {
+   "id": "L10",
+   "tokoh": "lowell",
+   "nada": "desak",
+   "label": "Siapa \"E.M.\" di buku besar yayasan?",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "deduksi": "D11"
+     },
+     {
+      "node": "L09"
+     }
+    ]
+   },
+   "teks": "Anda sudah tahu jawabannya, bukan?",
+   "retak": {
+    "syarat": {},
+    "teks": "Eleanor. Sejak Harold Marsh mati, ia memeras saya dengan surat-surat kematian 1931. Dan kapsul itu... idenya. Tanggal 3 November ia datang ke klinik dengan catatan takaran yang rapi seperti laporan perawat. Saya hanya menurut. Saya selalu menurut.",
+    "efek": {
+     "beriKartu": [
+      "K07"
+     ]
+    }
+   }
+  },
+  {
+   "id": "L11",
+   "tokoh": "lowell",
+   "nada": "netral",
+   "label": "Anda tahu siapa Vivian sebenarnya?",
+   "menit": 2,
+   "syarat": {
+    "deduksi": "D6"
+   },
+   "teks": "Vera? ...Jadi ia tidak pernah mencintai saya. Ia hanya menginginkan salinan surat-surat itu. Lucu. Saya menyimpannya untuk melindungi diri, dan ia mengambilnya untuk menghukum saya."
+  },
+  {
+   "id": "C01",
+   "tokoh": "charles",
+   "sapaan": true,
+   "teks": "Charles Hartwell bersandar di jendela, dasinya longgar, korek api berputar di jarinya. \"Detektif! Akhirnya ada orang yang lebih menarik dari pengacara.\""
+  },
+  {
+   "id": "C02",
+   "tokoh": "charles",
+   "nada": "netral",
+   "label": "Di mana Anda malam itu?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Blue Note Club, tempat orang baik-baik tidak pergi. Aku keluar lewat taman samping; jalan pintas ke garasi."
+  },
+  {
+   "id": "C03",
+   "tokoh": "charles",
+   "nada": "simpati",
+   "label": "Bagaimana hubungan Anda dengan paman Anda?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Paman Tua? Keras seperti baja yang ia jual. Tapi ia satu-satunya keluarga yang kumiliki sejak ayahku gugur. Kamarku di sayap barat kalau kau mau menggeledah; aku tidak menyembunyikan mayat di sana."
+  },
+  {
+   "id": "C04",
+   "tokoh": "charles",
+   "nada": "netral",
+   "label": "Kalian bertengkar belakangan ini?",
+   "menit": 2,
+   "syarat": {
+    "node": "C03"
+   },
+   "teks": "Soal uang. Selalu soal uang. Ia bilang aku menghabiskan nama ayahku di meja judi. Ia tidak salah."
+  },
+  {
+   "id": "C05",
+   "tokoh": "charles",
+   "nada": "desak",
+   "label": "Korek api ini dari klub Anda.",
+   "menit": 3,
+   "syarat": {
+    "bukti": "E11"
+   },
+   "teks": "Tentu saja. Tanya saja pelayan di sana; mereka mengenalku lebih baik dari ibuku sendiri."
+  },
+  {
+   "id": "C06",
+   "tokoh": "charles",
+   "nada": "netral",
+   "label": "Jam berapa Anda pergi dan kembali?",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {
+    "node": "C05"
+   },
+   "teks": "Berangkat sekitar pukul sepuluh lewat, pulang setelah setengah dua belas. Aku di bar sepanjang waktu, menghabiskan gelas demi gelas."
+  },
+  {
+   "id": "C07",
+   "tokoh": "charles",
+   "nada": "desak",
+   "label": "Tanda tangan di surat utang ini palsu.",
+   "menit": 3,
+   "syarat": {
+    "bukti": "E10"
+   },
+   "teks": "Aku memalsukannya. Puas? Tapi membunuh Paman? Untuk apa? Dialah satu-satunya orang di dunia yang mau membayar utangku."
+  },
+  {
+   "id": "C08",
+   "tokoh": "charles",
+   "nada": "simpati",
+   "label": "Cek ini ditulis paman Anda malam itu, untuk Anda.",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "bukti": "E26"
+     },
+     {
+      "meter": [
+       "charles",
+       "kepercayaan",
+       ">=",
+       1
+      ]
+     }
+    ]
+   },
+   "teks": "Ia memanggilku pukul 21:55. Ia sudah tahu soal pemalsuan itu, dan ia... memaafkanku. Lalu ia memintaku menandatangani sesuatu sebagai saksi, bersama Graves. Ia menyuruh kami diam sampai Pruitt datang. Aku menepati janji itu sampai sekarang.",
+   "efek": {
+    "beriKartu": [
+     "K04"
+    ]
+   }
+  },
+  {
+   "id": "C09",
+   "tokoh": "charles",
+   "nada": "netral",
+   "label": "Saya akan mencatat alibi Anda secara resmi, lengkap dengan nama saksinya.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "flag": "pilihan_m1"
+     },
+     {
+      "bukan": {
+       "flag": "m1"
+      }
+     }
+    ]
+   },
+   "teks": "Lakukan apa yang harus kau lakukan. Namanya Sammy Lee. Semoga laporanmu sepadan dengan hidupnya.",
+   "efek": {
+    "setFlag": {
+     "m1": "a"
+    },
+    "beriKartu": [
+     "K06"
+    ],
+    "meter": {
+     "charles": {
+      "kepercayaan": -1
+     }
+    },
+    "catatan": [
+     "Alibi Charles dicatat resmi bersama nama Sammy Lee."
+    ]
+   }
+  },
+  {
+   "id": "C10",
+   "tokoh": "charles",
+   "nada": "simpati",
+   "label": "Namanya tidak akan masuk laporan. Saya janji.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "flag": "pilihan_m1"
+     },
+     {
+      "bukan": {
+       "flag": "m1"
+      }
+     },
+     {
+      "meter": [
+       "charles",
+       "kepercayaan",
+       ">=",
+       2
+      ]
+     }
+    ]
+   },
+   "teks": "...Temui dia di klub. Bilang aku yang meminta. Dan Detektif, terima kasih.",
+   "efek": {
+    "setFlag": {
+     "m1": "b"
+    },
+    "catatan": [
+     "Anda berjanji merahasiakan saksi alibi Charles. Temui Sammy Lee di Blue Note Club."
+    ]
+   }
+  },
+  {
+   "id": "C11",
+   "tokoh": "charles",
+   "nada": "netral",
+   "label": "Ada hal lain yang Anda lihat sebelum berangkat?",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "flag": "m1"
+     },
+     {
+      "meter": [
+       "charles",
+       "kepercayaan",
+       ">=",
+       1
+      ]
+     }
+    ]
+   },
+   "teks": "Bibi Eleanor. Pukul 22:08 ia turun dari tangga servis membawa tas perawat kecil yang sudah lama tidak kulihat. Kupikir ia membawakan obat untuk Paman.",
+   "efek": {
+    "beriKartu": [
+     "K05"
+    ]
+   }
+  },
+  {
+   "id": "G01",
+   "tokoh": "graves",
+   "sapaan": true,
+   "teks": "Mr. Graves berdiri tegak di lobi, sarung tangan putihnya tanpa noda. \"Selamat malam, Tuan. Ada yang bisa saya bantu?\""
+  },
+  {
+   "id": "G02",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Siapa yang biasa membawa brandy untuk Edmund?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Saya, Tuan. Setiap malam pukul 22:45 tepat. Tuan Edmund tidak suka menunggu."
+  },
+  {
+   "id": "G03",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Apa yang Anda lihat malam itu?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Tamu, pelayan, piring kotor. Pukul 23:40 saya membuka ruang kerja dengan kunci cadangan karena Tuan Edmund tidak menjawab ketukan."
+  },
+  {
+   "id": "G04",
+   "tokoh": "graves",
+   "nada": "simpati",
+   "label": "Anda sudah lama mengabdi di rumah ini.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Lima belas tahun, Tuan. Rumah ini satu-satunya rumah yang saya punya."
+  },
+  {
+   "id": "G05",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Telegram ini menyebut penandatanganan wasiat baru.",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "bukti": "E08"
+     },
+     {
+      "node": "G04"
+     }
+    ]
+   },
+   "teks": "Tuan Edmund menitipkan drafnya pada saya. Ada di lemari kamar saya, bila Tuan ingin melihat."
+  },
+  {
+   "id": "G06",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Draf ini menunjuk Anda sebagai pengelola yayasan.",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {
+    "bukti": "E09"
+   },
+   "teks": "Tuan Edmund mempercayai saya. Saya tidak tahu mengapa beliau memilih saya."
+  },
+  {
+   "id": "G07",
+   "tokoh": "graves",
+   "nada": "desak",
+   "label": "Anda mengubah jadwal brandy pukul 22:40.",
+   "menit": 3,
+   "syarat": {
+    "bukti": "E06"
+   },
+   "teks": "Saya mencatat permintaan, Tuan. Itu tugas saya. Siapa yang meminta bukan urusan pelayan untuk diceritakan."
+  },
+  {
+   "id": "G08",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Siapa yang memegang kunci cadangan ruang kerja?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Hanya saya dan Tuan Edmund. Pintunya terkunci dari dalam ketika saya datang. Kuncinya ada di saku rompi beliau.",
+   "efek": {
+    "catatan": [
+     "Pintu ruang kerja terkunci dari dalam saat ditemukan; hanya Graves dan Edmund yang memegang kunci."
+    ]
+   }
+  },
+  {
+   "id": "G09",
+   "tokoh": "graves",
+   "nada": "simpati",
+   "pemulihan": true,
+   "label": "Tuan Edmund mempercayai Anda. Saya juga ingin mempercayai Anda.",
+   "menit": 4,
+   "syarat": {},
+   "teks": "...Tuan lebih sabar dari polisi. Baiklah. Tanyakan apa yang perlu Tuan tanyakan.",
+   "efek": {
+    "meter": {
+     "graves": {
+      "kepercayaan": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "G10",
+   "tokoh": "graves",
+   "nada": "simpati",
+   "label": "Apa yang Anda lihat dari pintu kamar Anda pukul 22:35?",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "deduksi": "D7"
+     },
+     {
+      "bukan": {
+       "kartu": "K03"
+      }
+     },
+     {
+      "salahSatu": [
+       {
+        "meter": [
+         "graves",
+         "kepercayaan",
+         ">=",
+         2
+        ]
+       },
+       {
+        "flagSama": [
+         "m2",
+         "a"
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "teks": "Dari pintu kamar saya, lorong servis lurus sampai pantry. Nona Eleanor sendirian di sana, membungkuk di atas nampan brandy. Saya tidak berpikir apa-apa saat itu. Lalu Tuan Edmund mati, dan saya memilih diam. Orang bernama Gravesend tidak akan dipercaya polisi.",
+   "efek": {
+    "beriKartu": [
+     "K03"
+    ]
+   }
+  },
+  {
+   "id": "G11",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Siapa saja yang menelepon dari rumah ini malam itu?",
+   "menit": 2,
+   "syarat": {
+    "deduksi": "D9"
+   },
+   "teks": "Semua sambungan tercatat di papan sentral lobi, Tuan. Saya menyimpan lembar lognya di laci papan itu."
+  },
+  {
+   "id": "G12",
+   "tokoh": "graves",
+   "nada": "simpati",
+   "label": "Serahkan wasiat itu sendiri kepada Pruitt. Saya tidak akan melaporkan Anda.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "deduksi": "D9"
+     },
+     {
+      "bukti": "E24"
+     },
+     {
+      "bukan": {
+       "flag": "m2"
+      }
+     }
+    ]
+   },
+   "teks": "Tuan... Terima kasih. Ini wasiatnya, dan surat Tuan Edmund untuk Herald. Satu hal lagi yang harus Tuan tahu: pukul 22:35 saya melihat Nona Eleanor sendirian di pantry, di atas nampan brandy.",
+   "efek": {
+    "setFlag": {
+     "m2": "b"
+    },
+    "meter": {
+     "graves": {
+      "kepercayaan": 2
+     }
+    },
+    "beriBukti": [
+     "E25",
+     "E30"
+    ],
+    "beriKartu": [
+     "K03"
+    ]
+   }
+  },
+  {
+   "id": "G13",
+   "tokoh": "graves",
+   "nada": "desak",
+   "label": "Anda menyembunyikan bukti. Saya akan melaporkannya ke Doyle.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "deduksi": "D9"
+     },
+     {
+      "bukti": "E24"
+     },
+     {
+      "bukan": {
+       "flag": "m2"
+      }
+     }
+    ]
+   },
+   "teks": "Lakukanlah, Tuan. Saya sudah menunggu borgol itu lima belas tahun. Wasiat dan surat itu ada di map. Ambillah.",
+   "efek": {
+    "setFlag": {
+     "m2": "a"
+    },
+    "meter": {
+     "doyle": {
+      "kepercayaan": 1
+     }
+    },
+    "beriBukti": [
+     "E25",
+     "E30"
+    ]
+   }
+  },
+  {
+   "id": "G14",
+   "tokoh": "graves",
+   "nada": "netral",
+   "label": "Ceritakan tentang Walter.",
+   "menit": 2,
+   "syarat": {
+    "deduksi": "D7"
+   },
+   "teks": "Kakak saya mandor yang jujur. Ia memprotes rantai di pintu samping tiga hari sebelum kebakaran. Di pengadilan, protes itu hilang dari semua berkas. Ia meninggal di penjara Ravenport tahun 1934, batuk darah, menunggu banding yang tak pernah datang."
+  },
+  {
+   "id": "DY01",
+   "tokoh": "doyle",
+   "sapaan": true,
+   "teks": "Inspektur Doyle tidak mengangkat kepala dari mejanya. Asap rokok menggantung di bawah lampu. \"Kasus Hartwell sudah ditutup, Detektif.\""
+  },
+  {
+   "id": "DY02",
+   "tokoh": "doyle",
+   "nada": "netral",
+   "label": "Kenapa kasus ditutup secepat itu?",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Dokter keluarga menulis gagal jantung. Balai Kota tidak suka keluarga Hartwell diganggu tengah malam. Aku punya dua puluh berkas lain yang lebih berdarah."
+  },
+  {
+   "id": "DY03",
+   "tokoh": "doyle",
+   "nada": "netral",
+   "label": "Kapsul ini tidak cocok dengan obat jantung biasa. Ini resepnya.",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "bukti": "E03"
+     },
+     {
+      "bukti": "E13"
+     },
+     {
+      "bukan": {
+       "flag": "izin_otopsi"
+      }
+     }
+    ]
+   },
+   "teks": "...Kau keras kepala. Baik. Ambil izin otopsi ini. Dr. Ashby di kamar mayat berutang padaku. Kalau kau salah, aku tidak pernah melihatmu.",
+   "efek": {
+    "setFlag": {
+     "izin_otopsi": true
+    },
+    "meter": {
+     "doyle": {
+      "kepercayaan": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "DY04",
+   "tokoh": "doyle",
+   "nada": "netral",
+   "label": "Surat kematian ini ditulis lima belas menit setelah jenazah ditemukan.",
+   "menit": 3,
+   "syarat": {
+    "semua": [
+     {
+      "bukti": "E02"
+     },
+     {
+      "bukan": {
+       "flag": "izin_otopsi"
+      }
+     }
+    ]
+   },
+   "teks": "Lima belas menit... Lowell bahkan tidak membuka kemeja Edmund. Ini izin otopsinya. Pergi ke Ashby sebelum aku berubah pikiran.",
+   "efek": {
+    "setFlag": {
+     "izin_otopsi": true
+    }
+   }
+  },
+  {
+   "id": "DY05",
+   "tokoh": "doyle",
+   "nada": "netral",
+   "pemulihan": true,
+   "label": "Lihat surat kematian ini sekali lagi, Inspektur.",
+   "menit": 3,
+   "syarat": {
+    "bukti": "E02"
+   },
+   "teks": "...Baiklah. Aku mendengarkan. Lima menit.",
+   "efek": {
+    "meter": {
+     "doyle": {
+      "kepercayaan": 1
+     }
+    }
+   }
+  },
+  {
+   "id": "DY06",
+   "tokoh": "doyle",
+   "nada": "desak",
+   "label": "Anda menutup kasus karena tekanan Balai Kota.",
+   "menit": 2,
+   "syarat": {
+    "node": "DY02"
+   },
+   "teks": "Hati-hati dengan mulutmu. Aku sudah memecat polisi yang lebih baik darimu karena kalimat yang lebih sopan."
+  },
+  {
+   "id": "DY07",
+   "tokoh": "doyle",
+   "nada": "netral",
+   "label": "Anda bertugas di Distrik Selatan pada Maret 1931.",
+   "menit": 2,
+   "syarat": {
+    "bukti": "E22"
+   },
+   "teks": "Aku patroli muda waktu itu. Aku melihat rantai di pintu samping, Detektif. Komandanku bilang aku tidak melihat apa-apa. Enam belas tahun aku tidak melihat apa-apa. Apa yang kau butuhkan dariku?",
+   "efek": {
+    "meter": {
+     "doyle": {
+      "kepercayaan": 2
+     }
+    },
+    "catatan": [
+     "Doyle melihat rantai di pintu samping pada 1931 dan diperintah untuk diam."
+    ]
+   }
+  },
+  {
+   "id": "PR01",
+   "tokoh": "pruitt",
+   "sapaan": true,
+   "teks": "Harold Pruitt tiba di lobi dengan mantel basah dan map kulit. \"Saya datang lebih awal. Telegram polisi membuat tidur menjadi mustahil.\""
+  },
+  {
+   "id": "PR02",
+   "tokoh": "pruitt",
+   "nada": "netral",
+   "label": "Apa isi wasiat lama Edmund?",
+   "menit": 2,
+   "syarat": {
+    "bukan": {
+     "bukti": "E18"
+    }
+   },
+   "teks": "Wasiat 1940: semua untuk istrinya. Bila Ny. Hartwell tidak berhak mewarisi, sisanya untuk saudarinya, Ny. Eleanor Marsh. Ini salinannya.",
+   "efek": {
+    "beriBukti": [
+     "E18"
+    ]
+   }
+  },
+  {
+   "id": "PR03",
+   "tokoh": "pruitt",
+   "nada": "netral",
+   "label": "Apakah wasiat tulisan tangan ini sah?",
+   "menit": 2,
+   "syarat": {
+    "bukti": "E25"
+   },
+   "teks": "Tulisan tangan, bertanggal, dua saksi dewasa yang bukan penerima warisan. Sah, Tuan. Wasiat 1940 gugur sejak pukul sepuluh malam itu. Siapa pun yang membunuh Edmund setelah pukul sepuluh tidak mendapat apa-apa.",
+   "efek": {
+    "beriKartu": [
+     "K08"
+    ]
+   }
+  },
+  {
+   "id": "PR04",
+   "tokoh": "pruitt",
+   "nada": "desak",
+   "label": "Firma Anda menyusun perjanjian bungkam untuk keluarga korban 1931.",
+   "menit": 2,
+   "syarat": {
+    "bukti": "E22"
+   },
+   "teks": "Itu urusan klien firma kami, bukan urusan polisi swasta. Saya akan berpura-pura tidak mendengar pertanyaan itu."
+  },
+  {
+   "id": "S01",
+   "tokoh": "sammy",
+   "sapaan": true,
+   "teks": "Sammy Lee memainkan akor pelan di piano yang sudah sumbang. Matanya mengikuti Anda sejak masuk."
+  },
+  {
+   "id": "S02",
+   "tokoh": "sammy",
+   "nada": "netral",
+   "label": "Anda mengenal Charles Hartwell?",
+   "menit": 2,
+   "bohong": true,
+   "syarat": {},
+   "teks": "Semua orang di sini mengenal Charles. Ia memberi tip besar dan menyanyi lebih buruk dari siapa pun."
+  },
+  {
+   "id": "S03",
+   "tokoh": "sammy",
+   "nada": "simpati",
+   "label": "Charles yang meminta saya datang. Nama Anda tidak akan dicatat.",
+   "menit": 2,
+   "syarat": {
+    "semua": [
+     {
+      "flagSama": [
+       "m1",
+       "b"
+      ]
+     },
+     {
+      "bukan": {
+       "kartu": "K06"
+      }
+     }
+    ]
+   },
+   "teks": "...Ia bersamaku di ruang ganti, dari 22:30 sampai 23:15, waktu jeda set. Itu yang kau perlukan, bukan? Jaga dia, Detektif. Kota ini tidak akan.",
+   "efek": {
+    "beriKartu": [
+     "K06"
+    ]
+   }
+  },
+  {
+   "id": "S04",
+   "tokoh": "sammy",
+   "nada": "desak",
+   "label": "Saya bisa memanggil polisi kemari.",
+   "menit": 2,
+   "syarat": {},
+   "teks": "Silakan. Aku sudah biasa dipandangi polisi."
+  },
+  {
+   "id": "S05",
+   "tokoh": "sammy",
+   "nada": "simpati",
+   "pemulihan": true,
+   "label": "Charles menitipkan salam untuk Anda.",
+   "menit": 5,
+   "syarat": {
+    "flagSama": [
+     "m1",
+     "b"
+    ]
+   },
+   "teks": "...Baik. Duduklah. Satu lagu saja.",
+   "efek": {
+    "meter": {
+     "sammy": {
+      "kepercayaan": 2
+     }
+    }
+   }
+  }
+ ]
+}

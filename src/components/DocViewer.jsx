@@ -1,15 +1,15 @@
 import { useEffect, useRef } from 'react';
-import { useGame } from '../store';
+import { useGame, P } from '../store';
 import { asset } from '../asset';
-import C from '../data/case.json';
-import DOCS from '../data/documents.json';
 import { IconArrowLeft, IconArrowRight, IconClose, IconPause } from './Icons';
 
 const FOCUSABLE = 'button:not([aria-disabled="true"]), [tabindex="0"]';
 
 export default function DocViewer() {
   const id = useGame((s) => s.doc);
-  const list = useGame((s) => s.evidence);
+  const bukti = useGame((s) => s.bukti);
+  const kartu = useGame((s) => s.kartu);
+  const list = id && P.kasus.kartu[id] ? kartu : bukti;
   const openDoc = useGame((s) => s.openDoc);
   const stageRef = useRef(null);
   const paperRef = useRef(null);
@@ -49,9 +49,12 @@ export default function DocViewer() {
   });
 
   if (!id) return null;
-  const d = DOCS[id], e = C.evidence.find((x) => x.id === id);
-  if (!d || !e) return null;
-  const loc = C.locations[e.location]?.name || e.location;
+  // Kartu keterangan saksi tidak punya dokumen; tampilkan sebagai catatan wawancara
+  const kt = P.kasus.kartu[id];
+  const d = kt ? { kind: 'paper', style: 'hand', title: kt.nama, body: [kt.teks], note: 'Keterangan ini bisa disodorkan dalam kesaksian atau dihubungkan di Papan.' } : P.dokumen[id];
+  const e = kt ? null : P.kasus.bukti.find((x) => x.id === id);
+  if (!d || (!kt && !e)) return null;
+  const loc = kt ? `Keterangan ${P.kasus.tokoh[kt.tokoh]?.nama}` : (e.lokasi ? P.kasus.lokasi[e.lokasi]?.nama : 'Diserahkan langsung');
   const hasPrev = idx > 0, hasNext = idx >= 0 && idx < list.length - 1;
 
   return (
@@ -60,8 +63,8 @@ export default function DocViewer() {
         <div className="doc-paused"><IconPause /> Waktu dijeda selama membaca</div>
         <div className={`docwrap docwrap--${d.kind}`} key={id}>
           <article className={`doc ${d.style}`} ref={paperRef} tabIndex={0}>
-            <small className="docid">Bukti {id} · {loc}</small>
-            {d.kind === 'obj' && <img className="docimg" src={asset(e.image)} alt="" />}
+            <small className="docid">{kt ? 'Kartu' : 'Bukti'} {id} · {loc}</small>
+            {d.kind === 'obj' && e && <img className="docimg" src={asset(e.gambar)} alt="" />}
             <h2 id="doc-title">{d.title}</h2>
             {d.meta && <table><tbody>{d.meta.map((r, i) => <tr key={i}>{r.map((c, j) => <td key={j}>{c}</td>)}</tr>)}</tbody></table>}
             {d.body.map((p, i) => <p key={i}>{p}</p>)}
@@ -72,7 +75,7 @@ export default function DocViewer() {
         </div>
         <div className="docbar">
           <button type="button" className="docbtn" aria-label="Bukti sebelumnya" aria-disabled={!hasPrev} onClick={() => go(-1)}><IconArrowLeft /></button>
-          <span className="docbar__count" aria-live="polite">{idx >= 0 ? `Bukti ${idx + 1} dari ${list.length}` : `Bukti ${id}`}</span>
+          <span className="docbar__count" aria-live="polite">{idx >= 0 ? `${kt ? 'Kartu' : 'Bukti'} ${idx + 1} dari ${list.length}` : id}</span>
           <button type="button" className="docbtn" aria-label="Bukti berikutnya" aria-disabled={!hasNext} onClick={() => go(1)}><IconArrowRight /></button>
           <button type="button" className="docbtn docbtn--close" onClick={close} aria-label="Tutup"><IconClose /><span>Tutup</span></button>
         </div>

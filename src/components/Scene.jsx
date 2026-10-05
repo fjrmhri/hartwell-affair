@@ -206,6 +206,50 @@ function Confront() {
   </>);
 }
 
+function Morgue() {                     // kamar mayat: meja baja, lampu gantung berayun, laci pendingin
+  return (<>
+    <rect width="800" height="450" fill="url(#sn)" />
+    {Array.from({ length: 6 }, (_, i) => <rect key={i} x={40 + i * 122} y="60" width="104" height="70" fill="#0c0c0c" stroke="#2c2c2c" strokeWidth="3" />)}
+    {Array.from({ length: 6 }, (_, i) => <rect key={`h${i}`} x={80 + i * 122} y="92" width="24" height="6" rx="2" fill="#3a3a3a" />)}
+    <polygon points="140,330 660,330 720,380 80,380" fill="#1b1b1b" stroke="#555" strokeWidth="2" />
+    <path d="M220 330 Q400 300 580 330" fill="#d8d8d8" opacity=".55" />
+    <rect x="120" y="380" width="14" height="70" fill="#141414" /><rect x="666" y="380" width="14" height="70" fill="#141414" />
+    <g className="sc-swing">
+      <polygon points="372,140 428,140 640,360 160,360" fill="url(#g-cone)" opacity=".75" />
+      <line x1="400" y1="0" x2="400" y2="104" stroke="#3a3a3a" strokeWidth="2.5" />
+      <polygon points="370,104 430,104 456,140 344,140" fill="#050505" stroke="#444" />
+      <ellipse cx="400" cy="140" rx="56" ry="5" fill="#fff" opacity=".9" />
+    </g>
+    <Paper x={560} y={300} w={70} h={52} rot={-7} lines={4} stamp />
+  </>);
+}
+function Foundry() {                    // kilas balik 1931: tungku menyala, pintu samping dirantai
+  return (<>
+    <rect width="800" height="450" fill="#140b04" />
+    <rect x="0" y="330" width="800" height="120" fill="#0a0603" />
+    <path d="M90 330 V150 Q90 110 140 110 H260 Q310 110 310 150 V330Z" fill="#1f1308" stroke="#6b4a22" strokeWidth="4" />
+    <ellipse className="sc-emberglow" cx="200" cy="260" rx="80" ry="60" fill="#e08a2a" opacity=".55" />
+    <path d="M150 330 Q170 250 200 230 Q230 250 250 330Z" fill="#f2b24a" opacity=".85" />
+    <rect x="520" y="140" width="150" height="190" fill="#1a1007" stroke="#8a6a3a" strokeWidth="5" />
+    <path d="M520 220 Q595 250 670 220 M520 236 Q595 266 670 236" stroke="#c9a46a" strokeWidth="5" fill="none" />
+    <rect x="584" y="226" width="22" height="26" rx="4" fill="none" stroke="#c9a46a" strokeWidth="5" />
+    {Array.from({ length: 6 }, (_, i) => <path key={i} d={`M${530 + i * 22} 330 L${536 + i * 22} 300 L${542 + i * 22} 330`} fill="#000" opacity=".7" />)}
+    <Smoke x={200} y={110} n={7} dur={10} /><Smoke x={420} y={200} n={5} dur={12} />
+    <rect width="800" height="450" fill="#b8863b" opacity=".12" />
+  </>);
+}
+function Room() {                       // kamar remang dengan jendela hujan dan lampu tidur
+  return (<>
+    <rect width="800" height="450" fill="url(#sn)" />
+    <rect x="520" y="60" width="200" height="230" fill="#0f1114" stroke="#2c2c2c" strokeWidth="6" />
+    <line x1="620" y1="60" x2="620" y2="290" stroke="#2c2c2c" strokeWidth="5" /><line x1="520" y1="175" x2="720" y2="175" stroke="#2c2c2c" strokeWidth="5" />
+    {Array.from({ length: 14 }, (_, i) => <line key={i} x1={530 + (i * 13) % 180} y1={70 + (i * 37) % 200} x2={526 + (i * 13) % 180} y2={88 + (i * 37) % 200} stroke="#9aa" strokeWidth="1.2" opacity=".5" />)}
+    <rect x="0" y="360" width="800" height="90" fill="#0a0a0a" />
+    <rect x="60" y="300" width="300" height="70" fill="#141414" stroke="#2a2a2a" strokeWidth="3" />
+    <Lamp bx={420} by={300} />
+  </>);
+}
+
 export default function Scene({ kind }) {
   return (
     <svg className="scene" viewBox="0 0 800 450" preserveAspectRatio="xMidYMid slice" key={kind}>
@@ -219,6 +263,7 @@ export default function Scene({ kind }) {
       {kind === 'city' && <City />}{kind === 'dawn' && <City dawn />}{kind === 'mansion' && <Mansion />}
       {kind === 'blinds' && <Blinds />}{kind === 'cuffs' && <Cuffs />}
       {kind === 'phone' && <Phone />}{kind === 'study' && <Study />}{kind === 'evidence' && <Evidence />}{kind === 'confront' && <Confront />}
+      {kind === 'morgue' && <Morgue />}{kind === 'foundry' && <Foundry />}{kind === 'room' && <Room />}
       {kind === 'black' && <rect width="800" height="450" fill="#000" />}
       {kind && kind !== 'black' && <rect className="sc-proj" width="800" height="450" fill="#fff" opacity="0" />}
     </svg>
