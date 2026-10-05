@@ -72,6 +72,9 @@
 
 * { box-sizing: border-box; }
 
+/* Ruang scrollbar selalu dicadangkan agar tab yang tidak bergulir (Peta, Analisis) tidak bergeser */
+html { scrollbar-gutter: stable; }
+
 body {
   margin: 0;
   background: var(--bg);
