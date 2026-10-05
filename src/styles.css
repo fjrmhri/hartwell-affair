@@ -1936,6 +1936,8 @@ label {
 .tab--on .tab-badge { background: var(--noir-bone); color: var(--noir-black); }
 
 .tabview { animation: tabview-in .22s ease-out; }
+/* Judul pertama tiap tab tanpa margin atas agar isi semua tab mulai di posisi yang sama */
+.tabview > * > :first-child { margin-top: 0; }
 @keyframes tabview-in { from { opacity: 0; } }
 
 /* Toast: fixed, tidak menggeser layout; di bawah efek (z-index 49+) */
