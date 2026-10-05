@@ -60,6 +60,9 @@ export const useGame = create(persist((set, get) => {
     start: (diff) => j(A.mulai)(diff),
     resume: () => set({ status: 'playing' }),
     openDoc: (id) => set({ doc: id }),
+    // Penanda "Baru" di menu Bukti hilang setelah pemain membuka berkas itu sendiri (bukan saat terbuka otomatis ketika ditemukan)
+    lihat: (id) => set((s) => (s.dilihat.includes(id) ? s : { dilihat: [...s.dilihat, id] })),
+    lihatSemua: () => set((s) => ({ dilihat: [...new Set([...s.dilihat, ...s.bukti, ...s.kartu])] })),
     moveCard: (id, x, y) => set((s) => ({ boardPos: { ...s.boardPos, [id]: { x, y } } })),
     tick: j(A.detak),
     kunjungi: j(A.kunjungi),
@@ -89,7 +92,9 @@ export const useGame = create(persist((set, get) => {
   // Save dari paket lain (atau versi lain) ditolak dan pemain kembali ke menu
   merge: (simpan, sekarang) => {
     if (!simpan || simpan.status !== 'paused' || simpan.versiPaket !== P.kasus.meta.versiPaket) return { ...sekarang, status: 'menu' };
-    return { ...sekarang, ...simpan };
+    // Save sebelum penanda "Baru" ada: anggap semua bukti/kartu lama sudah dilihat
+    const dilihat = simpan.dilihat || [...(simpan.bukti || []), ...(simpan.kartu || [])];
+    return { ...sekarang, ...simpan, dilihat };
   },
 }));
 

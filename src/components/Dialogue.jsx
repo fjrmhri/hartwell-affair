@@ -54,9 +54,9 @@ function Kesaksian({ who, s }) {
   const p = k?.pernyataan.find((x) => x.id === pId);
   return (
     <div className="ks">
-      <div className="ks-list" role="group" aria-label="Pilih kesaksian">
+      <div className="ev-filters" role="group" aria-label="Pilih kesaksian">
         {daftar.map((x) => (
-          <button key={x.id} type="button" className="ks-chip" aria-pressed={k?.id === x.id} onClick={() => setKs(x.id)}>
+          <button key={x.id} type="button" className="ev-chip ks-chip" aria-pressed={k?.id === x.id} onClick={() => setKs(x.id)}>
             {s.kesaksianSelesai.includes(x.id) && <IconCheck />} {x.judul}
           </button>
         ))}

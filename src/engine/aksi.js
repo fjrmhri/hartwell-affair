@@ -11,6 +11,7 @@ export const stateAwal = () => ({
   msg: '', msgJenis: 'info', salahHubung: 0, salahBantah: 0, salahTekaTeki: 0,
   kejadian: [], biayaEkstra: {}, antreanCutscene: [], cutsceneDilihat: [],
   doc: null, boardPos: {}, reason: '', hasil: null,
+  dilihat: [], // bukti/kartu yang sudah dibuka pemain dari menu (penanda "Baru"); bukan aturan main
 });
 
 // Salinan yang boleh dimutasi oleh efek. `_suara` dikumpulkan lalu dilepas sebelum state disimpan.

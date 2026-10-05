@@ -34,7 +34,8 @@ function Thumb({ id, collected, openDoc }) {
 
 export default function Notebook() {
   const s = useGame();
-  const { catatan, deduksi, bukti, diff, openDoc } = s;
+  const { catatan, deduksi, bukti, diff } = s;
+  const openDoc = (id) => { s.lihat(id); s.openDoc(id); };
   const [filter, setFilter] = useState('all');
   const need = K.config.kesulitan[diff].deduksiWajib;
   const all = P.deduksi.benar.length;

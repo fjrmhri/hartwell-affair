@@ -114,17 +114,17 @@ export default function Analisis() {
 
   return (
     <div className="an">
-      <h3>Analisis</h3>
-      <p className="muted">Teka-teki terbuka saat bukti yang dibutuhkan sudah terkumpul. Jawaban yang salah memakan waktu dan mengurangi skor.</p>
-      <div className="an-list" role="group" aria-label="Pilih teka-teki">
+      <h3>Analisis ({selesai.length}/{P.tekaTeki.length})</h3>
+      <p className="muted ev-lead">Teka-teki terbuka saat bukti yang dibutuhkan sudah terkumpul. Jawaban yang salah memakan waktu dan mengurangi skor.</p>
+      <div className="ev-filters" role="group" aria-label="Pilih teka-teki">
         {daftar.map((x) => (
-          <button key={x.id} type="button" className="an-chip" aria-pressed={t?.id === x.id} onClick={() => setBuka(x.id)}>
+          <button key={x.id} type="button" className="ev-chip an-chip" aria-pressed={t?.id === x.id} onClick={() => setBuka(x.id)}>
             {s.tekaTeki.includes(x.id) ? <IconCheck /> : <IconMagnify />} {x.nama}
           </button>
         ))}
-        {terkunci > 0 && <span className="an-chip an-chip--lock"><IconLock /> {terkunci} terkunci</span>}
+        {terkunci > 0 && <span className="ev-chip an-chip an-chip--lock"><IconLock /> {terkunci} terkunci</span>}
       </div>
-      {!t && <div className="an-empty"><IconAlert /><p>Belum ada teka-teki. Kumpulkan bukti medis dan dokumen pribadi Edmund terlebih dulu.</p></div>}
+      {!t && <div className="ev-empty"><IconAlert /><p>Belum ada teka-teki. Kumpulkan bukti medis dan dokumen pribadi Edmund terlebih dulu.</p></div>}
       {t && (
         <section className="an-panel" aria-labelledby={`tt-${t.id}`}>
           <h4 id={`tt-${t.id}`}>{t.nama} {s.tekaTeki.includes(t.id) && <span className="nb-tag">Terpecahkan</span>}</h4>

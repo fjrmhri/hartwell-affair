@@ -129,10 +129,7 @@ export default function MapView() {
           <div className="locgroup" key={a.key}>
             <div className="locgroup__title">{a.label}</div>
             <ul className="locgroup__list">
-              {a.ids.map((id) => {
-                if (!openIds.includes(id)) {
-                  return <li key={id}><span className="locplate locplate--locked"><IconLock /> Terkunci</span></li>;
-                }
+              {a.ids.filter((id) => openIds.includes(id)).map((id) => {
                 const fresh = !seen.has(id) && id !== loc;
                 const jalan = K.lokasi[id].area === 'kota' && s.lokasiSekarang !== id;
                 return (
@@ -146,6 +143,12 @@ export default function MapView() {
                   </li>
                 );
               })}
+              {/* Lokasi terkunci diringkas menjadi satu penanda per area agar papan lokasi tetap ringkas */}
+              {a.ids.some((id) => !openIds.includes(id)) && (
+                <li className="locgroup__locked">
+                  <span className="locplate locplate--locked"><IconLock /> {a.ids.filter((id) => !openIds.includes(id)).length} terkunci</span>
+                </li>
+              )}
             </ul>
           </div>
         ))}
