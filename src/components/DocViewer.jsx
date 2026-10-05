@@ -11,12 +11,13 @@ export default function DocViewer() {
   const kartu = useGame((s) => s.kartu);
   const list = id && P.kasus.kartu[id] ? kartu : bukti;
   const openDoc = useGame((s) => s.openDoc);
+  const lihat = useGame((s) => s.lihat);
   const stageRef = useRef(null);
   const paperRef = useRef(null);
   const open = !!id;
   const idx = list.indexOf(id);
   const close = () => useGame.setState({ doc: null });
-  const go = (d) => { const t = list[idx + d]; if (t) openDoc(t); };
+  const go = (d) => { const t = list[idx + d]; if (t) { lihat(t); openDoc(t); } };
 
   // Fokus masuk ke kertas saat dibuka; kembali ke pemicu saat ditutup
   useEffect(() => {

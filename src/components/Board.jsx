@@ -53,7 +53,7 @@ export default function Board() {
 
   const doLink = (ids) => { pairRef.current = ids; s.link(ids); };
   const activate = (id) => { // klik/Enter pada kartu
-    if (!connect) { s.openDoc(id); return; }
+    if (!connect) { s.lihat(id); s.openDoc(id); return; }
     setSel((x) => (x.includes(id) ? x.filter((y) => y !== id) : x.length < MAKS_PILIH ? [...x, id] : x));
   };
   const cancelConnect = () => { if (sel.length) setSel([]); else setConnect(false); };

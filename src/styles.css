@@ -234,7 +234,7 @@ button.on {
 .mapview { display: flex; flex-direction: column; gap: 1rem; }
 
 /* Gutter seragam untuk akar kelima tab */
-.mapview, .dlg, .ev, .nb, .bd { box-sizing: border-box; width: 100%; padding-inline: var(--tab-gutter); }
+.mapview, .dlg, .ev, .an, .nb, .bd { box-sizing: border-box; width: 100%; padding-inline: var(--tab-gutter); }
 
 /* -- Pemilih lokasi: papan nama kuningan -- */
 .locboard { display: flex; flex-wrap: wrap; gap: .75rem; }
@@ -2609,11 +2609,6 @@ label {
 
 /* Kesaksian */
 .ks { display: grid; gap: .7rem; }
-.ks-list, .an-list { display: flex; flex-wrap: wrap; gap: .4rem; }
-.ks-chip, .an-chip { display: inline-flex; align-items: center; gap: .35rem; min-height: 38px; padding: .25rem .8rem; border: 1px solid var(--border); background: var(--bg-raised); color: var(--text); font-family: var(--ff-label); font-size: .8rem; letter-spacing: .06em; }
-.ks-chip[aria-pressed="true"], .an-chip[aria-pressed="true"] { background: var(--noir-bone); color: var(--noir-black); }
-.ks-chip svg, .an-chip svg { width: var(--ico-sm); height: var(--ico-sm); }
-.an-chip--lock { opacity: .6; border-style: dashed; }
 .ks-lead { margin: 0; color: var(--text-muted); font-size: .98rem; }
 .ks-items { list-style: none; margin: 0; padding: 0; display: grid; gap: .45rem; }
 .ks-item { display: flex; align-items: flex-start; gap: .6rem; width: 100%; padding: .6rem .7rem; text-align: left; text-transform: none; letter-spacing: 0; border: 1px solid var(--border); background: var(--paper); color: var(--ink); font-family: var(--ff-body, inherit); font-size: 1.02rem; box-shadow: var(--shadow-paper-sm); }
@@ -2658,11 +2653,8 @@ label {
 
 /* Analisis (teka-teki) */
 .an { display: grid; gap: .8rem; }
-.an h3 { margin: 0; }
 .an-panel { padding: 1rem 1.1rem; background: var(--paper); color: var(--ink); border: 1px solid var(--paper-edge); box-shadow: var(--shadow-paper-md); }
 .an-panel h4 { margin: 0 0 .4rem; font-family: var(--ff-heading); font-size: 1.25rem; }
-.an-empty { display: flex; align-items: center; gap: .6rem; color: var(--text-muted); }
-.an-empty svg { width: var(--ico-md); height: var(--ico-md); }
 .tt { display: grid; gap: .7rem; }
 .tt-data { border-collapse: collapse; width: 100%; font-size: .98rem; }
 .tt-data td { padding: .3rem .4rem; border-bottom: 1px solid rgba(0, 0, 0, .15); }
@@ -2735,6 +2727,121 @@ label {
 /* Status terpilih harus menang atas button:hover global (spesifisitas 0,2,1) */
 button.ks-pick[aria-pressed="true"], button.ks-pick[aria-pressed="true"]:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
 .tdh button.ks-pick[aria-pressed="true"], .tdh button.ks-pick[aria-pressed="true"]:hover { background: var(--stamp); border-color: var(--stamp); color: #fff; }
-button.ks-chip[aria-pressed="true"], button.an-chip[aria-pressed="true"], button.ks-chip[aria-pressed="true"]:hover, button.an-chip[aria-pressed="true"]:hover { background: var(--noir-bone); color: var(--noir-black); }
 button.ks-item:hover:not(:disabled) { background: var(--paper-2); }
 @media (max-width: 640px) { .tab-label { font-size: .62rem; letter-spacing: .02em; } }
+
+/* ===================================================================
+   v2.1: perbaikan UI (denah, tombol denah, penanda bukti baru, Analisis, audit konsistensi)
+   =================================================================== */
+
+/* Chip seragam: status terpilih menang atas button:hover global; ikon chip */
+button.ev-chip[aria-pressed="true"], button.ev-chip[aria-pressed="true"]:hover, button.nb-tab[aria-pressed="true"]:hover { background: var(--noir-black); color: var(--noir-bone); }
+.ev-chip svg { width: var(--ico-sm); height: var(--ico-sm); }
+.an-chip--lock { opacity: .65; border-style: dashed; cursor: default; }
+.ev-chip--new .ev-chip__n { background: var(--accent); color: #fff; }
+.ev-markall { min-height: 44px; padding: .3rem .8rem; margin-left: auto; background: transparent; border: 1px dashed var(--border); color: var(--text-muted); font-size: .78rem; }
+
+/* Penanda bukti/kartu baru */
+.ev-card__photo { position: relative; }
+.ev-new { position: absolute; top: 6px; left: 6px; z-index: 1; padding: .08rem .45rem; font-family: var(--ff-label); font-size: .66rem; letter-spacing: .12em; text-transform: uppercase;
+  color: var(--noir-white); background: var(--accent); box-shadow: 0 1px 3px rgba(0, 0, 0, .6); }
+.ev-kcard__head .ev-new { position: static; margin-left: auto; }
+
+/* Analisis mengikuti pola tab lain (judul, pengantar, chip, kertas) */
+.an { display: block; }
+.an-panel { margin-top: .2rem; padding: clamp(.8rem, 1.6vw, 1.1rem) clamp(.9rem, 2vw, 1.3rem); }
+.an-panel > p { margin: 0 0 .7rem; }
+.tdh .btn--primary:disabled, .an-panel .btn:disabled { cursor: not-allowed; }
+
+/* Badge biaya perjalanan tidak terpotong; plakat ruangan tidak menimpa label ruangan pada SVG */
+.locplate__cost { white-space: nowrap; }
+.map-room__plaque { top: auto; bottom: 0; transform-origin: 0 100%; transform: translate(calc(8px / var(--k, 1)), calc(-8px / var(--k, 1))) scale(calc(1 / var(--k, 1))); }
+.locgroup__locked .locplate--locked { font-size: .72rem; min-height: 36px; padding: .2rem .7rem; }
+
+/* Tombol "Lihat seluruh denah": latar solid, tidak tembus garis cetak biru */
+.blueprint__foot { position: relative; z-index: 2; }
+.map-zoombtn, button.map-zoombtn { background: var(--noir-charcoal); border: 1px solid var(--brass-deep); color: var(--noir-bone); box-shadow: 0 2px 6px rgba(0, 0, 0, .6); opacity: 1; }
+button.map-zoombtn:hover:not(:disabled) { background: #26231b; border-color: var(--brass-light); color: var(--noir-white); }
+
+/* Ponsel: papan lokasi ringkas agar denah tidak terdorong jauh ke bawah */
+@media (max-width: 768px) {
+  .locboard { gap: .5rem; }
+  .locgroup { padding: .45rem .55rem .55rem; }
+  .locgroup__title { margin-bottom: .35rem; font-size: .7rem; }
+  .locgroup__list { gap: .3rem; }
+  .locplate { min-height: 40px; padding: .3rem .6rem; font-size: .72rem; letter-spacing: .06em; }
+  .ev-markall { margin-left: 0; }
+}
+
+/* Desktop: denah di kolom utama setinggi tab; papan lokasi + titik pemeriksaan di kolom samping */
+@media (min-width: 769px) {
+  .tabview--peta > .mapview {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) clamp(16rem, 23vw, 21rem);
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "map loc" "map cek";
+    gap: .6rem;
+  }
+  .tabview--peta .map-layout { display: contents; }
+  .tabview--peta .map-desk { grid-area: map; }
+  .tabview--peta .checklist { grid-area: cek; }
+  .tabview--peta .locboard {
+    grid-area: loc;
+    display: flex;
+    flex-direction: column;
+    gap: .45rem;
+    max-height: 62vh;
+    overflow-y: auto;
+  }
+  .tabview--peta .locgroup { flex: none; padding: .4rem .5rem .5rem; }
+  .tabview--peta .locgroup__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .3rem; }
+  .tabview--peta .locgroup__list li { display: flex; min-width: 0; }
+  .tabview--peta .locplate {
+    width: 100%;
+    min-height: 38px;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: .15rem .35rem;
+    padding: .3rem .4rem;
+    font-size: clamp(.6rem, .55vw, .68rem);
+    letter-spacing: .05em;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .tabview--peta .locgroup__locked { grid-column: 1 / -1; }
+  .tabview--peta .locgroup__locked .locplate--locked { min-height: 30px; }
+  .tabview--peta .blueprint__view { width: min(100%, calc((100cqh - 2.6rem) * 1.53846)); }
+
+  /* Analisis disamakan dengan tab lain pada mode desktop */
+  .app--analisis { padding: .5rem 1.25rem; }
+  .an > h3 { font-size: clamp(.88rem, .72vw, .96rem); }
+  .an .ev-lead { font-size: clamp(.82rem, .62vw, .9rem); }
+  .an .ev-chip, .ks .ev-chip { min-height: 40px; padding: .25rem .65rem; font-size: clamp(.68rem, .58vw, .76rem); }
+  .an-panel p, .tt-data, .tt-op, .tt-data-list { font-size: clamp(.86rem, .72vw, .95rem); }
+  .an-panel h4 { font-size: clamp(1rem, .9vw, 1.15rem); }
+  .dlg-mode { min-height: 40px; font-size: clamp(.68rem, .58vw, .76rem); }
+  .ev-markall { min-height: 40px; font-size: clamp(.66rem, .55vw, .72rem); }
+}
+
+/* Layar lebar: semua tab memakai lebar maksimum yang sama (header tidak bergeser antartab) */
+.app { max-width: 1400px; }
+@media (min-width: 769px) {
+  /* Wadah cetak biru memeluk denah: lebar penuh kolom, dibatasi tinggi layar agar tidak terpotong */
+  .tabview--peta .map-desk { align-self: start; height: auto; container-type: inline-size; }
+  .tabview--peta .blueprint__view { width: min(100%, calc((100dvh - 13.5rem) * 1.53846)); }
+  .tabview--peta .locboard { max-height: none; }
+  .tabview--peta > .mapview { overflow-y: auto; }
+}
+@media (min-width: 769px) {
+  /* Papan lokasi bergulir sendiri agar Titik Pemeriksaan tetap terlihat tanpa menggulir halaman */
+  .tabview--peta .locboard { max-height: max(14rem, calc(100dvh - 22rem)); overflow-y: auto; scrollbar-width: thin; }
+  .tabview--peta .checklist { min-height: 8rem; }
+}
+@media (max-width: 768px) {
+  /* Ponsel: denah dan titik pemeriksaan tampil lebih dulu, daftar lokasi di bawahnya */
+  .tabview--peta .mapview { display: flex; flex-direction: column; }
+  .tabview--peta .map-layout { display: contents; }
+  .tabview--peta .map-desk { order: 1; }
+  .tabview--peta .checklist { order: 2; }
+  .tabview--peta .locboard { order: 3; }
+}
