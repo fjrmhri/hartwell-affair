@@ -2753,65 +2753,16 @@ button.ev-chip[aria-pressed="true"], button.ev-chip[aria-pressed="true"]:hover, 
 .an-panel > p { margin: 0 0 .7rem; }
 .tdh .btn--primary:disabled, .an-panel .btn:disabled { cursor: not-allowed; }
 
-/* Badge biaya perjalanan tidak terpotong; plakat ruangan tidak menimpa label ruangan pada SVG */
-.locplate__cost { white-space: nowrap; }
-.map-room__plaque { top: auto; bottom: 0; transform-origin: 0 100%; transform: translate(calc(8px / var(--k, 1)), calc(-8px / var(--k, 1))) scale(calc(1 / var(--k, 1))); }
-.locgroup__locked .locplate--locked { font-size: .72rem; min-height: 36px; padding: .2rem .7rem; }
-
 /* Tombol "Lihat seluruh denah": latar solid, tidak tembus garis cetak biru */
 .blueprint__foot { position: relative; z-index: 2; }
 .map-zoombtn, button.map-zoombtn { background: var(--noir-charcoal); border: 1px solid var(--brass-deep); color: var(--noir-bone); box-shadow: 0 2px 6px rgba(0, 0, 0, .6); opacity: 1; }
 button.map-zoombtn:hover:not(:disabled) { background: #26231b; border-color: var(--brass-light); color: var(--noir-white); }
 
-/* Ponsel: papan lokasi ringkas agar denah tidak terdorong jauh ke bawah */
 @media (max-width: 768px) {
-  .locboard { gap: .5rem; }
-  .locgroup { padding: .45rem .55rem .55rem; }
-  .locgroup__title { margin-bottom: .35rem; font-size: .7rem; }
-  .locgroup__list { gap: .3rem; }
-  .locplate { min-height: 40px; padding: .3rem .6rem; font-size: .72rem; letter-spacing: .06em; }
   .ev-markall { margin-left: 0; }
 }
 
-/* Desktop: denah di kolom utama setinggi tab; papan lokasi + titik pemeriksaan di kolom samping */
 @media (min-width: 769px) {
-  .tabview--peta > .mapview {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) clamp(16rem, 23vw, 21rem);
-    grid-template-rows: auto minmax(0, 1fr);
-    grid-template-areas: "map loc" "map cek";
-    gap: .6rem;
-  }
-  .tabview--peta .map-layout { display: contents; }
-  .tabview--peta .map-desk { grid-area: map; }
-  .tabview--peta .checklist { grid-area: cek; }
-  .tabview--peta .locboard {
-    grid-area: loc;
-    display: flex;
-    flex-direction: column;
-    gap: .45rem;
-    max-height: 62vh;
-    overflow-y: auto;
-  }
-  .tabview--peta .locgroup { flex: none; padding: .4rem .5rem .5rem; }
-  .tabview--peta .locgroup__list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .3rem; }
-  .tabview--peta .locgroup__list li { display: flex; min-width: 0; }
-  .tabview--peta .locplate {
-    width: 100%;
-    min-height: 38px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: .15rem .35rem;
-    padding: .3rem .4rem;
-    font-size: clamp(.6rem, .55vw, .68rem);
-    letter-spacing: .05em;
-    line-height: 1.2;
-    text-align: center;
-  }
-  .tabview--peta .locgroup__locked { grid-column: 1 / -1; }
-  .tabview--peta .locgroup__locked .locplate--locked { min-height: 30px; }
-  .tabview--peta .blueprint__view { width: min(100%, calc((100cqh - 2.6rem) * 1.53846)); }
-
   /* Analisis disamakan dengan tab lain pada mode desktop */
   .app--analisis { padding: .5rem 1.25rem; }
   .an > h3 { font-size: clamp(.88rem, .72vw, .96rem); }
@@ -2821,27 +2772,4 @@ button.map-zoombtn:hover:not(:disabled) { background: #26231b; border-color: var
   .an-panel h4 { font-size: clamp(1rem, .9vw, 1.15rem); }
   .dlg-mode { min-height: 40px; font-size: clamp(.68rem, .58vw, .76rem); }
   .ev-markall { min-height: 40px; font-size: clamp(.66rem, .55vw, .72rem); }
-}
-
-/* Layar lebar: semua tab memakai lebar maksimum yang sama (header tidak bergeser antartab) */
-.app { max-width: 1400px; }
-@media (min-width: 769px) {
-  /* Wadah cetak biru memeluk denah: lebar penuh kolom, dibatasi tinggi layar agar tidak terpotong */
-  .tabview--peta .map-desk { align-self: start; height: auto; container-type: inline-size; }
-  .tabview--peta .blueprint__view { width: min(100%, calc((100dvh - 13.5rem) * 1.53846)); }
-  .tabview--peta .locboard { max-height: none; }
-  .tabview--peta > .mapview { overflow-y: auto; }
-}
-@media (min-width: 769px) {
-  /* Papan lokasi bergulir sendiri agar Titik Pemeriksaan tetap terlihat tanpa menggulir halaman */
-  .tabview--peta .locboard { max-height: max(14rem, calc(100dvh - 22rem)); overflow-y: auto; scrollbar-width: thin; }
-  .tabview--peta .checklist { min-height: 8rem; }
-}
-@media (max-width: 768px) {
-  /* Ponsel: denah dan titik pemeriksaan tampil lebih dulu, daftar lokasi di bawahnya */
-  .tabview--peta .mapview { display: flex; flex-direction: column; }
-  .tabview--peta .map-layout { display: contents; }
-  .tabview--peta .map-desk { order: 1; }
-  .tabview--peta .checklist { order: 2; }
-  .tabview--peta .locboard { order: 3; }
 }
